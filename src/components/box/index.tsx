@@ -5,7 +5,7 @@ import { BlockBoxProps, getBlockBoxProps } from '../../mixins/box'
 import { SizeProps, getSizeProps } from '../../mixins/size'
 
 export interface BoxProps {
-  color?: string
+  inline?: boolean
 }
 
 /**
@@ -15,6 +15,7 @@ export interface BoxProps {
  */
 export const Box = styled.div<BoxProps & BlockBoxProps & SizeProps>`
   box-sizing: border-box;
+  display: ${(props) => (props.inline ? 'inline-block' : 'block')};
 
   ${getBlockBoxProps}
 
