@@ -1,12 +1,12 @@
 import { css } from 'styled-components'
 
 /**
- * BlockBoxProps represents the properties for css box alignment.
+ * BoxAlignProps represents the alignment properties for css box alignment.
  *
  * The names and the values of the properties are from:
  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment
  */
-export interface BlockBoxProps {
+export interface BoxAlignProps {
   /**
    * "The CSS align-content property sets the distribution of space between and
    * around content items along a flexbox's cross-axis or a grid's block axis."
@@ -104,7 +104,7 @@ export interface BlockBoxProps {
   gap?: string
 }
 
-export const getBlockBoxProps = css<BlockBoxProps>`
+export const applyBoxAlignProps = css<BoxAlignProps>`
   ${({ alignContent }) =>
     alignContent && 'align-content: ' + alignContent + ';'}
 

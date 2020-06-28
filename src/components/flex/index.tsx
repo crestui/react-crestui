@@ -2,7 +2,7 @@ import styled from 'styled-components'
 // eslint-disable-next-line no-unused-vars
 import { FlexProps, getFlexProps } from '../../mixins/flex'
 // eslint-disable-next-line no-unused-vars
-import { BlockBoxProps, getBlockBoxProps } from '../../mixins/box'
+import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, getSizeProps } from '../../mixins/size'
 
@@ -17,14 +17,14 @@ export interface LocalFlexProps {
  * Courtesy:  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
  */
 export const Flex = styled.div<
-  LocalFlexProps & FlexProps & BlockBoxProps & SizeProps
+  LocalFlexProps & FlexProps & BoxAlignProps & SizeProps
 >`
 
   display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};
 
   ${getFlexProps}
 
-  ${getBlockBoxProps}
+  ${applyBoxAlignProps}
 
   ${getSizeProps}
 `

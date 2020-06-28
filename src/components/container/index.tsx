@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 // eslint-disable-next-line no-unused-vars
-import { BlockBoxProps, getBlockBoxProps } from '../../mixins/box'
+import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, getSizeProps } from '../../mixins/size'
 
@@ -13,11 +13,11 @@ export interface ContainerProps {
  *
  * For more info,refer to :  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
  */
-export const Container = styled.div<ContainerProps & BlockBoxProps & SizeProps>`
+export const Container = styled.div<ContainerProps & BoxAlignProps & SizeProps>`
   box-sizing: border-box;
   display: block;
 
-  ${getBlockBoxProps}
+  ${applyBoxAlignProps}
 
   ${getSizeProps}
 `
