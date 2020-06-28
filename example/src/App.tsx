@@ -11,14 +11,12 @@ const App = () => {
         <div>
             Do something
         </div>
-        <Box w={1} h={'100vh'} p={1}>
-            <Flex>
-                <Box w={'100%'} justifyContent='center' alignItems={'center'} alignContent={'center'} style={{
+        <Box w={1} p={1}>
+            <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} style={{
                     backgroundColor: 'red'
                     }}>
-                    <div>Div 1</div>
-                    <div>Div 2</div>
-                </Box>
+                <div>Div 1</div>
+                <div>Div 2</div>
             </Flex>
             <Flex flexDirection='column' justifyContent='center' h={'50vh'}>
                 <Box py={1}>Div 1</Box>
