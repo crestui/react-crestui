@@ -56,6 +56,52 @@ export interface BlockBoxProps {
    * Courtesy: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
    */
   justifySelf?: string
+
+  /**
+   * "The place-content CSS property is a shorthand for align-content and justify-content. "
+   *
+   * Courtesy: https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
+   */
+  placeContent?: string
+
+  /**
+   * "The CSS place-items shorthand property sets the align-items and justify-items properties, respectively.
+   *  If the second value is not set, the first value is also used for it."
+   *
+   * Courtesy: https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
+   */
+  placeItems?: string
+
+  /**
+   * "The place-self CSS property is a shorthand property sets both the align-self and justify-self properties.
+   * The first value is the align-self property value, the second the justify-self one.
+   * If the second value is not present, the first value is also used for it."
+   *
+   * Courtesy:  https://developer.mozilla.org/en-US/docs/Web/CSS/place-self
+   */
+  placeSelf?: string
+
+  /**
+   * "The row-gap CSS property sets the size of the gap (gutter) between an element's grid rows.""
+   *
+   * Courtesy: https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
+   */
+  rowGap?: string
+
+  /**
+   * "The column-gap CSS property sets the size of the gap (gutter) between an element's columns."
+   *
+   * Courtesy: https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
+   */
+  columnGap?: string
+
+  /**
+   * "The gap CSS property sets the gaps (gutters) between rows and columns.
+   * It is a shorthand for row-gap and column-gap."
+   *
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/gap
+   */
+  gap?: string
 }
 
 export const getBlockBoxProps = css<BlockBoxProps>`
@@ -73,4 +119,10 @@ export const getBlockBoxProps = css<BlockBoxProps>`
     justifyItems && 'justify-items: ' + justifyItems + ';'}
 
   ${({ justifySelf }) => justifySelf && 'justify-self: ' + justifySelf + ';'}
+
+  ${({ rowGap }) => rowGap && 'row-gap: ' + rowGap + ';'}
+
+  ${({ columnGap }) => columnGap && 'column-gap: ' + columnGap + ';'}
+
+  ${({ gap }) => gap && 'gap: ' + gap + ';'}
 `
