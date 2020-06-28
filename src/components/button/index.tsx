@@ -6,5 +6,10 @@ interface ButtonProps {
 
 // eslint-disable-next-line no-empty-pattern
 export const Button = ({ label }: ButtonProps) => {
-  return null
+  return (
+    <div>
+      {label}
+      Interesting
+    </div>
+  )
 }
