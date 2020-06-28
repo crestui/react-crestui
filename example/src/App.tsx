@@ -15,7 +15,7 @@ const App = () => {
             <div>Div 1</div>
             <div>Div 2</div>
         </Flex>
-        <Flex flexDirection='column'>
+        <Flex flexDirection='column' justifyContent='center'>
             <div>Div 1</div>
             <div>Div 2</div>
         </Flex>

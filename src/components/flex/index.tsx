@@ -1,26 +1,20 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { BlockBoxProps, getBlockBoxProps } from '../box'
 
 export interface FlexProps {
   flexDirection?: string
-  justifyContent?: string
-  alignItems?: string
-  alignContents?: string
-  flexWrap?: string
+  flexWrap?: boolean
 }
 
-export const Flex = styled.div<FlexProps>`
+export const Flex = styled.div<FlexProps & BlockBoxProps>`
   display: flex;
 
-  ${(props) =>
-    props.flexDirection &&
-    css`
-      flex-direction: ${props.flexDirection};
-    `};
-  ${(props) =>
-    props.justifyContent &&
-    css`
-      justify-content: ${props.justifyContent};
-    `};
+  ${({ flexDirection }) =>
+    flexDirection && 'flex-direction: ' + flexDirection + ';'}
+
+  ${({ flexWrap }) => flexWrap && 'flex-wrap: ' + flexWrap + ';'}
+
+  ${getBlockBoxProps}
 `
 
 export default Flex
