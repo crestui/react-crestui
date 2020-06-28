@@ -1,20 +1,19 @@
 import styled from 'styled-components'
-import { BlockBoxProps, getBlockBoxProps } from '../box'
+// eslint-disable-next-line no-unused-vars
+import { FlexProps, getFlexProps } from '../../mixins/flex'
+// eslint-disable-next-line no-unused-vars
+import { BlockBoxProps, getBlockBoxProps } from '../../mixins/box'
+// eslint-disable-next-line no-unused-vars
+import { SizeProps, getSizeProps } from '../../mixins/size'
 
-export interface FlexProps {
-  flexDirection?: string
-  flexWrap?: boolean
-}
-
-export const Flex = styled.div<FlexProps & BlockBoxProps>`
+export const Flex = styled.div<FlexProps & BlockBoxProps & SizeProps>`
   display: flex;
 
-  ${({ flexDirection }) =>
-    flexDirection && 'flex-direction: ' + flexDirection + ';'}
-
-  ${({ flexWrap }) => flexWrap && 'flex-wrap: ' + flexWrap + ';'}
+  ${getFlexProps}
 
   ${getBlockBoxProps}
+
+  ${getSizeProps}
 `
 
 export default Flex

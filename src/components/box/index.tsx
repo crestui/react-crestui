@@ -1,30 +1,10 @@
-import styled, { css } from 'styled-components'
-
-export interface BlockBoxProps {
-  alignContent?: string
-  alignItems?: string
-  justifyContent?: string
-  justifyItems?: string
-  justifySelf?: string
-}
+import styled from 'styled-components'
+// eslint-disable-next-line no-unused-vars
+import { BlockBoxProps, getBlockBoxProps } from '../../mixins/box'
 
 export interface BoxProps {
   color: string
 }
-
-export const getBlockBoxProps = css<BlockBoxProps>`
-  ${({ alignContent }) =>
-    alignContent && 'align-content: ' + alignContent + ';'}
-
-${({ alignItems }) => alignItems && 'align-items: ' + alignItems + ';'}
-
-${({ justifyContent }) =>
-  justifyContent && 'justify-content: ' + justifyContent + ';'}
-
-${({ justifyItems }) => justifyItems && 'justify-items: ' + justifyItems + ';'}
-
-${({ justifySelf }) => justifySelf && 'justify-self: ' + justifySelf + ';'}
-`
 
 export const Box = styled.div<BoxProps & BlockBoxProps>`
   ${getBlockBoxProps}

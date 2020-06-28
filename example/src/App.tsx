@@ -11,11 +11,11 @@ const App = () => {
         <div>
             Do something
         </div>
-        <Flex>
+        <Flex w={1} justifyContent='center'>
             <div>Div 1</div>
             <div>Div 2</div>
         </Flex>
-        <Flex flexDirection='column' justifyContent='center'>
+        <Flex flexDirection='column' justifyContent='space-around' h={'100vh'}>
             <div>Div 1</div>
             <div>Div 2</div>
         </Flex>
