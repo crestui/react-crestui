@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css';
-import { Menu, Flex, Box } from 'react-crestui'
+import { Menu, Flex, Box, Button } from 'react-crestui'
 import 'react-crestui/dist/index.css'
 
 const App = () => {
@@ -50,6 +50,9 @@ const App = () => {
                 <Box py={1}>Div 1</Box>
                 <Box py={1}>Div 2</Box>
             </Flex>
+            <Box>
+                <Button>Signup</Button>
+            </Box>
         </Box>
     </>
   )

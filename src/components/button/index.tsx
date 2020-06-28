@@ -5,12 +5,15 @@ import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 import { SizeProps, applySizeProps } from '../../mixins/size'
 
 export interface ButtonProps {
-  label: string
+  label?: string
 }
 
 // eslint-disable-next-line no-empty-pattern
 export const Button = styled.button<ButtonProps & BoxAlignProps & SizeProps>`
-  box-sizing: border-box;
+  box-sizing: inline-block;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
   ${applyBoxAlignProps}
 
