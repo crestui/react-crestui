@@ -51,7 +51,7 @@ const App = () => {
                 <Box py={1}>Div 2</Box>
             </Flex>
             <Box>
-                <Button>Signup</Button>
+                <Button p={1}>Signup</Button>
             </Box>
         </Box>
     </>
