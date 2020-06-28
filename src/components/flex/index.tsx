@@ -6,6 +6,12 @@ import { BlockBoxProps, getBlockBoxProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, getSizeProps } from '../../mixins/size'
 
+/**
+ * "Flexbox is a one-dimensional layout method for laying out items in rows or columns.
+ * Items flex to fill additional space and shrink to fit into smaller spaces. "
+ *
+ * Courtesy:  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
+ */
 export const Flex = styled.div<FlexProps & BlockBoxProps & SizeProps>`
   display: flex;
 

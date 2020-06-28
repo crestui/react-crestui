@@ -5,10 +5,17 @@ import { BlockBoxProps, getBlockBoxProps } from '../../mixins/box'
 import { SizeProps, getSizeProps } from '../../mixins/size'
 
 export interface BoxProps {
-  color: string
+  color?: string
 }
 
+/**
+ * A styled div with "box-sizing" set to "border-box".
+ *
+ * For more info,refer to :  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+ */
 export const Box = styled.div<BoxProps & BlockBoxProps & SizeProps>`
+  box-sizing: border-box;
+
   ${getBlockBoxProps}
 
   ${getSizeProps}
