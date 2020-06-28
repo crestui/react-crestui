@@ -22,3 +22,6 @@ yarn-debug.log*
 yarn-error.log*
 
 _bundles
+
+# no npm please. Use yarn preferably
+package-lock.json
