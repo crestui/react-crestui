@@ -11,7 +11,9 @@ const App = () => {
         <div>
             Do something
         </div>
-        <Flex w={1} justifyContent='center'>
+        <Flex w={'80%'} justifyContent='center' p={2} style={{
+            backgroundColor: 'red'
+        }}>
             <div>Div 1</div>
             <div>Div 2</div>
         </Flex>
