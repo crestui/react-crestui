@@ -120,6 +120,13 @@ export const getBlockBoxProps = css<BlockBoxProps>`
 
   ${({ justifySelf }) => justifySelf && 'justify-self: ' + justifySelf + ';'}
 
+  ${({ placeContent }) =>
+    placeContent && 'place-content: ' + placeContent + ';'}
+
+  ${({ placeItems }) => placeItems && 'place-items: ' + placeItems + ';'}
+
+  ${({ placeSelf }) => placeSelf && 'place-self: ' + placeSelf + ';'}
+
   ${({ rowGap }) => rowGap && 'row-gap: ' + rowGap + ';'}
 
   ${({ columnGap }) => columnGap && 'column-gap: ' + columnGap + ';'}
