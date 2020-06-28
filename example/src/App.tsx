@@ -1,12 +1,25 @@
 import React from 'react'
-
-import { Menu } from 'react-crestui'
+import './index.css';
+import { Menu, Flex } from 'react-crestui'
 import 'react-crestui/dist/index.css'
 
 const App = () => {
   return (
-    <Menu >
-    </Menu>
+    <>
+        <Menu >
+        </Menu>
+        <div>
+            Do something
+        </div>
+        <Flex>
+            <div>Div 1</div>
+            <div>Div 2</div>
+        </Flex>
+        <Flex flexDirection='column'>
+            <div>Div 1</div>
+            <div>Div 2</div>
+        </Flex>
+    </>
   )
 }
 
