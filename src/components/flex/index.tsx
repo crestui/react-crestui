@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 // eslint-disable-next-line no-unused-vars
-import { FlexProps, getFlexProps } from '../../mixins/flex'
+import { FlexProps, applyFlexProps } from '../../mixins/flex'
 // eslint-disable-next-line no-unused-vars
 import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
-import { SizeProps, getSizeProps } from '../../mixins/size'
+import { SizeProps, applySizeProps } from '../../mixins/size'
 
 export interface LocalFlexProps {
   inline?: boolean
@@ -22,11 +22,11 @@ export const Flex = styled.div<
 
   display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};
 
-  ${getFlexProps}
+  ${applyFlexProps}
 
   ${applyBoxAlignProps}
 
-  ${getSizeProps}
+  ${applySizeProps}
 `
 
 export default Flex

@@ -67,7 +67,7 @@ export interface FlexProps {
   flexOrder?: number
 }
 
-export const getFlexProps = css<FlexProps>`
+export const applyFlexProps = css<FlexProps>`
   ${({ flex }) => flex && 'flex: ' + flex + ';'}
 
   ${({ flexBasis }) => flexBasis && 'flex-basis: ' + flexBasis + ';'}

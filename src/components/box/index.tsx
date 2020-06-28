@@ -2,7 +2,7 @@ import styled from 'styled-components'
 // eslint-disable-next-line no-unused-vars
 import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
-import { SizeProps, getSizeProps } from '../../mixins/size'
+import { SizeProps, applySizeProps } from '../../mixins/size'
 
 export interface BoxProps {
   inline?: boolean
@@ -19,5 +19,5 @@ export const Box = styled.div<BoxProps & BoxAlignProps & SizeProps>`
 
   ${applyBoxAlignProps}
 
-  ${getSizeProps}
+  ${applySizeProps}
 `

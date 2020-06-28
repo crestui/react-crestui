@@ -11,7 +11,7 @@ export interface SizeProps {
   my?: number
 }
 
-export const getSizeProps = css<SizeProps>`
+export const applySizeProps = css<SizeProps>`
   ${({ w }) => w && 'width: ' + w + ';'}
 
   ${({ h }) => h && 'height: ' + h + ';'}
