@@ -4,41 +4,6 @@ import { Button } from '../button'
 // eslint-disable-next-line no-unused-vars
 import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
-export const DropdownItem = styled.li`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &:hover {
-    background-color: ${(props) =>
-      props.theme.colors ? props.theme.colors.primary : 'inherit'};
-  }
-
-  a {
-    text-decoration: none;
-  }
-`
-
-const DropdownContentContainer = styled.ul<{ disclosure: IDisclosure }>`
-  position: absolute;
-  left: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  flex-direction: column;
-  opacity: ${(props) =>
-    props.disclosure ? (props.disclosure.isOpen ? 1 : 0) : 0};
-  z-index: ${(props) =>
-    props.disclosure ? (props.disclosure.isOpen ? 6 : -1) : -1};
-  background-color: white;
-  margin: 0;
-  width: 40rem;
-`
-
 export interface DropdownHeaderProps {
   disclosure: IDisclosure
   label: string
@@ -60,6 +25,41 @@ const DropdownContainer = styled.div`
   box-sizing: border-box;
   vertical-align: baseline;
   text-size-adjust: 100%;
+`
+
+const DropdownContentContainer = styled.ul<{ disclosure: IDisclosure }>`
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  flex-direction: column;
+  opacity: ${(props) =>
+    props.disclosure ? (props.disclosure.isOpen ? 1 : 0) : 0};
+  z-index: ${(props) =>
+    props.disclosure ? (props.disclosure.isOpen ? 6 : -1) : -1};
+  background-color: white;
+  margin: 0;
+  width: 40rem;
+`
+
+export const DropdownItem = styled.li`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: ${(props) =>
+      props.theme.colors ? props.theme.colors.primary : 'inherit'};
+  }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export interface DropdownProps {
