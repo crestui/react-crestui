@@ -4,6 +4,14 @@ import { Button } from '../button'
 // eslint-disable-next-line no-unused-vars
 import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
+const DropdownContainer = styled.div`
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  text-size-adjust: 100%;
+`
+
 export interface DropdownHeaderProps {
   disclosure: IDisclosure
   label: string
@@ -18,14 +26,6 @@ const DropdownHeader = (props: DropdownHeaderProps) => {
     </Button>
   )
 }
-
-const DropdownContainer = styled.div`
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: baseline;
-  text-size-adjust: 100%;
-`
 
 const DropdownContentContainer = styled.ul<{ disclosure: IDisclosure }>`
   position: absolute;
