@@ -9,7 +9,8 @@ const App = () => {
             <Box w={1} p={1}>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
                     <Dropdown label='Products'>
-                        <DropdownItem>Interesting</DropdownItem>
+                        <DropdownItem>Interesting Menu Item 1</DropdownItem>
+                        <DropdownItem>Interesting Menu Item 2</DropdownItem>
                     </Dropdown>
                 </Flex>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} style={{

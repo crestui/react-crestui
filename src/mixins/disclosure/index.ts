@@ -3,6 +3,8 @@ import { useState, useMemo } from 'react'
 export interface IDisclosure {
   isOpen: boolean
 
+  setIsOpen: Function
+
   toggleOpen: Function
 }
 
@@ -14,6 +16,7 @@ export function useDisclosure(open: boolean): IDisclosure {
   return useMemo(
     () => ({
       isOpen,
+      setIsOpen,
       toggleOpen
     }),
     [isOpen]

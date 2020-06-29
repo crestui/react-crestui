@@ -1,33 +1,62 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
+// eslint-disable-next-line no-unused-vars
 import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
-export interface DropdownItemProps {
-  label: string
-}
-export const DropdownItem = (props: DropdownItemProps) => {
-  console.info(props)
-  return null
-}
+export const DropdownItem = styled.a`
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border: none;
+  text-decoration: none;
 
-export interface DropdownContentProps {
-  disclosure: IDisclosure
-  children: React.ReactNode
-}
+  &:link {
+    color: inherit;
+  }
 
-const DropdownContent = (props: DropdownContentProps) => {
-  return props.disclosure.isOpen ? <div>Active Content Container</div> : null
-}
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: ${(props) =>
+      props.theme.colors ? props.theme.colors.primary : 'inherit'};
+  }
+
+  &:active {
+    color: ${(props) =>
+      props.theme.colors ? props.theme.colors.primary : 'inherit'};
+  }
+`
+
+const DropdownContentContainer = styled.div<{ disclosure: IDisclosure }>`
+  position: absolute;
+  opacity: ${(props) =>
+    props.disclosure ? (props.disclosure.isOpen ? 1 : 0) : 0};
+  z-index: ${(props) =>
+    props.disclosure ? (props.disclosure.isOpen ? 6 : -1) : -1};
+  list-style: none;
+  margin: 0;
+`
 
 export interface DropdownHeaderProps {
+  disclosure: IDisclosure
   label: string
   icon?: string
   placement?: string
 }
 
 const DropdownHeader = (props: DropdownHeaderProps) => {
-  return <Button>{props.label}</Button>
+  return (
+    <Button
+      onMouseEnter={() => props.disclosure.setIsOpen(true)}
+      onMouseLeave={() => props.disclosure.setIsOpen(false)}
+    >
+      {props.label}
+    </Button>
+  )
 }
 
 const DropdownContainer = styled.div`
@@ -41,6 +70,7 @@ export interface DropdownProps {
   label: string
   icon?: string
   placement?: string
+  open?: boolean
   children: React.ReactNode
 }
 
@@ -49,11 +79,19 @@ export interface DropdownProps {
  */
 export const Dropdown = (props: DropdownProps) => {
   const { label, icon, placement, children } = props
-  const disclosure = useDisclosure(false)
+  const open = props.open ? props.open : false
+  const disclosure = useDisclosure(open)
   return (
     <DropdownContainer>
-      <DropdownHeader label={label} icon={icon} placement={placement} />
-      <DropdownContent disclosure={disclosure}>{children}</DropdownContent>
+      <DropdownHeader
+        label={label}
+        icon={icon}
+        placement={placement}
+        disclosure={disclosure}
+      />
+      <DropdownContentContainer disclosure={disclosure}>
+        {children}
+      </DropdownContentContainer>
     </DropdownContainer>
   )
 }
