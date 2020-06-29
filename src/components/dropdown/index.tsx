@@ -7,10 +7,7 @@ export interface DropdownProps {
 }
 
 /**
- * "Flexbox is a one-dimensional layout method for laying out items in rows or columns.
- * Items flex to fill additional space and shrink to fit into smaller spaces. "
  *
- * Courtesy:  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
  */
 export const Dropdown = styled.div<DropdownProps & SizeProps>`
   ${applySizeProps}

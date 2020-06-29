@@ -9,9 +9,7 @@ export interface ContainerProps {
 }
 
 /**
- * A styled div with "box-sizing" set to "border-box" and display set to block
  *
- * For more info,refer to :  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
  */
 export const Container = styled.div<ContainerProps & BoxAlignProps & SizeProps>`
   box-sizing: border-box;

@@ -34,7 +34,9 @@ function getButtonCSS(props: ButtonProps) {
     border-radius: ${theme.button.borderRadius};
   `
 }
-
+/**
+ * Button represents a component to display a "Button"
+ */
 // eslint-disable-next-line no-empty-pattern
 export const Button = styled.button<ButtonProps & BoxAlignProps & SizeProps>`
   display: inline-block;
