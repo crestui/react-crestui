@@ -33,11 +33,15 @@ export const DropdownItem = styled.a`
 
 const DropdownContentContainer = styled.div<{ disclosure: IDisclosure }>`
   position: absolute;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  display: block;
+  top: 100%;
   opacity: ${(props) =>
     props.disclosure ? (props.disclosure.isOpen ? 1 : 0) : 0};
   z-index: ${(props) =>
     props.disclosure ? (props.disclosure.isOpen ? 6 : -1) : -1};
-  list-style: none;
+  background-color: white;
   margin: 0;
 `
 
@@ -61,9 +65,10 @@ const DropdownHeader = (props: DropdownHeaderProps) => {
 
 const DropdownContainer = styled.div`
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  box-sixing: border-box;
+  display: block;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  text-size-adjust: 100%;
 `
 
 export interface DropdownProps {
