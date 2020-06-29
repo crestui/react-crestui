@@ -1,12 +1,13 @@
 import React from 'react'
-import { Menu, Flex, Box, Button, ThemeContextProvider } from 'react-crestui'
+import { Menu, MenuItem, Flex, Box, Button, ThemeContextProvider } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
   return (
     <>
         <ThemeContextProvider theme={AppTheme}>
-            <Menu >
+            <Menu>
+               <MenuItem>Interesting</MenuItem>
             </Menu>
             <div>
                 Do something
