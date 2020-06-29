@@ -17,8 +17,6 @@ export interface ButtonProps {
 }
 
 function getButtonCSS(props: ButtonProps) {
-  console.info(`Getting button css`)
-  console.info(`${JSON.stringify(props)}`)
   const theme = useContext(ThemeContext)
   let finalTheme = null
   if (theme === null || theme === undefined) {
