@@ -4,45 +4,39 @@ import { Button } from '../button'
 // eslint-disable-next-line no-unused-vars
 import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
-export const DropdownItem = styled.a`
+export const DropdownItem = styled.li`
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  box-sizing: border-box;
-  border: none;
-  text-decoration: none;
-
-  &:link {
-    color: inherit;
-  }
-
-  &:visited {
-    color: inherit;
-  }
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
-    color: ${(props) =>
+    background-color: ${(props) =>
       props.theme.colors ? props.theme.colors.primary : 'inherit'};
   }
 
-  &:active {
-    color: ${(props) =>
-      props.theme.colors ? props.theme.colors.primary : 'inherit'};
+  a {
+    text-decoration: none;
   }
 `
 
-const DropdownContentContainer = styled.div<{ disclosure: IDisclosure }>`
+const DropdownContentContainer = styled.ul<{ disclosure: IDisclosure }>`
   position: absolute;
-  vertical-align: baseline;
-  box-sizing: border-box;
-  display: block;
-  top: 100%;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  flex-direction: column;
   opacity: ${(props) =>
     props.disclosure ? (props.disclosure.isOpen ? 1 : 0) : 0};
   z-index: ${(props) =>
     props.disclosure ? (props.disclosure.isOpen ? 6 : -1) : -1};
   background-color: white;
   margin: 0;
+  width: 40rem;
 `
 
 export interface DropdownHeaderProps {
@@ -54,10 +48,7 @@ export interface DropdownHeaderProps {
 
 const DropdownHeader = (props: DropdownHeaderProps) => {
   return (
-    <Button
-      onMouseEnter={() => props.disclosure.setIsOpen(true)}
-      onMouseLeave={() => props.disclosure.setIsOpen(false)}
-    >
+    <Button onMouseEnter={() => props.disclosure.setIsOpen(true)}>
       {props.label}
     </Button>
   )
@@ -65,7 +56,7 @@ const DropdownHeader = (props: DropdownHeaderProps) => {
 
 const DropdownContainer = styled.div`
   position: relative;
-  display: block;
+  display: inline-block;
   box-sizing: border-box;
   vertical-align: baseline;
   text-size-adjust: 100%;
