@@ -1,10 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Button } from '../button'
 
 export interface DropdownItemProps {
   label: string
 }
 export const DropdownItem = (props: DropdownItemProps) => {
+  console.info(props)
+  return null
+}
+
+export interface DropdownContentProps {
+  children: React.ReactNode
+}
+
+const DropdownContent = (props: DropdownContentProps) => {
   console.info(props)
   return null
 }
@@ -16,14 +26,14 @@ export interface DropdownHeaderProps {
 }
 
 const DropdownHeader = (props: DropdownHeaderProps) => {
-  console.info(props)
-  return null
+  return <Button>{props.label}</Button>
 }
 
 const DropdownContainer = styled.div`
   position: relative;
   display: inline-block;
   vertical-align: middle;
+  box-sixing: border-box;
 `
 
 export interface DropdownProps {
@@ -41,7 +51,7 @@ export const Dropdown = (props: DropdownProps) => {
   return (
     <DropdownContainer>
       <DropdownHeader label={label} icon={icon} placement={placement} />
-      {children}
+      <DropdownContent>{children}</DropdownContent>
     </DropdownContainer>
   )
 }

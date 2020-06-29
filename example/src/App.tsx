@@ -1,18 +1,17 @@
 import React from 'react'
-import { Menu, MenuItem, Flex, Box, Button, ThemeContextProvider } from 'react-crestui'
+import { Flex, Box, Button, ThemeContextProvider, Dropdown, DropdownItem } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
   return (
     <>
         <ThemeContextProvider theme={AppTheme}>
-            <Menu>
-               <MenuItem>Interesting</MenuItem>
-            </Menu>
-            <div>
-                Do something
-            </div>
             <Box w={1} p={1}>
+                <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
+                    <Dropdown label='Products'>
+                        <DropdownItem>Interesting</DropdownItem>
+                    </Dropdown>
+                </Flex>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} style={{
                         backgroundColor: 'red'
                         }}>
