@@ -4,16 +4,21 @@ import styled, { css } from 'styled-components'
 import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, applySizeProps } from '../../mixins/size'
+import { getColor } from '../../mixins/color'
 import { ThemeContext } from '../../contexts/themecontext'
 import { DefaultTheme } from '../../theming'
+
 const mergeOptions = require('merge-options')
 
 export interface ButtonProps {
   disabled?: boolean
   variant?: string
+  color?: string
 }
 
 function getButtonCSS(props: ButtonProps) {
+  console.info(`Getting button css`)
+  console.info(`${JSON.stringify(props)}`)
   const theme = useContext(ThemeContext)
   let finalTheme = null
   if (theme === null || theme === undefined) {
@@ -23,12 +28,17 @@ function getButtonCSS(props: ButtonProps) {
   }
   let fillColor = ''
   if (props.variant) {
-    fillColor = finalTheme.color[props.variant]
+    fillColor = getColor(finalTheme, props.variant)
+  }
+  let color = 'white'
+  if (props.color) {
+    color = getColor(finalTheme, props.color)
   }
   return css`
     background: ${fillColor};
-    background-color: transparent;
+    background-color: ${fillColor};
     border-color: ${fillColor};
+    color: ${color};
   `
 }
 
