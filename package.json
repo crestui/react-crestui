@@ -22,12 +22,15 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build"
   },
+  "dependencies": {
+    "merge-options": "^2.0.0",
+    "styled-components": "^5.1.0",
+    "react-icons": "^3.10.0"
+  },
   "peerDependencies": {
     "react": ">= 16.8.0",
     "react-is": ">= 16.8.0",
-    "react-dom": ">= 16.8.0",
-    "styled-components": "^5.1.0",
-    "react-icons": "^3.10.0"
+    "react-dom": ">= 16.8.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.11.0",
@@ -60,9 +63,7 @@
     "react-scripts": "3.4.1",
     "typescript": "3.7.5",
     "react-is": "16.13.1",
-    "styled-components": "5.1.1",
-    "@types/styled-components": "5.1.0",
-    "react-icons": "3.10.0"
+    "@types/styled-components": "5.1.0"
   },
   "files": [
     "dist"

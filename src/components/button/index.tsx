@@ -6,39 +6,30 @@ import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 import { SizeProps, applySizeProps } from '../../mixins/size'
 import { ThemeContext } from '../../contexts/themecontext'
 import { DefaultTheme } from '../../theming'
+const mergeOptions = require('merge-options')
 
 export interface ButtonProps {
   disabled?: boolean
   variant?: string
 }
 
-function getDisabledButton() {
-  return css`
-    background: rgb(125, 76, 219);
-    background-color: transparent;
-    border-color: rgb(125, 76, 219);
-  `
-}
-
-function getNormalButton() {
-  let theme = useContext(ThemeContext)
-  if (theme === null || theme === undefined) {
-    theme = DefaultTheme
-  } else {
-    // deep copy DefaultTheme onto theme
-  }
-  return css`
-    background: ${theme.color.primary};
-    background-color: transparent;
-    border-color: ${theme.color.primary};
-  `
-}
 function getButtonCSS(props: ButtonProps) {
-  if (props.disabled) {
-    return getDisabledButton()
+  const theme = useContext(ThemeContext)
+  let finalTheme = null
+  if (theme === null || theme === undefined) {
+    finalTheme = DefaultTheme
   } else {
-    return getNormalButton()
+    finalTheme = mergeOptions(theme, DefaultTheme)
   }
+  let fillColor = ''
+  if (props.variant) {
+    fillColor = finalTheme.color[props.variant]
+  }
+  return css`
+    background: ${fillColor};
+    background-color: transparent;
+    border-color: ${fillColor};
+  `
 }
 
 // eslint-disable-next-line no-empty-pattern
