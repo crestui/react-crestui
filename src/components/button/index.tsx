@@ -7,12 +7,6 @@ import { SizeProps, applySizeProps } from '../../mixins/size'
 import { getColor } from '../../mixins/color'
 import { ThemeContext } from '../../theming'
 
-export interface ButtonProps {
-  disabled?: boolean
-  variant?: string
-  color?: string
-}
-
 function getButtonCSS(props: ButtonProps) {
   const theme = useContext(ThemeContext)
   if (theme === null || theme === undefined) {
@@ -34,6 +28,13 @@ function getButtonCSS(props: ButtonProps) {
     border-radius: ${theme.button.borderRadius};
   `
 }
+
+export interface ButtonProps {
+  disabled?: boolean
+  variant?: string
+  color?: string
+}
+
 /**
  * Button represents a component to display a "Button"
  */
@@ -49,6 +50,7 @@ export const Button = styled.button<ButtonProps & BoxAlignProps & SizeProps>`
   box-shadow: none;
   margin: 0px;
   outline: 0;
+  position: relative;
 
   ${(props) => getButtonCSS(props)}
 

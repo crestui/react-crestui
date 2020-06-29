@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
+import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
 export interface DropdownItemProps {
   label: string
@@ -11,12 +12,12 @@ export const DropdownItem = (props: DropdownItemProps) => {
 }
 
 export interface DropdownContentProps {
+  disclosure: IDisclosure
   children: React.ReactNode
 }
 
 const DropdownContent = (props: DropdownContentProps) => {
-  console.info(props)
-  return null
+  return props.disclosure.isOpen ? <div>Active Content Container</div> : null
 }
 
 export interface DropdownHeaderProps {
@@ -48,10 +49,11 @@ export interface DropdownProps {
  */
 export const Dropdown = (props: DropdownProps) => {
   const { label, icon, placement, children } = props
+  const disclosure = useDisclosure(false)
   return (
     <DropdownContainer>
       <DropdownHeader label={label} icon={icon} placement={placement} />
-      <DropdownContent>{children}</DropdownContent>
+      <DropdownContent disclosure={disclosure}>{children}</DropdownContent>
     </DropdownContainer>
   )
 }
