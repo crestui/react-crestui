@@ -1,12 +1,11 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { Menu, Flex, Box, Button } from 'react-crestui'
+import { Menu, Flex, Box, Button, ThemeContextProvider } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
   return (
     <>
-        <ThemeProvider theme={AppTheme}>
+        <ThemeContextProvider theme={AppTheme}>
             <Menu >
             </Menu>
             <div>
@@ -53,9 +52,11 @@ const App = () => {
                 </Flex>
                 <Box>
                     <Button variant='primary' p={1}>Signup</Button>
+                    <Button variant='secondary' p={1}>Login</Button>
+
                 </Box>
             </Box>
-        </ThemeProvider>
+        </ThemeContextProvider>
     </>
   )
 }

@@ -4,6 +4,4 @@ export { Container } from './components/container'
 export { Button } from './components/button'
 export { Menu } from './components/menu'
 
-export { ThemeContext } from './contexts/themecontext'
-
-export { DefaultTheme } from './theming'
+export { ThemeContext, ThemeContextProvider } from './theming'
