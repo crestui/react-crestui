@@ -1,11 +1,15 @@
+import { useContext } from 'react'
 import styled, { css } from 'styled-components'
 // eslint-disable-next-line no-unused-vars
 import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, applySizeProps } from '../../mixins/size'
+import { ThemeContext } from '../../contexts/themecontext'
+import { DefaultTheme } from '../../theming'
 
 export interface ButtonProps {
   disabled?: boolean
+  variant?: string
 }
 
 function getDisabledButton() {
@@ -17,10 +21,16 @@ function getDisabledButton() {
 }
 
 function getNormalButton() {
+  let theme = useContext(ThemeContext)
+  if (theme === null || theme === undefined) {
+    theme = DefaultTheme
+  } else {
+    // deep copy DefaultTheme onto theme
+  }
   return css`
-    background: rgb(125, 76, 219);
+    background: ${theme.color.primary};
     background-color: transparent;
-    border-color: rgb(125, 76, 219);
+    border-color: ${theme.color.primary};
   `
 }
 function getButtonCSS(props: ButtonProps) {
