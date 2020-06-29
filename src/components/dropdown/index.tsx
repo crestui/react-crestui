@@ -1,16 +1,49 @@
+import React from 'react'
 import styled from 'styled-components'
-// eslint-disable-next-line no-unused-vars
-import { SizeProps, applySizeProps } from '../../mixins/size'
+
+export interface DropdownItemProps {
+  label: string
+}
+export const DropdownItem = (props: DropdownItemProps) => {
+  console.info(props)
+  return null
+}
+
+export interface DropdownHeaderProps {
+  label: string
+  icon?: string
+  placement?: string
+}
+
+const DropdownHeader = (props: DropdownHeaderProps) => {
+  console.info(props)
+  return null
+}
+
+const DropdownContainer = styled.div`
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+`
 
 export interface DropdownProps {
-  inline?: boolean
+  label: string
+  icon?: string
+  placement?: string
+  children: React.ReactNode
 }
 
 /**
  *
  */
-export const Dropdown = styled.div<DropdownProps & SizeProps>`
-  ${applySizeProps}
-`
+export const Dropdown = (props: DropdownProps) => {
+  const { label, icon, placement, children } = props
+  return (
+    <DropdownContainer>
+      <DropdownHeader label={label} icon={icon} placement={placement} />
+      {children}
+    </DropdownContainer>
+  )
+}
 
 export default Dropdown
