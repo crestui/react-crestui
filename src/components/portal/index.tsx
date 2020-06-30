@@ -49,11 +49,11 @@ export const Portal = (props: PortalProps) => {
   if (props.coords.left) {
     el.style.left = `${props.coords.left}px`
   }
-  if (props.coords.right) {
-    el.style.right = `${props.coords.right}px`
-  }
   if (props.coords.bottom) {
     el.style.bottom = `${props.coords.bottom}px`
+  }
+  if (props.coords.right) {
+    el.style.right = `${props.coords.right}px`
   }
   el.style.zIndex = zIndex
 

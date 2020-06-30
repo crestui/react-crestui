@@ -57,13 +57,14 @@ const App = () => {
                     <Button variant='primary' p={1}>Signup</Button>
                     <Button variant='secondary' p={1}>Login</Button>
                 </Box>
-                <Box p={4}>
+                <Box p={10}>
                     Some overflowing content
                 </Box>
-                <Button variant='primary' ref={buttonRef} onClick={
-                    () => { disclosure.toggleOpen() }
-                } m={1} p={3}>Hover over me</Button>
-                <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='left-middle' />
+                <Button variant='primary' ref={buttonRef}
+                onMouseOver={() => { console.info('Setting disclosure to be true'); disclosure.setIsOpen(true) }}
+                onMouseLeave={() => { disclosure.setIsOpen(false) }}
+                mx={2} px={5} py={2}>Hover over me</Button>
+                <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='bottom-middle' />
             </Box>
         </ThemeContextProvider>
     </>

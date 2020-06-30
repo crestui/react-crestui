@@ -15,7 +15,6 @@ export interface OverlayProps {
 }
 
 function getCoords(node: Element, placement?: string): Coords {
-  console.info(`Placement: ${placement}`)
   if (placement === undefined || placement === null) {
     placement = 'top-left'
   }
