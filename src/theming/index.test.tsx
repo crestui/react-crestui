@@ -1,7 +1,7 @@
-import { ThemeContext } from '.'
+import { DefaultTheme } from '.'
 
-describe('ThemeContext', () => {
+describe('DefaultTheme', () => {
   it('is truthy', () => {
-    expect(ThemeContext).toBeTruthy()
+    expect(DefaultTheme).toBeTruthy()
   })
 })

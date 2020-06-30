@@ -1,22 +1,10 @@
-import { useContext } from 'react'
-import styled, { css } from 'styled-components'
+import styled  from 'styled-components'
 // eslint-disable-next-line no-unused-vars
 import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, applySizeProps } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { ColorProps, applyColorProps } from '../../mixins/color'
-import { ThemeContext } from '../../theming'
-
-export function getButtonCSS() {
-  const theme = useContext(ThemeContext)
-  if (theme === null || theme === undefined) {
-    throw new Error(`Set a default theme before proceeding`)
-  }
-  return css`
-    border-radius: ${theme.button.borderRadius};
-  `
-}
 
 export interface ButtonProps {
   disabled?: boolean
@@ -40,6 +28,11 @@ export const Button = styled.button<
   margin: 0px;
   outline: 0;
   position: relative;
+
+  ${(props) =>
+    props.theme.button.borderRadius
+      ? 'border-radius : ' + props.theme.button.borderRadius + ';'
+      : ''}
 
   ${applyBoxAlignProps}
 

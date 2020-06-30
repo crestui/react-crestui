@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
-import { Flex, Box, Button, ThemeContextProvider, Dropdown, DropdownItem, Tooltip, useDisclosure } from 'react-crestui'
+import { ThemeProvider } from 'styled-components'
+import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip, useDisclosure } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
@@ -7,7 +8,7 @@ const App = () => {
   const disclosure = useDisclosure(false)
   return (
     <>
-        <ThemeContextProvider theme={AppTheme}>
+        <ThemeProvider theme={AppTheme}>
             <Box w={1} p={1}>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
                     <Dropdown label='Products'>
@@ -68,7 +69,7 @@ const App = () => {
                         text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='right-middle' />
                 </Flex>
             </Box>
-        </ThemeContextProvider>
+        </ThemeProvider>
     </>
   )
 }

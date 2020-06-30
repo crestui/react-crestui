@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
-import { Portal } from '../portal'
+// eslint-disable-next-line no-unused-vars
+import { Portal, Coords } from '../portal'
 // eslint-disable-next-line no-unused-vars
 import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
@@ -76,6 +77,7 @@ export interface DropdownProps {
  */
 export const Dropdown = (props: DropdownProps) => {
   const { label, icon, placement, children } = props
+  const [coords] = useState<Coords>({ left: 0, top: 0 })
   const open = props.open ? props.open : false
   const disclosure = useDisclosure(open)
   return (
@@ -87,7 +89,7 @@ export const Dropdown = (props: DropdownProps) => {
         disclosure={disclosure}
       />
       <DropdownContentContainer disclosure={disclosure}>
-        <Portal>{children}</Portal>
+        <Portal coords={coords}>{children}</Portal>
       </DropdownContentContainer>
     </DropdownContainer>
   )

@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { ThemeProps } from 'styled-components'
 
 export interface SizeProps {
   w?: string | number
@@ -11,7 +12,7 @@ export interface SizeProps {
   my?: number
 }
 
-export const applySizeProps = css<SizeProps>`
+export const applySizeProps = css<SizeProps & ThemeProps<any>>`
   ${({ w }) => w && 'width: ' + w + ';'}
 
   ${({ h }) => h && 'height: ' + h + ';'}

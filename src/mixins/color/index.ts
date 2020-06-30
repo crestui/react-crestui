@@ -1,6 +1,5 @@
 import { useContext } from 'react'
-import { ThemeContext } from '../../theming'
-import { css } from 'styled-components'
+import { ThemeContext, css } from 'styled-components'
 
 export function getColor(colorKey: string): string {
   const theme = useContext(ThemeContext)

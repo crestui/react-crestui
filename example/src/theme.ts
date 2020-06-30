@@ -1,10 +1,14 @@
+import { DefaultTheme } from 'react-crestui'
+
 export const AppTheme = {
-    colors: {
+   ...DefaultTheme,
+   colors: {
       primary: '#0e0e52',
       secondary: '#E28413',
-      jam: '#aa1155'
+      jam: '#aa1155',
+      tooltip: '#2F4F4F'
    },
    button: {
-    borderRadius: '0.2rem'
-  }
+    borderRadius: '3.0rem'
+   }
 }

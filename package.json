@@ -23,7 +23,6 @@
     "predeploy": "cd example && yarn install && yarn run build"
   },
   "dependencies": {
-    "merge-options": "^2.0.0",
     "styled-components": "^5.1.0",
     "react-icons": "^3.10.0"
   },
