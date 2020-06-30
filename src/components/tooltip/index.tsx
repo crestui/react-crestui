@@ -16,15 +16,7 @@ export const Tooltip = (props: TooltipProps & OverlayProps) => {
   const overlayRef = useRef(null)
   return (
     <Overlay overlayRef={overlayRef} {...otherProps}>
-      <Box
-        variant='tooltip'
-        color='white'
-        ref={overlayRef}
-        p={1}
-        style={{
-          borderRadius: '0.2rem'
-        }}
-      >
+      <Box variant='tooltip' color='white' ref={overlayRef} p={1} radius={0.2}>
         <span>{props.text}</span>
       </Box>
     </Overlay>

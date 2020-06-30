@@ -9,6 +9,11 @@ export interface SizeProps {
   m?: number
   mx?: number
   my?: number
+
+  /**
+   * Radius indicates borderRadius and the units are in 'rem'
+   */
+  radius?: number
 }
 
 export const applySizeProps = css<SizeProps>`
@@ -33,4 +38,6 @@ export const applySizeProps = css<SizeProps>`
     my && 'margin-top: ' + my + 'rem;' + ' margin-bottom: ' + my + 'rem; '}
 
   ${({ h }) => h && 'height: ' + h + ';'}
+
+  ${({ radius }) => radius && 'borde-radius: ' + radius + 'rem;'}
 `
