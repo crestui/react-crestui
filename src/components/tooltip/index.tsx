@@ -4,6 +4,7 @@ import { Overlay, OverlayProps } from '../overlay'
 import { Box } from '../box'
 
 export interface TooltipProps {
+  title: string
   text: string
 }
 
@@ -15,12 +16,7 @@ export const Tooltip = (props: TooltipProps & OverlayProps) => {
   const overlayRef = useRef(null)
   return (
     <Overlay overlayRef={overlayRef} {...otherProps}>
-      <Box
-        ref={overlayRef}
-        style={{
-          background: 'lightgray'
-        }}
-      >
+      <Box variant='tooltip' ref={overlayRef} p={1}>
         <span>{props.text}</span>
       </Box>
     </Overlay>

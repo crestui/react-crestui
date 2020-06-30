@@ -64,7 +64,8 @@ const App = () => {
                     <Button variant='primary' ref={buttonRef}
                     onClick={() => { console.info('Setting disclosure to be true'); disclosure.toggleOpen() }}
                     mx={2} px={5} py={2}>Click me</Button>
-                    <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='right-bottom' />
+                    <Tooltip title='Tooltip title'
+                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='right-middle' />
                 </Flex>
             </Box>
         </ThemeContextProvider>

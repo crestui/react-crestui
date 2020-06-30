@@ -4,42 +4,31 @@ import styled, { css } from 'styled-components'
 import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, applySizeProps } from '../../mixins/size'
-import { getColor } from '../../mixins/color'
+// eslint-disable-next-line no-unused-vars
+import { ColorProps, applyColorProps } from '../../mixins/color'
 import { ThemeContext } from '../../theming'
 
-function getButtonCSS(props: ButtonProps) {
+export function getButtonCSS() {
   const theme = useContext(ThemeContext)
   if (theme === null || theme === undefined) {
     throw new Error(`Set a default theme before proceeding`)
   }
-  let fillColor = ''
-  if (props.variant) {
-    fillColor = getColor(theme, props.variant)
-  }
-  let color = 'white'
-  if (props.color) {
-    color = getColor(theme, props.color)
-  }
   return css`
-    background: ${fillColor};
-    background-color: ${fillColor};
-    border-color: ${fillColor};
-    color: ${color};
     border-radius: ${theme.button.borderRadius};
   `
 }
 
 export interface ButtonProps {
   disabled?: boolean
-  variant?: string
-  color?: string
 }
 
 /**
  * Button represents a component to display a "Button"
  */
 // eslint-disable-next-line no-empty-pattern
-export const Button = styled.button<ButtonProps & BoxAlignProps & SizeProps>`
+export const Button = styled.button<
+  ButtonProps & BoxAlignProps & SizeProps & ColorProps
+>`
   display: inline-block;
   box-sizing: border-box;
   cursor: pointer;
@@ -52,9 +41,9 @@ export const Button = styled.button<ButtonProps & BoxAlignProps & SizeProps>`
   outline: 0;
   position: relative;
 
-  ${(props) => getButtonCSS(props)}
-
   ${applyBoxAlignProps}
 
   ${applySizeProps}
+
+  ${applyColorProps}
 `

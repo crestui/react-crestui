@@ -1,8 +1,29 @@
-export function getColor(_finalTheme: any, colorKey: string): string {
+import { useContext } from 'react'
+import { ThemeContext } from '../../theming'
+import { css } from 'styled-components'
+
+export function getColor(colorKey: string): string {
+  const theme = useContext(ThemeContext)
+  if (theme === null || theme === undefined) {
+    throw new Error(
+      'Set a default theme using ThemeContextProvider before proceeding'
+    )
+  }
   // eslint-disable-next-line no-prototype-builtins
-  if (_finalTheme.colors.hasOwnProperty(colorKey)) {
-    return _finalTheme.colors[colorKey]
+  if (theme.colors.hasOwnProperty(colorKey)) {
+    return theme.colors[colorKey]
   } else {
     return colorKey
   }
 }
+
+export interface ColorProps {
+  variant?: string
+  color?: string
+}
+
+export const applyColorProps = css<ColorProps>`
+  ${({ color }) => color && 'color: ' + getColor(color) + ';'}
+
+  ${({ variant }) => variant && 'background-color: ' + getColor(variant) + ';'}
+`
