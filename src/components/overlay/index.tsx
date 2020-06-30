@@ -15,6 +15,7 @@ export interface OverlayProps {
 }
 
 function getCoords(node: Element, placement?: string): Coords {
+  console.info(`Placement: ${placement}`)
   if (placement === undefined || placement === null) {
     placement = 'top-left'
   }
@@ -22,7 +23,7 @@ function getCoords(node: Element, placement?: string): Coords {
   switch (placement) {
     case 'top-left':
       return {
-        left: rect.x + rect.width / 2,
+        left: rect.x,
         top: rect.y + window.scrollY
       }
     case 'top-middle':
@@ -32,53 +33,53 @@ function getCoords(node: Element, placement?: string): Coords {
       }
     case 'top-right':
       return {
-        left: rect.x + rect.width / 2,
+        left: rect.x + rect.width,
         top: rect.y + window.scrollY
       }
     case 'left-top':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        bottom: rect.y + window.scrollY,
+        right: rect.x
       }
     case 'left-middle':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        bottom: rect.y + rect.height / 2 + window.scrollY,
+        right: rect.x
       }
     case 'left-bottom':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        bottom: rect.y + rect.height + window.scrollY,
+        right: rect.x
       }
     case 'bottom-left':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        left: rect.x,
+        top: rect.y + rect.height + window.scrollY
       }
     case 'bottom-middle':
       return {
         left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        top: rect.y + rect.height + window.scrollY
       }
     case 'bottom-right':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        left: rect.x + rect.width,
+        top: rect.y + rect.height + window.scrollY
       }
     case 'right-top':
       return {
-        left: rect.x + rect.width / 2,
+        left: rect.x + rect.width,
         top: rect.y + window.scrollY
       }
     case 'right-middle':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        left: rect.x + rect.width,
+        top: rect.y + rect.height / 2 + window.scrollY
       }
     case 'right-bottom':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        left: rect.x + rect.width,
+        top: rect.y + rect.height + window.scrollY
       }
     default:
       throw new Error(
@@ -98,11 +99,12 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
     if (node === undefined || node === null) {
       return
     }
-    setCoords(getCoords(node))
+    setCoords(getCoords(node, props.placement))
   }, [node])
-  return (
-    props.disclosure.isOpen && <Portal coords={coords}>{props.children}</Portal>
-  )
+  if (!props.disclosure.isOpen) {
+    return null
+  }
+  return <Portal coords={coords}>{props.children}</Portal>
 }
 
 export default Overlay

@@ -57,10 +57,13 @@ const App = () => {
                     <Button variant='primary' p={1}>Signup</Button>
                     <Button variant='secondary' p={1}>Login</Button>
                 </Box>
+                <Box p={4}>
+                    Some overflowing content
+                </Box>
                 <Button variant='primary' ref={buttonRef} onClick={
                     () => { disclosure.toggleOpen() }
-                }>Hover over me</Button>
-                <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} />
+                } m={1} p={3}>Hover over me</Button>
+                <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='left-middle' />
             </Box>
         </ThemeContextProvider>
     </>
