@@ -60,11 +60,13 @@ const App = () => {
                 <Box p={10}>
                     Some overflowing content
                 </Box>
-                <Button variant='primary' ref={buttonRef}
-                onMouseOver={() => { console.info('Setting disclosure to be true'); disclosure.setIsOpen(true) }}
-                onMouseLeave={() => { disclosure.setIsOpen(false) }}
-                mx={2} px={5} py={2}>Hover over me</Button>
-                <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='bottom-middle' />
+                <Flex justifyContent='center'>
+                    <Button variant='primary' ref={buttonRef}
+                    onMouseOver={() => { console.info('Setting disclosure to be true'); disclosure.setIsOpen(true) }}
+                    onClick={() => { console.info('Setting disclosure to be true'); disclosure.toggleOpen() }}
+                    mx={2} px={5} py={2}>Hover over me</Button>
+                    <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='left-middle' />
+                </Flex>
             </Box>
         </ThemeContextProvider>
     </>
