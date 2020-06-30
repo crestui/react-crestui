@@ -65,7 +65,7 @@ const App = () => {
                     onMouseOver={() => { console.info('Setting disclosure to be true'); disclosure.setIsOpen(true) }}
                     onClick={() => { console.info('Setting disclosure to be true'); disclosure.toggleOpen() }}
                     mx={2} px={5} py={2}>Hover over me</Button>
-                    <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='left-middle' />
+                    <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='new-left-middle' />
                 </Flex>
             </Box>
         </ThemeContextProvider>

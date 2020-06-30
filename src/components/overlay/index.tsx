@@ -82,7 +82,7 @@ function getCoords(node: Element, placement?: string): Coords {
       }
     default:
       throw new Error(
-        `Placement for overlay ${placement} invalid. Not Supported`
+        `Invalid value for placement attribute to overlay - ${placement}. Not Supported`
       )
   }
   console.info(placement)
