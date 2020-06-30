@@ -22,3 +22,5 @@ export function useDisclosure(open: boolean): IDisclosure {
     [isOpen]
   )
 }
+
+export default IDisclosure
