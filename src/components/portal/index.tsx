@@ -14,7 +14,9 @@ export const Portal = (props: PortalProps) => {
     console.warn(
       'No div of portal-root defined in index.html for use. Portals not supported hence'
     )
-    return
+    throw Error(
+      'No div of portal-root defined in index.html for use. Portals not supported hence'
+    )
   }
   const el = document.createElement('div')
 

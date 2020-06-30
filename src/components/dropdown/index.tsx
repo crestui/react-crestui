@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
+import { Portal } from '../portal'
 // eslint-disable-next-line no-unused-vars
 import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
@@ -86,7 +87,7 @@ export const Dropdown = (props: DropdownProps) => {
         disclosure={disclosure}
       />
       <DropdownContentContainer disclosure={disclosure}>
-        {children}
+        <Portal>{children}</Portal>
       </DropdownContentContainer>
     </DropdownContainer>
   )
