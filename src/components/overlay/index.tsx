@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 // eslint-disable-next-line no-unused-vars
 import { Portal, Coords } from '../portal'
 // eslint-disable-next-line no-unused-vars
 import { IDisclosure } from '../../mixins/disclosure'
+import { Box } from '../box'
+
+const ArrowBox = styled(Box)`
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+`
 
 interface LocalOverlayProps {
   children: React.ReactNode
@@ -110,6 +123,7 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
   }
   return (
     <Portal coords={coords} moveLeft={moveLeft}>
+      <ArrowBox />
       {props.children}
     </Portal>
   )

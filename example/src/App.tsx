@@ -63,10 +63,11 @@ const App = () => {
                 </Box>
                 <Flex justifyContent='center'>
                     <Button variant='primary' ref={buttonRef}
+                    color='white'
                     onClick={() => { console.info('Setting disclosure to be true'); disclosure.toggleOpen() }}
                     mx={2} px={5} py={2}>Click me</Button>
                     <Tooltip title='Tooltip title'
-                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='right-middle' />
+                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='bottom-middle' />
                 </Flex>
             </Box>
         </ThemeProvider>
