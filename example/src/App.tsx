@@ -1,8 +1,10 @@
-import React from 'react'
-import { Flex, Box, Button, ThemeContextProvider, Dropdown, DropdownItem } from 'react-crestui'
+import React, { useRef } from 'react'
+import { Flex, Box, Button, ThemeContextProvider, Dropdown, DropdownItem, Tooltip, useDisclosure } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
+  const buttonRef = useRef(null)
+  const disclosure = useDisclosure(false)
   return (
     <>
         <ThemeContextProvider theme={AppTheme}>
@@ -54,8 +56,11 @@ const App = () => {
                 <Box>
                     <Button variant='primary' p={1}>Signup</Button>
                     <Button variant='secondary' p={1}>Login</Button>
-
                 </Box>
+                <Button variant='primary' ref={buttonRef} onClick={
+                    () => { disclosure.toggleOpen() }
+                }>Hover over me</Button>
+                <Tooltip text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} />
             </Box>
         </ThemeContextProvider>
     </>

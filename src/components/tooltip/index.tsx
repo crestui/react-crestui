@@ -1,12 +1,19 @@
+import React from 'react'
+// eslint-disable-next-line no-unused-vars
+import { Overlay, OverlayProps } from '../overlay'
+
 export interface TooltipProps {
-  domId?: string
   text: string
 }
 
 /**
  *
  */
-export const Tooltip = (props: TooltipProps) => {
-  console.info(props)
-  return null
+export const Tooltip = (props: TooltipProps & OverlayProps) => {
+  const { text, ...otherProps } = props
+  return (
+    <Overlay {...otherProps}>
+      <span>{props.text}</span>
+    </Overlay>
+  )
 }
