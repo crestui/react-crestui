@@ -11,9 +11,10 @@ export type Coords = {
 }
 
 export interface PortalProps {
-  domId?: string
   children: React.ReactNode
   coords: Coords
+  domId?: string
+  moveLeft?: boolean
   zIndex?: string
 }
 
@@ -43,22 +44,17 @@ export const Portal = (props: PortalProps) => {
   }
   const el = document.createElement('div')
   el.style.position = 'absolute'
-  if (props.coords.top) {
-    el.style.top = `${props.coords.top}px`
-  }
-  if (props.coords.left) {
-    el.style.left = `${props.coords.left}px`
-  }
-  if (props.coords.bottom) {
-    el.style.bottom = `${props.coords.bottom}px`
-  }
-  if (props.coords.right) {
-    el.style.right = `${props.coords.right}px`
-  }
+  el.style.top = `${props.coords.top}px`
   el.style.zIndex = zIndex
 
   useEffect(() => {
     mount.appendChild(el)
+    const rect = el.getBoundingClientRect()
+    if (props.moveLeft && props.coords.left) {
+      el.style.left = `${props.coords.left - rect.width}px`
+    } else {
+      el.style.left = `${props.coords.left}px`
+    }
     return () => {
       mount.removeChild(el)
     }

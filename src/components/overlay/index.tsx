@@ -6,6 +6,7 @@ import { IDisclosure } from '../../mixins/disclosure'
 
 interface LocalOverlayProps {
   children: React.ReactNode
+  overlayRef: React.RefObject<HTMLDivElement>
 }
 
 export interface OverlayProps {
@@ -14,71 +15,71 @@ export interface OverlayProps {
   placement?: string
 }
 
-function getCoords(node: Element, placement?: string): Coords {
+function getCoords(containerNode: Element, placement?: string): Coords {
   if (placement === undefined || placement === null) {
     placement = 'top-left'
   }
-  const rect = node.getBoundingClientRect()
+  const containerRect = containerNode.getBoundingClientRect()
   switch (placement) {
     case 'top-left':
       return {
-        left: rect.x,
-        top: rect.y + window.scrollY
+        left: containerRect.x,
+        top: containerRect.y + window.scrollY
       }
     case 'top-middle':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + window.scrollY
+        left: containerRect.x + containerRect.width / 2,
+        top: containerRect.y + window.scrollY
       }
     case 'top-right':
       return {
-        left: rect.x + rect.width,
-        top: rect.y + window.scrollY
+        left: containerRect.x + containerRect.width,
+        top: containerRect.y + window.scrollY
       }
     case 'left-top':
       return {
-        bottom: rect.y + window.scrollY,
-        right: rect.x
+        left: containerRect.x,
+        top: containerRect.y + window.scrollY
       }
     case 'left-middle':
       return {
-        bottom: rect.y + rect.height / 2 + window.scrollY,
-        right: rect.x
+        left: containerRect.x,
+        top: containerRect.y + containerRect.height / 2 + window.scrollY
       }
     case 'left-bottom':
       return {
-        bottom: rect.y + rect.height + window.scrollY,
-        right: rect.x
+        left: containerRect.x,
+        top: containerRect.y + containerRect.height + window.scrollY
       }
     case 'bottom-left':
       return {
-        left: rect.x,
-        top: rect.y + rect.height + window.scrollY
+        left: containerRect.x,
+        top: containerRect.y + containerRect.height + window.scrollY
       }
     case 'bottom-middle':
       return {
-        left: rect.x + rect.width / 2,
-        top: rect.y + rect.height + window.scrollY
+        left: containerRect.x + containerRect.width / 2,
+        top: containerRect.y + containerRect.height + window.scrollY
       }
     case 'bottom-right':
       return {
-        left: rect.x + rect.width,
-        top: rect.y + rect.height + window.scrollY
+        left: containerRect.x + containerRect.width,
+        top: containerRect.y + containerRect.height + window.scrollY
       }
     case 'right-top':
       return {
-        left: rect.x + rect.width,
-        top: rect.y + window.scrollY
+        left: containerRect.x + containerRect.width,
+        top: containerRect.y + window.scrollY
       }
     case 'right-middle':
       return {
-        left: rect.x + rect.width,
-        top: rect.y + rect.height / 2 + window.scrollY
+        left: containerRect.x + containerRect.width,
+        top: containerRect.y + containerRect.height / 2 + window.scrollY
       }
     case 'right-bottom':
       return {
-        left: rect.x + rect.width,
-        top: rect.y + rect.height + window.scrollY
+        left: containerRect.x + containerRect.width,
+        top: containerRect.y + containerRect.height + window.scrollY
       }
     default:
       throw new Error(
@@ -93,17 +94,25 @@ function getCoords(node: Element, placement?: string): Coords {
  */
 export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
   const [coords, setCoords] = useState<Coords>({ left: 0, top: 0 })
-  const node = props.containerRef.current
+  const [moveLeft, setMoveLeft] = useState(false)
+  const containerNode = props.containerRef.current
   useEffect(() => {
-    if (node === undefined || node === null) {
+    if (containerNode === undefined || containerNode === null) {
       return
     }
-    setCoords(getCoords(node, props.placement))
-  }, [node])
+    setCoords(getCoords(containerNode, props.placement))
+    if (props.placement) {
+      setMoveLeft(props.placement.startsWith('left'))
+    }
+  }, [containerNode])
   if (!props.disclosure.isOpen) {
     return null
   }
-  return <Portal coords={coords}>{props.children}</Portal>
+  return (
+    <Portal coords={coords} moveLeft={moveLeft}>
+      {props.children}
+    </Portal>
+  )
 }
 
 export default Overlay
