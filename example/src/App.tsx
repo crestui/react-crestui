@@ -9,7 +9,7 @@ const App = () => {
   return (
     <>
         <ThemeProvider theme={AppTheme}>
-            <Box w={1} p={1}>
+            <Box w={'100%'} p={1}>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
                     <Dropdown label='Products'>
                         <DropdownItem>Interesting Menu Item 1</DropdownItem>
@@ -67,7 +67,8 @@ const App = () => {
                     onClick={() => { disclosure.toggleOpen() }}
                     px={7} py={2}>Click me</Button>
                     <Tooltip title='Tooltip title'
-                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='bottom' position='end' />
+                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure}
+                        placement='bottom' position='end' />
                 </Flex>
                 <Flex>
                     <Box pos='relative' px={1}>
