@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from 'react'
+import styled from 'styled-components'
 
 interface RadioGroupState {
   value: string
@@ -24,15 +25,25 @@ export const RadioGroup = (props: RadioGroupProps) => {
   )
 }
 
+const RadioContainer = styled.div<{ checked: boolean; disabled?: boolean }>``
+
 export interface RadioProps {
-  label: string
+  children: React.ReactNode
+  value: string
+  disabled?: boolean
 }
 
 export const Radio = (props: RadioProps) => {
-  const ctx = useContext(RadioGroupContext)
-  console.info(props)
-  console.info(ctx)
-  return null
+  const rgContext = useContext(RadioGroupContext)
+  return (
+    <RadioContainer
+      checked={rgContext.value === props.value}
+      disabled={props.disabled}
+      onClick={() => rgContext.setValue(props.value)}
+    >
+      {props.children}
+    </RadioContainer>
+  )
 }
 
 export default Radio
