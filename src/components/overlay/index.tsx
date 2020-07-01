@@ -12,104 +12,131 @@ export interface OverlayProps {
   containerRef: React.RefObject<HTMLButtonElement>
   disclosure: IDisclosure
   placement: string
-  position: string
+  alignment: string
+}
+
+function getCoordsForLeft(
+  containerNode: Element,
+  alignment: string,
+  overlayRect: DOMRect
+): Coords {
+  const containerRect = containerNode.getBoundingClientRect()
+  switch (alignment) {
+    case 'top':
+      return {
+        left: containerRect.x,
+        top: containerRect.y + window.scrollY
+      }
+    case 'bottom':
+      return {
+        left: containerRect.x,
+        top:
+          containerRect.y +
+          window.scrollY +
+          containerRect.height -
+          overlayRect.height
+      }
+    default:
+      throw new Error(
+        `Unknown alignment for 'right' placement position ${alignment}`
+      )
+  }
+}
+
+function getCoordsForTop(
+  containerNode: Element,
+  alignment: string,
+  overlayRect: DOMRect
+): Coords {
+  const containerRect = containerNode.getBoundingClientRect()
+  switch (alignment) {
+    case 'left':
+      return {
+        left: containerRect.x,
+        top: containerRect.y + window.scrollY - overlayRect.height
+      }
+    case 'right':
+      return {
+        left: containerRect.x + containerRect.width - overlayRect.width,
+        top: containerRect.y + window.scrollY - overlayRect.height
+      }
+    default:
+      throw new Error(
+        `Unknown alignment for 'top' placement position ${alignment}`
+      )
+  }
+}
+
+function getCoordsForRight(
+  containerNode: Element,
+  alignment: string,
+  overlayRect: DOMRect
+): Coords {
+  const containerRect = containerNode.getBoundingClientRect()
+  switch (alignment) {
+    case 'top':
+      return {
+        left: containerRect.x + containerRect.width,
+        top: containerRect.y + window.scrollY
+      }
+    case 'bottom':
+      return {
+        left: containerRect.x + containerRect.width,
+        top:
+          containerRect.y +
+          window.scrollY +
+          containerRect.height -
+          overlayRect.height
+      }
+    default:
+      throw new Error(
+        `Unknown alignment for 'right' placement position ${alignment}`
+      )
+  }
+}
+
+function getCoordsForBottom(
+  containerNode: Element,
+  alignment: string,
+  overlayRect: DOMRect
+): Coords {
+  const containerRect = containerNode.getBoundingClientRect()
+  switch (alignment) {
+    case 'left':
+      return {
+        left: containerRect.x,
+        top: containerRect.y + containerRect.height + window.scrollY
+      }
+    case 'right':
+      return {
+        left: containerRect.x + containerRect.width - overlayRect.width,
+        top: containerRect.y + containerRect.height + window.scrollY
+      }
+    default:
+      throw new Error(
+        `Unknown alignment for 'bottom' placement position ${alignment}`
+      )
+  }
 }
 
 function getCoords(
   containerNode: Element,
   placement: string,
-  position: string,
+  alignment: string,
   overlayRect: DOMRect
 ): Coords {
-  const containerRect = containerNode.getBoundingClientRect()
   switch (placement) {
     case 'top':
-      switch (position) {
-        case 'begin': {
-          return {
-            left: containerRect.x,
-            top: containerRect.y + window.scrollY
-          }
-        }
-        case 'middle': {
-          return {
-            left: containerRect.x + containerRect.width / 2,
-            top: containerRect.y + window.scrollY
-          }
-        }
-        case 'end':
-          return {
-            left: containerRect.x + containerRect.width,
-            top: containerRect.y + window.scrollY
-          }
-        default:
-          throw new Error(`Invalid value for position for overlay ${position}`)
-      }
+      return getCoordsForTop(containerNode, alignment, overlayRect)
       break
     case 'left':
-      switch (position) {
-        case 'begin':
-          return {
-            left: containerRect.x,
-            top: containerRect.y + window.scrollY
-          }
-        case 'middle':
-          return {
-            left: containerRect.x,
-            top: containerRect.y + containerRect.height / 2 + window.scrollY
-          }
-        case 'end':
-          return {
-            left: containerRect.x,
-            top: containerRect.y + containerRect.height + window.scrollY
-          }
-        default:
-          throw new Error(`Invalid value for position for overlay ${position}`)
-      }
+      return getCoordsForLeft(containerNode, alignment, overlayRect)
       break
     case 'bottom':
-      switch (position) {
-        case 'begin':
-          return {
-            left: containerRect.x - overlayRect.width / 2,
-            top: containerRect.y + containerRect.height + window.scrollY
-          }
-        case 'middle':
-          return {
-            left:
-              containerRect.x + containerRect.width / 2 - overlayRect.width / 2,
-            top: containerRect.y + containerRect.height + window.scrollY + 5
-          }
-        case 'end':
-          return {
-            left: containerRect.x + containerRect.width - overlayRect.width / 2,
-            top: containerRect.y + containerRect.height + window.scrollY
-          }
-        default:
-          throw new Error(`Invalid value for position for overlay ${position}`)
-      }
+      return getCoordsForBottom(containerNode, alignment, overlayRect)
       break
     case 'right':
-      switch (position) {
-        case 'begin':
-          return {
-            left: containerRect.x + containerRect.width,
-            top: containerRect.y + window.scrollY
-          }
-        case 'middle':
-          return {
-            left: containerRect.x + containerRect.width,
-            top: containerRect.y + containerRect.height / 2 + window.scrollY
-          }
-        case 'end':
-          return {
-            left: containerRect.x + containerRect.width,
-            top: containerRect.y + containerRect.height + window.scrollY
-          }
-        default:
-          throw new Error(`Invalid value for position for overlay ${position}`)
-      }
-      break
+      return getCoordsForRight(containerNode, alignment, overlayRect)
     default:
       throw new Error(
         `Invalid value for placement attribute to overlay - ${placement}. Not Supported`
@@ -129,7 +156,7 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
     return getCoords(
       containerNode,
       props.placement,
-      props.position,
+      props.alignment,
       overlayRect
     )
   }
