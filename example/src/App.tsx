@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip, useDisclosure } from 'react-crestui'
+import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip, useDisclosure, ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
@@ -67,7 +67,25 @@ const App = () => {
                     onClick={() => { console.info('Setting disclosure to be true'); disclosure.toggleOpen() }}
                     mx={2} px={5} py={2}>Click me</Button>
                     <Tooltip title='Tooltip title'
-                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='bottom-middle' />
+                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='top' position='middle' />
+                </Flex>
+                <Flex>
+                    <Box pos='relative' px={1}>
+                        ArrowToTop
+                        <ArrowToTop />
+                    </Box>
+                    <Box pos='relative' px={1}>
+                        ArrowToBottom
+                        <ArrowToBottom />
+                    </Box>
+                    <Box pos='relative' px={1}>
+                        ArrowToLeft
+                        <ArrowToLeft />
+                    </Box>
+                    <Box pos='relative' px={1}>
+                        ArrowToRight
+                        <ArrowToRight />
+                    </Box>
                 </Flex>
             </Box>
         </ThemeProvider>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ArrowToLeft = styled.div`
+export const ArrowToBottom = styled.div`
   content: '';
   position: absolute;
   top: 100%;
@@ -12,7 +12,7 @@ const ArrowToLeft = styled.div`
   border-color: #555 transparent transparent transparent;
 `
 
-const ArrowToRight = styled.div`
+export const ArrowToRight = styled.div`
   content: '';
   position: absolute;
   top: 100%;
@@ -23,7 +23,7 @@ const ArrowToRight = styled.div`
   border-color: #555 transparent transparent transparent;
 `
 
-const ArrowToTop = styled.div`
+export const ArrowToTop = styled.div`
   content: '';
   position: absolute;
   bottom: 100%;
@@ -33,7 +33,8 @@ const ArrowToTop = styled.div`
   border-style: solid;
   border-color: transparent transparent black transparent;
 `
-const ArrowToBottom = styled.div`
+
+export const ArrowToLeft = styled.div`
   content: '';
   position: absolute;
   bottom: 100%;
@@ -45,20 +46,20 @@ const ArrowToBottom = styled.div`
 `
 
 export interface ArrowProps {
-  pointsTo: string
+  placement: string
 }
 
 export const Arrow = (props: ArrowProps) => {
-  switch (props.pointsTo) {
+  switch (props.placement) {
     case 'left':
-      return <ArrowToLeft />
-    case 'top':
-      return <ArrowToTop />
-    case 'right':
       return <ArrowToRight />
-    case 'bottom':
+    case 'top':
       return <ArrowToBottom />
+    case 'right':
+      return <ArrowToLeft />
+    case 'bottom':
+      return <ArrowToTop />
     default:
-      throw new Error(`Invalid value for arrow pointsTo ${props.pointsTo}`)
+      throw new Error(`Invalid value for arrow pointsTo ${props.placement}`)
   }
 }

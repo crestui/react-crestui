@@ -14,6 +14,11 @@ export interface SizeProps {
    * Radius indicates borderRadius and the units are in 'rem'
    */
   radius?: number
+
+  /**
+   * Indicates position attribute
+   */
+  pos?: string
 }
 
 export const applySizeProps = css<SizeProps>`
@@ -39,5 +44,7 @@ export const applySizeProps = css<SizeProps>`
 
   ${({ h }) => h && 'height: ' + h + ';'}
 
-  ${({ radius }) => radius && 'borde-radius: ' + radius + 'rem;'}
+  ${({ radius }) => radius && 'border-radius: ' + radius + 'rem;'}
+
+  ${({ pos }) => pos && 'position: ' + pos + ';'}
 `
