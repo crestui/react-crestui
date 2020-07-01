@@ -8,6 +8,7 @@ import { ColorProps, applyColorProps } from '../../mixins/color'
 
 export interface ButtonProps {
   disabled?: boolean
+  variant?: string
 }
 
 /**
