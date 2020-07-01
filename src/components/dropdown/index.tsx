@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
 // eslint-disable-next-line no-unused-vars
@@ -77,9 +77,12 @@ export interface DropdownProps {
  */
 export const Dropdown = (props: DropdownProps) => {
   const { label, icon, placement, children } = props
-  const [coords] = useState<Coords>({ left: 0, top: 0 })
   const open = props.open ? props.open : false
   const disclosure = useDisclosure(open)
+  const onRect = (overlayRect: DOMRect): Coords => {
+    console.info(`overlayRect ${JSON.stringify(overlayRect)}`)
+    return { left: 0, top: 0 }
+  }
   return (
     <DropdownContainer>
       <DropdownHeader
@@ -89,7 +92,7 @@ export const Dropdown = (props: DropdownProps) => {
         disclosure={disclosure}
       />
       <DropdownContentContainer disclosure={disclosure}>
-        <Portal coords={coords}>{children}</Portal>
+        <Portal onRect={onRect}>{children}</Portal>
       </DropdownContentContainer>
     </DropdownContainer>
   )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 // eslint-disable-next-line no-unused-vars
 import { Portal, Coords } from '../portal'
 // eslint-disable-next-line no-unused-vars
@@ -6,7 +6,6 @@ import { IDisclosure } from '../../mixins/disclosure'
 
 interface LocalOverlayProps {
   children: React.ReactNode
-  overlayRef: React.RefObject<HTMLDivElement>
 }
 
 export interface OverlayProps {
@@ -19,11 +18,9 @@ export interface OverlayProps {
 function getCoords(
   containerNode: Element,
   placement: string,
-  position: string
+  position: string,
+  overlayRect: DOMRect
 ): Coords {
-  if (placement === undefined || placement === null) {
-    placement = 'top'
-  }
   const containerRect = containerNode.getBoundingClientRect()
   switch (placement) {
     case 'top':
@@ -74,17 +71,18 @@ function getCoords(
       switch (position) {
         case 'begin':
           return {
-            left: containerRect.x,
+            left: containerRect.x - overlayRect.width / 2,
             top: containerRect.y + containerRect.height + window.scrollY
           }
         case 'middle':
           return {
-            left: containerRect.x + containerRect.width / 2,
-            top: containerRect.y + containerRect.height + window.scrollY
+            left:
+              containerRect.x + containerRect.width / 2 - overlayRect.width / 2,
+            top: containerRect.y + containerRect.height + window.scrollY + 5
           }
         case 'end':
           return {
-            left: containerRect.x + containerRect.width,
+            left: containerRect.x + containerRect.width - overlayRect.width / 2,
             top: containerRect.y + containerRect.height + window.scrollY
           }
         default:
@@ -123,26 +121,22 @@ function getCoords(
  *
  */
 export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
-  const [coords, setCoords] = useState<Coords>({ left: 0, top: 0 })
-  const [moveLeft, setMoveLeft] = useState(false)
   const containerNode = props.containerRef.current
-  useEffect(() => {
-    if (containerNode === undefined || containerNode === null) {
-      return
-    }
-    setCoords(getCoords(containerNode, props.placement, props.position))
-    if (props.placement) {
-      setMoveLeft(props.placement === 'left')
-    }
-  }, [containerNode])
+  if (containerNode === undefined || containerNode === null) {
+    return null
+  }
+  const onRect = (overlayRect: DOMRect): Coords => {
+    return getCoords(
+      containerNode,
+      props.placement,
+      props.position,
+      overlayRect
+    )
+  }
   if (!props.disclosure.isOpen) {
     return null
   }
-  return (
-    <Portal coords={coords} moveLeft={moveLeft}>
-      {props.children}
-    </Portal>
-  )
+  return <Portal onRect={onRect}>{props.children}</Portal>
 }
 
 export default Overlay

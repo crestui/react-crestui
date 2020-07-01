@@ -68,7 +68,7 @@ const App = () => {
                     px={7} py={2}>Click me</Button>
                     <Tooltip title='Tooltip title'
                         text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure}
-                        placement='bottom' position='end' />
+                        placement='bottom' position='middle' />
                 </Flex>
                 <Flex>
                     <Box pos='relative' px={1}>

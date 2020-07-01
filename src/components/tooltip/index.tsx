@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 // eslint-disable-next-line no-unused-vars
 import { Overlay, OverlayProps } from '../overlay'
 import { Box } from '../box'
@@ -14,11 +14,10 @@ export interface TooltipProps {
  */
 export const Tooltip = (props: TooltipProps & OverlayProps) => {
   const { text, ...otherProps } = props
-  const overlayRef = useRef(null)
   return (
-    <Overlay overlayRef={overlayRef} {...otherProps}>
+    <Overlay {...otherProps}>
       <Arrow placement={props.placement} />
-      <Box bg='tooltip' color='white' ref={overlayRef} p={1} radius={0.2}>
+      <Box bg='tooltip' color='white' p={2} radius={0.2}>
         <span>{props.text}</span>
       </Box>
     </Overlay>
