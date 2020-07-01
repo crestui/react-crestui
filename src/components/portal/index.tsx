@@ -30,9 +30,6 @@ export const Portal = (props: PortalProps) => {
   }
   const mount = document.getElementById(domId)
   if (mount === null || mount === undefined) {
-    console.warn(
-      `No div of id ${domId} defined in index.html for separate portal use. Portals not supported hence`
-    )
     throw Error(
       `No div of id ${domId} defined in index.html for separate portal use. Portals not supported hence`
     )
@@ -48,7 +45,6 @@ export const Portal = (props: PortalProps) => {
   useEffect(() => {
     mount.appendChild(el)
     const rect = el.getBoundingClientRect()
-    console.info(`AfterRect ${JSON.stringify(rect)}`)
     const coords = props.onRect(rect)
     el.style.left = `${coords.left}px`
     el.style.top = `${coords.top}px`
