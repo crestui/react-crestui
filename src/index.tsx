@@ -1,5 +1,7 @@
 export { Flex } from './components/flex'
 export { Box } from './components/box'
+export { Checkbox } from './components/checkbox'
+export { Radio } from './components/radio'
 export { Container } from './components/container'
 export { Button } from './components/button'
 export { Dropdown, DropdownItem } from './components/dropdown'

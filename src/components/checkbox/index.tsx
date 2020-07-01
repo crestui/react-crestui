@@ -3,6 +3,7 @@ export interface CheckboxProps {
 }
 
 export const Checkbox = (props: CheckboxProps) => {
+  console.info(props)
   return null
 }
 
