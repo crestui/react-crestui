@@ -14,10 +14,12 @@ const RadioGroupContext = createContext<RadioGroupState>({
 
 export interface RadioGroupProps {
   children: React.ReactNode
+  selectedValue?: string
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const [value, setValue] = useState('')
+  const selectedValue = props.selectedValue ? props.selectedValue : ''
+  const [value, setValue] = useState(selectedValue)
   return (
     <RadioGroupContext.Provider value={{ value, setValue }}>
       {props.children}
