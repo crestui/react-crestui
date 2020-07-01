@@ -55,36 +55,36 @@ const App = () => {
                     <Box py={1}>Div 2</Box>
                 </Flex>
                 <Box>
-                    <Button variant='primary' p={1}>Signup</Button>
-                    <Button variant='secondary' p={1}>Login</Button>
+                    <Button bg='primary' p={1}>Signup</Button>
+                    <Button bg='secondary' p={1}>Login</Button>
                 </Box>
                 <Box p={10}>
                     Some overflowing content
                 </Box>
                 <Flex justifyContent='center'>
-                    <Button variant='primary' ref={buttonRef}
+                    <Button bg='primary' ref={buttonRef}
                     color='white'
-                    onClick={() => { console.info('Setting disclosure to be true'); disclosure.toggleOpen() }}
-                    mx={2} px={5} py={2}>Click me</Button>
+                    onClick={() => { disclosure.toggleOpen() }}
+                    px={5} py={2}>Click me</Button>
                     <Tooltip title='Tooltip title'
-                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='top' position='middle' />
+                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure} placement='bottom' position='end' />
                 </Flex>
                 <Flex>
                     <Box pos='relative' px={1}>
                         ArrowToTop
-                        <ArrowToTop />
+                        <ArrowToTop thickness='10px' />
                     </Box>
                     <Box pos='relative' px={1}>
                         ArrowToBottom
-                        <ArrowToBottom />
+                        <ArrowToBottom thickness='10px' />
                     </Box>
                     <Box pos='relative' px={1}>
                         ArrowToLeft
-                        <ArrowToLeft />
+                        <ArrowToLeft thickness='10px' />
                     </Box>
                     <Box pos='relative' px={1}>
                         ArrowToRight
-                        <ArrowToRight />
+                        <ArrowToRight thickness='10px' />
                     </Box>
                 </Flex>
             </Box>

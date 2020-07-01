@@ -17,12 +17,12 @@ export function getColor(colorKey: string): string {
 }
 
 export interface ColorProps {
-  variant?: string
+  bg?: string
   color?: string
 }
 
 export const applyColorProps = css<ColorProps>`
   ${({ color }) => color && 'color: ' + getColor(color) + ';'}
 
-  ${({ variant }) => variant && 'background-color: ' + getColor(variant) + ';'}
+  ${({ bg }) => bg && 'background-color: ' + getColor(bg) + ';'}
 `
