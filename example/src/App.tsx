@@ -73,9 +73,9 @@ const App = () => {
                 </Flex>
                 <Flex my={2}>
                     <RadioGroup>
-                        <Radio value='mercury'>Mercury</Radio>
-                        <Radio value='venus'>Venus</Radio>
-                        <Radio value='mars'>Mars</Radio>
+                        <Radio value='mercury' id='mercury'>Mercury</Radio>
+                        <Radio value='venus' id='venus'>Venus</Radio>
+                        <Radio value='mars' id='mars'>Mars</Radio>
                     </RadioGroup>
                 </Flex>
                 <Flex>
