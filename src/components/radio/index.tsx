@@ -36,7 +36,14 @@ export const RadioGroup = (props: RadioGroupProps) => {
   const [name, setName] = useState(givenName)
   return (
     <RadioGroupContext.Provider value={{ name, setName, value, setValue }}>
-      <Flex flexDirection={direction}>{props.children}</Flex>
+      <Flex
+        flexDirection={direction}
+        style={{
+          verticalAlign: 'middle'
+        }}
+      >
+        {props.children}
+      </Flex>
     </RadioGroupContext.Provider>
   )
 }
@@ -95,29 +102,18 @@ export interface RadioProps {
 
 export const Radio = (props: RadioProps) => {
   const rgContext = useContext(RadioGroupContext)
-  console.info(
-    `About to render radiobutton ${props.value}. rgContext ${rgContext.value}`
-  )
   const [checked, setChecked] = useState(rgContext.value === props.value)
   useEffect(() => {
     setChecked(rgContext.value === props.value)
-    console.info(
-      `useEffect: ${props.value} - Setting it to checked ${
-        rgContext.value === props.value
-      }`
-    )
   }, [rgContext.value])
   const thisId = nextId()
   return (
-    <Label pos='relative' htmlFor={thisId} px={1}>
+    <Label pos='relative' htmlFor={thisId} p={1}>
       <RadioInput
         id={thisId}
         name={rgContext.name}
         checked={checked}
         onChange={() => {
-          console.info(
-            `Setting value to ${props.value}. Existing value: ${rgContext.value}`
-          )
           rgContext.setValue(props.value)
         }}
       />

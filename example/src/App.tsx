@@ -88,6 +88,23 @@ const App = () => {
 
                     </RadioGroup>
                 </Flex>
+                <Flex my={2}>
+                    <RadioGroup direction='column'>
+                        <Radio value='jupiter'>
+                            <Flex flexDirection='column'>
+                                <div>Jupiter is the largest planet</div>
+                                <div>huge content</div>
+                            </Flex>
+                        </Radio>
+                        <Radio value='saturn'>
+                            <Flex flexDirection='column'>
+                                <div>Saturn is the sixth planet</div>
+                                <div>Saturn has a larger orbit</div>
+                            </Flex>
+                        </Radio>
+
+                    </RadioGroup>
+                </Flex>
                 <Flex>
                     <Box pos='relative' px={1}>
                         ArrowToTop
