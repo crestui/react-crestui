@@ -1,13 +1,11 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
-const defaultDomId = 'portal-root'
+export const defaultDomId = 'portal-root'
 
 export type Coords = {
   left?: number
   top?: number
-  right?: number
-  bottom?: number
 }
 
 export interface PortalProps {

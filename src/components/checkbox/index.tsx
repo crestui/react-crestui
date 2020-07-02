@@ -1,10 +1,3 @@
-export interface CheckboxProps {
-  label: string
-}
-
-export const Checkbox = (props: CheckboxProps) => {
-  console.info(props)
-  return null
-}
-
-export default Checkbox
+export { Checkbox } from './checkbox'
+export { Radio } from './radio'
+export { RadioGroup } from './radio'

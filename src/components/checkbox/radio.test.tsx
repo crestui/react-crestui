@@ -1,4 +1,4 @@
-import { Radio } from '.'
+import { Radio } from './radio'
 
 describe('Radio', () => {
   it('is truthy', () => {
