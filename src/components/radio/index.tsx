@@ -90,7 +90,7 @@ const RadioInput = styled.input.attrs({ type: 'radio' })`
 
   &:checked ~ ${RadioContent}::before {
     ${(props) =>
-      'border: 4px solid ' + props.theme.colors.secondary + ' !important;'}
+      'background-color: ' + props.theme.colors.primary + ' !important;'}
   }
 `
 
