@@ -80,8 +80,7 @@ export const Dropdown = (props: DropdownProps) => {
   const open = props.open ? props.open : false
   const disclosure = useDisclosure(open)
   const onRect = (overlayRect: DOMRect): Coords => {
-    console.info(`overlayRect ${JSON.stringify(overlayRect)}`)
-    return { left: 0, top: 0 }
+    return { left: overlayRect.left, top: overlayRect.top }
   }
   return (
     <DropdownContainer>

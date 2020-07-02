@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip, useDisclosure, ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom } from 'react-crestui'
+import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip, useDisclosure,
+    ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom, RadioGroup, Radio } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
@@ -69,6 +70,13 @@ const App = () => {
                     <Tooltip title='Tooltip title'
                         text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure}
                         placement='bottom' alignment='right' />
+                </Flex>
+                <Flex my={2}>
+                    <RadioGroup>
+                        <Radio value='mercury'>Mercury</Radio>
+                        <Radio value='venus'>Venus</Radio>
+                        <Radio value='mars'>Mars</Radio>
+                    </RadioGroup>
                 </Flex>
                 <Flex>
                     <Box pos='relative' px={1}>
