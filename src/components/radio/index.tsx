@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from 'react'
 import styled from 'styled-components'
-import { Box } from '../box'
+import { Label } from '../label'
 
 interface RadioGroupState {
   value: string
@@ -62,7 +62,6 @@ const RadioInput = styled.input.attrs({ type: 'checkbox' })`
   opacity: 0;
   width: 0;
   height: 0;
-  opacity: 0.8;
 
   &:checked ~ ${RadioContent} {
     opacity: 1;
@@ -82,7 +81,7 @@ export interface RadioProps {
 export const Radio = (props: RadioProps) => {
   const rgContext = useContext(RadioGroupContext)
   return (
-    <Box
+    <Label
       pos='relative'
       style={{
         cursor: 'pointer',
@@ -97,7 +96,7 @@ export const Radio = (props: RadioProps) => {
         }}
       />
       <RadioContent>{props.children}</RadioContent>
-    </Box>
+    </Label>
   )
 }
 
