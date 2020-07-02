@@ -92,6 +92,15 @@ const RadioInput = styled.input.attrs({ type: 'radio' })`
     ${(props) =>
       'background-color: ' + props.theme.colors.primary + ' !important;'}
   }
+
+  &:focus ~ ${RadioContent}::before {
+    ${(props) =>
+      'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
+  }
+
+  &:hover ~ ${RadioContent}::before {
+    ${(props) => 'box-shadow: 0 0 0 2px ' + props.theme.colors.primary + ';'};
+  }
 `
 
 export interface RadioProps {
