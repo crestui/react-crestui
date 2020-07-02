@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { Flex } from '../flex'
 import { Label } from '../label'
+import nextId from 'react-id-generator'
 
 interface RadioGroupState {
   name: string
@@ -22,7 +23,7 @@ const RadioGroupContext = createContext<RadioGroupState>({
 
 export interface RadioGroupProps {
   children: React.ReactNode
-  name: string
+  name?: string
   selectedValue?: string
   direction?: string
 }
@@ -31,7 +32,8 @@ export const RadioGroup = (props: RadioGroupProps) => {
   const selectedValue = props.selectedValue ? props.selectedValue : ''
   const direction = props.direction ? props.direction : 'row'
   const [value, setValue] = useState(selectedValue)
-  const [name, setName] = useState(props.name)
+  const givenName = props.name ? props.name : nextId('rg-name-')
+  const [name, setName] = useState(givenName)
   return (
     <RadioGroupContext.Provider value={{ name, setName, value, setValue }}>
       <Flex flexDirection={direction}>{props.children}</Flex>
@@ -87,7 +89,6 @@ const RadioInput = styled.input.attrs({ type: 'radio' })`
 
 export interface RadioProps {
   children: React.ReactNode
-  id: string
   value: string
   disabled?: boolean
 }
@@ -106,10 +107,11 @@ export const Radio = (props: RadioProps) => {
       }`
     )
   }, [rgContext.value])
+  const thisId = nextId()
   return (
-    <Label pos='relative' htmlFor={props.id} px={1}>
+    <Label pos='relative' htmlFor={thisId} px={1}>
       <RadioInput
-        id={props.id}
+        id={thisId}
         name={rgContext.name}
         checked={checked}
         onChange={() => {
