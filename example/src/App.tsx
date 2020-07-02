@@ -72,10 +72,20 @@ const App = () => {
                         placement='bottom' alignment='right' />
                 </Flex>
                 <Flex my={2}>
-                    <RadioGroup>
-                        <Radio value='mercury' id='mercury'>Mercury</Radio>
-                        <Radio value='venus' id='venus'>Venus</Radio>
-                        <Radio value='mars' id='mars'>Mars</Radio>
+                    <RadioGroup name='planet' selectedValue='venus'>
+                        <Radio value='mercury' id='mercury'>
+                            <Flex flexDirection='column'>
+                                <div>Larger content</div>
+                                <div>smaller content</div>
+                            </Flex>
+                        </Radio>
+                        <Radio value='venus' id='venus'>
+                            <Flex flexDirection='column'>
+                                <div>Venus is the second planet</div>
+                                <div>Venus has a larger orbit</div>
+                            </Flex>
+                        </Radio>
+
                     </RadioGroup>
                 </Flex>
                 <Flex>

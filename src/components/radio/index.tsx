@@ -1,83 +1,87 @@
-import React, { createContext, useState, useContext } from 'react'
-import styled from 'styled-components'
-import { Label } from '../label'
+import React, { createContext, useState, useContext, useEffect } from 'react'
+import styled, { css } from 'styled-components'
 import { Flex } from '../flex'
-import { Box } from '../box'
+import { Label } from '../label'
 
 interface RadioGroupState {
+  name: string
+
+  setName: Function
+
   value: string
 
   setValue: Function
 }
 
 const RadioGroupContext = createContext<RadioGroupState>({
+  name: '',
+  setName: () => {},
   value: '',
   setValue: () => {}
 })
 
 export interface RadioGroupProps {
   children: React.ReactNode
+  name: string
   selectedValue?: string
+  direction?: string
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
   const selectedValue = props.selectedValue ? props.selectedValue : ''
+  const direction = props.direction ? props.direction : 'row'
   const [value, setValue] = useState(selectedValue)
+  const [name, setName] = useState(props.name)
   return (
-    <RadioGroupContext.Provider value={{ value, setValue }}>
-      <Flex flexDirection='column'>{props.children}</Flex>
+    <RadioGroupContext.Provider value={{ name, setName, value, setValue }}>
+      <Flex flexDirection={direction}>{props.children}</Flex>
     </RadioGroupContext.Provider>
   )
 }
 
-const RadioSelectedIcon = () => {
-  return `
-    left: 6px;
-    top: 2px;
-    width: 4px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: rotate(0deg) scale(1);
-  `
-}
-
 const RadioContent = styled.div<{ disabled?: boolean }>`
-  position: absolute;
-  vertical-align: text-top;
+  position: relative;
   display: inline-block;
-  padding-left: 4rem;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  border-radius: 5px;
-  border: 2px solid ${(props) => props.theme.colors.primary}
+  vertical-align: middle;
+  cursor: pointer;
+  padding-left: 2rem;
 
   &::before {
-    position: 'absolute';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1rem;
+    height: 1rem;
     content: '';
-    display: block;
-
-    ${RadioSelectedIcon}
+    display: inline-block;
+    vertical-align: middle;
+    ${(props) => 'border: 2px solid ' + props.theme.colors.primary + ';'}
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translateY(50%);
   }
 `
 
-const RadioInput = styled.input.attrs({ type: 'checkbox' })`
+export const applyHiddenInput = css`
   position: absolute;
-  /* clip-path: polygon(0 0); */
+  box-sizing: border-box;
+  clip-path: polygon(0 0);
   float: left;
-  width: 2rem;
-  /* height: 0; */
+  width: 1px;
+  height: 1px;
+  border: 0;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+`
 
-  &:checked ~ ${RadioContent} {
-    opacity: 1;
-  }
+const RadioInput = styled.input.attrs({ type: 'radio' })`
+  ${applyHiddenInput}
 
-  &:checked ~ ${RadioContent}::after {
-    display: block;
+
+  &:checked ~ ${RadioContent}::before {
+    ${(props) =>
+      'border: 4px solid ' + props.theme.colors.secondary + ' !important;'}
   }
 `
 
@@ -90,26 +94,33 @@ export interface RadioProps {
 
 export const Radio = (props: RadioProps) => {
   const rgContext = useContext(RadioGroupContext)
+  console.info(
+    `About to render radiobutton ${props.value}. rgContext ${rgContext.value}`
+  )
+  const [checked, setChecked] = useState(rgContext.value === props.value)
+  useEffect(() => {
+    setChecked(rgContext.value === props.value)
+    console.info(
+      `useEffect: ${props.value} - Setting it to checked ${
+        rgContext.value === props.value
+      }`
+    )
+  }, [rgContext.value])
   return (
-    <Box>
-      <Label
-        pos='relative'
-        htmlFor={props.id}
-        style={{
-          cursor: 'pointer'
+    <Label pos='relative' htmlFor={props.id} px={1}>
+      <RadioInput
+        id={props.id}
+        name={rgContext.name}
+        checked={checked}
+        onChange={() => {
+          console.info(
+            `Setting value to ${props.value}. Existing value: ${rgContext.value}`
+          )
+          rgContext.setValue(props.value)
         }}
-      >
-        <RadioInput
-          id={props.id}
-          checked={rgContext.value === props.value}
-          onChange={(e) => {
-            e.preventDefault()
-            rgContext.setValue(props.value)
-          }}
-        />
-        <RadioContent>{props.children}</RadioContent>
-      </Label>
-    </Box>
+      />
+      <RadioContent>{props.children}</RadioContent>
+    </Label>
   )
 }
 
