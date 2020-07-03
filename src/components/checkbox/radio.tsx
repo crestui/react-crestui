@@ -1,52 +1,8 @@
-import React, { createContext, useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import styled, { css } from 'styled-components'
-import { Flex } from '../flex'
 import { Label } from '../label'
+import { RadioGroupContext } from './radiogroup'
 import nextId from 'react-id-generator'
-
-interface RadioGroupState {
-  name: string
-
-  setName: Function
-
-  value: string
-
-  setValue: Function
-}
-
-const RadioGroupContext = createContext<RadioGroupState>({
-  name: '',
-  setName: () => {},
-  value: '',
-  setValue: () => {}
-})
-
-export interface RadioGroupProps {
-  children: React.ReactNode
-  name?: string
-  selectedValue?: string
-  direction?: string
-}
-
-export const RadioGroup = (props: RadioGroupProps) => {
-  const selectedValue = props.selectedValue ? props.selectedValue : ''
-  const direction = props.direction ? props.direction : 'row'
-  const [value, setValue] = useState(selectedValue)
-  const givenName = props.name ? props.name : nextId('rg-name-')
-  const [name, setName] = useState(givenName)
-  return (
-    <RadioGroupContext.Provider value={{ name, setName, value, setValue }}>
-      <Flex
-        flexDirection={direction}
-        style={{
-          verticalAlign: 'middle'
-        }}
-      >
-        {props.children}
-      </Flex>
-    </RadioGroupContext.Provider>
-  )
-}
 
 const RadioContent = styled.div<{ disabled?: boolean }>`
   position: relative;
