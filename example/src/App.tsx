@@ -1,12 +1,10 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip, useDisclosure,
+import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip,
     ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom, RadioGroup, Radio } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
-  const buttonRef = useRef(null)
-  const disclosure = useDisclosure(false)
   return (
     <>
         <ThemeProvider theme={AppTheme}>
@@ -63,13 +61,10 @@ const App = () => {
                     Some overflowing content
                 </Box>
                 <Flex justifyContent='center'>
-                    <Button bg='primary' ref={buttonRef}
-                    color='white'
-                    onClick={() => { disclosure.toggleOpen() }}
-                    px={7} py={2}>Click Me</Button>
                     <Tooltip title='Tooltip title'
-                        text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure}
-                        placement='bottom' alignment='right' />
+                        text='Interesting Tooltip'
+                        buttonText='Top Left'
+                        placement='top' alignment='left' />
                 </Flex>
                 <Flex my={2}>
                     <RadioGroup>

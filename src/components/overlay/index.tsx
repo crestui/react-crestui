@@ -9,8 +9,8 @@ interface LocalOverlayProps {
 }
 
 export interface OverlayProps {
-  containerRef: React.RefObject<HTMLButtonElement>
-  disclosure: IDisclosure
+  containerRef?: React.RefObject<HTMLButtonElement>
+  disclosure?: IDisclosure
   placement: string
   alignment: string
 }
@@ -148,6 +148,12 @@ function getCoords(
  *
  */
 export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
+  if (props.containerRef === undefined || props.containerRef === null) {
+    return null
+  }
+  if (props.disclosure === undefined || props.disclosure === null) {
+    return null
+  }
   const containerNode = props.containerRef.current
   if (containerNode === undefined || containerNode === null) {
     return null
