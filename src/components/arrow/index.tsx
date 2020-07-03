@@ -18,10 +18,10 @@ export const ArrowToBottom = styled.div<{ thickness: string }>`
   border-left-color: transparent;
 `
 
-export const ArrowToRight = styled.div<{ thickness: string }>`
+export const ArrowToRight = styled.div<{ thickness: string; top: string }>`
   content: '';
   position: absolute;
-  top: 50%;
+  top: ${(props) => props.top};
   left: 100%;
   margin-top: -${(props) => props.thickness};
   border-width: ${(props) => props.thickness};
@@ -71,6 +71,7 @@ export const ArrowToLeft = styled.div<{ thickness: string }>`
 
 export interface ArrowProps {
   placement: string
+  alignment?: string
   thickness?: string
 }
 
@@ -81,13 +82,49 @@ export const Arrow = (props: ArrowProps) => {
   }
   switch (props.placement) {
     case 'left':
-      return <ArrowToRight thickness={thickness} />
+      switch (props.alignment) {
+        case 'start':
+          return <ArrowToRight thickness={thickness} top='0%' />
+        case 'middle':
+          return <ArrowToRight thickness={thickness} top='50%' />
+        case 'end':
+          return <ArrowToRight thickness={thickness} top='100%' />
+        default:
+          throw new Error(`Invalid alignment for Arrow - ${props.alignment}`)
+      }
     case 'top':
-      return <ArrowToBottom thickness={thickness} />
+      switch (props.alignment) {
+        case 'start':
+          return <ArrowToBottom thickness={thickness} />
+        case 'middle':
+          return <ArrowToBottom thickness={thickness} />
+        case 'end':
+          return <ArrowToBottom thickness={thickness} />
+        default:
+          throw new Error(`Invalid alignment for Arrow - ${props.alignment}`)
+      }
     case 'right':
-      return <ArrowToLeft thickness={thickness} />
+      switch (props.alignment) {
+        case 'start':
+          return <ArrowToLeft thickness={thickness} />
+        case 'middle':
+          return <ArrowToLeft thickness={thickness} />
+        case 'end':
+          return <ArrowToLeft thickness={thickness} />
+        default:
+          throw new Error(`Invalid alignment for Arrow - ${props.alignment}`)
+      }
     case 'bottom':
-      return <ArrowToTop thickness={thickness} />
+      switch (props.alignment) {
+        case 'start':
+          return <ArrowToTop thickness={thickness} />
+        case 'middle':
+          return <ArrowToTop thickness={thickness} />
+        case 'end':
+          return <ArrowToTop thickness={thickness} />
+        default:
+          throw new Error(`Invalid alignment for Arrow - ${props.alignment}`)
+      }
     default:
       throw new Error(`Invalid value for arrow pointsTo ${props.placement}`)
   }

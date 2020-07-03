@@ -120,7 +120,7 @@ const App = () => {
                     </Box>
                     <Box pos='relative' px={1}>
                         ArrowToRight
-                        <ArrowToRight thickness='10px' />
+                        <ArrowToRight thickness='10px' top='100%' />
                     </Box>
                 </Flex>
             </Box>
