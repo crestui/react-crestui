@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import styled, { css } from 'styled-components'
+import nextId from 'react-id-generator'
 import { Label } from '../label'
 import { RadioGroupContext } from './radiogroup'
-import nextId from 'react-id-generator'
 
 const RadioContent = styled.div<{ disabled?: boolean }>`
   position: relative;

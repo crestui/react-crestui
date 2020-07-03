@@ -66,7 +66,7 @@ const App = () => {
                     <Button bg='primary' ref={buttonRef}
                     color='white'
                     onClick={() => { disclosure.toggleOpen() }}
-                    px={7} py={2}>Click me</Button>
+                    px={7} py={2}>Click Me</Button>
                     <Tooltip title='Tooltip title'
                         text='Interesting Tooltip' containerRef={buttonRef} disclosure={disclosure}
                         placement='bottom' alignment='right' />
