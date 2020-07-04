@@ -13,15 +13,12 @@ npm install --save react-crestui
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
+import { Box } from 'react-crestui'
 
-import MyComponent from 'react-crestui'
-import 'react-crestui/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const MyFuncComponent = () => {
+    return <Box />
 }
 ```
 
