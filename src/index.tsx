@@ -5,7 +5,7 @@ export { Container } from './components/container'
 export { Button } from './components/button'
 export { Dropdown, DropdownItem } from './components/dropdown'
 export { Overlay } from './components/overlay'
-export { Portal } from './components/portal'
+export * from './components/portal'
 export { Tooltip } from './components/tooltip'
 export {
   Arrow,
@@ -15,4 +15,4 @@ export {
   ArrowToRight
 } from './components/arrow'
 export { DefaultTheme } from './theming'
-export { useDisclosure } from './mixins/disclosure'
+export * from './mixins/disclosure'

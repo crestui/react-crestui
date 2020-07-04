@@ -1,23 +1,37 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
-export const defaultDomId = 'portal-root'
+export const defaultPortalRootId = 'portal-root'
 
-export type Coords = {
-  /**
-   * position indicates the 'position' css attribute of the portal div element.
-   * Usually - it is one of the two - 'fixed' / 'absolute'
-   */
-  position: string
-  left: number
-  top: number
-}
+export const defaultZIndex = 10
 
 export interface PortalProps {
   children: React.ReactNode
-  onPositionElement: (el: HTMLDivElement) => Coords | null
+
+  /**
+   * onElement represents a function to act on the newly created element
+   *
+   * It takes in the newly created HTMLDivElement of the portal so the coords can be computed
+   */
+  onElement: (el: HTMLDivElement) => void
+
+  /**
+   * portalRootId represents the id of the div in index.html under which portals are created.
+   *
+   * If not given, it defaults to 'defaultPortalRootId' variable published from react-crestui ( i.e. 'portal-root ).
+   *
+   * Unless there is a collision with the same div id, for most practical purposes, this variable is best left untouched
+   *
+   */
   portalRootId?: string
-  zIndex?: string
+
+  /**
+   * zIndex represents the zIndex to be given for this portal.
+   *
+   * If not given, it defaults to 'defaultZIndex' variable published from react-crestui ( i.e. 10 ).
+   *
+   */
+  zIndex?: number
 }
 
 /**
@@ -26,13 +40,10 @@ export interface PortalProps {
 export const Portal = (props: PortalProps) => {
   let portalRootId = props.portalRootId
   if (portalRootId === undefined || portalRootId === null) {
-    portalRootId = defaultDomId
+    portalRootId = defaultPortalRootId
   }
-  if (
-    props.onPositionElement === undefined ||
-    props.onPositionElement === null
-  ) {
-    throw new Error(`onPositionElement function not defined`)
+  if (props.onElement === undefined || props.onElement === null) {
+    throw new Error(`onElement function not defined`)
   }
   const mount = document.getElementById(portalRootId)
   if (mount === null || mount === undefined) {
@@ -42,20 +53,14 @@ export const Portal = (props: PortalProps) => {
   }
   let zIndex = props.zIndex
   if (zIndex === undefined || zIndex === null) {
-    zIndex = '10'
+    zIndex = defaultZIndex
   }
   const el = document.createElement('div')
-  el.style.zIndex = zIndex
+  el.style.zIndex = zIndex.toString()
 
   useEffect(() => {
     mount.appendChild(el)
-    const coords = props.onPositionElement(el)
-    if (coords === undefined || coords === null) {
-      return
-    }
-    el.style.position = coords.position
-    el.style.left = `${coords.left}px`
-    el.style.top = `${coords.top}px`
+    props.onElement(el)
     return () => {
       mount.removeChild(el)
     }

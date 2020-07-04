@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
-import { Portal, Coords } from '../portal'
+import { Portal } from '../portal'
 // eslint-disable-next-line no-unused-vars
 import { IDisclosure } from '../../mixins/disclosure'
+
+export type Coords = {
+  left: number
+  top: number
+}
 
 interface LocalOverlayProps {
   children: React.ReactNode
@@ -164,22 +169,25 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
   if (containerNode === undefined || containerNode === null) {
     return null
   }
-  const onPositionElement = (portalDiv: HTMLDivElement): Coords | null => {
-    const overlayRect = portalDiv.getBoundingClientRect()
+  const onElement = (el: HTMLDivElement): void => {
+    const overlayRect = el.getBoundingClientRect()
     if (containerNode === undefined || containerNode === null) {
-      return null
+      return
     }
-    return getCoords(
+    const coords = getCoords(
       containerNode,
       props.placement,
       props.alignment,
       overlayRect
     )
+    el.style.position = 'absolute'
+    el.style.left = `${coords.left}px`
+    el.style.top = `${coords.top}px`
   }
   if (!props.disclosure.isOpen) {
     return null
   }
-  return <Portal onPositionElement={onPositionElement}>{props.children}</Portal>
+  return <Portal onElement={onElement}>{props.children}</Portal>
 }
 
 export default Overlay

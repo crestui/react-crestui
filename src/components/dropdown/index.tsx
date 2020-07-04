@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
 // eslint-disable-next-line no-unused-vars
-import { Portal, Coords } from '../portal'
+import { Portal } from '../portal'
 // eslint-disable-next-line no-unused-vars
 import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
 
@@ -79,8 +79,11 @@ export const Dropdown = (props: DropdownProps) => {
   const { label, icon, placement, children } = props
   const open = props.open ? props.open : false
   const disclosure = useDisclosure(open)
-  const onRect = (overlayRect: DOMRect): Coords => {
-    return { left: overlayRect.left, top: overlayRect.top }
+  const onElement = (el: HTMLDivElement): void => {
+    const overlayRect = el.getBoundingClientRect()
+    el.style.position = 'absolute'
+    el.style.left = `${overlayRect.left}px`
+    el.style.top = `${overlayRect.top}px`
   }
   return (
     <DropdownContainer>
@@ -91,7 +94,7 @@ export const Dropdown = (props: DropdownProps) => {
         disclosure={disclosure}
       />
       <DropdownContentContainer disclosure={disclosure}>
-        <Portal onRect={onRect}>{children}</Portal>
+        <Portal onElement={onElement}>{children}</Portal>
       </DropdownContentContainer>
     </DropdownContainer>
   )
