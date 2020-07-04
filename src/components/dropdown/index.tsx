@@ -1,105 +1,102 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useRef, useContext } from 'react'
+import { GrFormDown, GrFormUp } from 'react-icons/gr'
+import { ThemeContext } from 'styled-components'
+import { Text } from '../text'
 import { Button } from '../button'
-// eslint-disable-next-line no-unused-vars
 import { Portal } from '../portal'
+import { Flex } from '../flex'
+import { useDisclosure } from '../../mixins/disclosure'
 // eslint-disable-next-line no-unused-vars
-import { useDisclosure, IDisclosure } from '../../mixins/disclosure'
-
-const DropdownContainer = styled.div`
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: baseline;
-  text-size-adjust: 100%;
-`
-
-export interface DropdownHeaderProps {
-  disclosure: IDisclosure
-  label: string
-  icon?: string
-  placement?: string
-}
-
-const DropdownHeader = (props: DropdownHeaderProps) => {
-  return (
-    <Button onMouseEnter={() => props.disclosure.setIsOpen(true)}>
-      {props.label}
-    </Button>
-  )
-}
-
-const DropdownContentContainer = styled.ul<{ disclosure: IDisclosure }>`
-  position: absolute;
-  left: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  flex-direction: column;
-  opacity: ${(props) =>
-    props.disclosure ? (props.disclosure.isOpen ? 1 : 0) : 0};
-  z-index: ${(props) =>
-    props.disclosure ? (props.disclosure.isOpen ? 6 : -1) : -1};
-  background-color: white;
-  margin: 0;
-  width: 40rem;
-`
-
-export const DropdownItem = styled.li`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &:hover {
-    background-color: ${(props) =>
-      props.theme.colors ? props.theme.colors.primary : 'inherit'};
-  }
-
-  a {
-    text-decoration: none;
-  }
-`
+import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
 
 export interface DropdownProps {
   label: string
-  icon?: string
-  placement?: string
-  open?: boolean
+
+  size?: string
+
+  onAlignElements?: onAlignElementsFunc
+
   children: React.ReactNode
+
+  /**
+   * event indicates the dropdown event to trigger opening the menu. One of 'click' / 'hover'
+   */
+  event?: string
 }
 
-/**
- *
- */
 export const Dropdown = (props: DropdownProps) => {
-  const { label, icon, placement, children } = props
-  const open = props.open ? props.open : false
-  const disclosure = useDisclosure(open)
+  const menuRef = useRef<HTMLButtonElement>(null)
+  const disclosure = useDisclosure(false)
+  const theme = useContext(ThemeContext)
+  const onAlignElements = props.onAlignElements
+    ? props.onAlignElements
+    : onAlignElementsBottom('left')
   const onElement = (el: HTMLDivElement): void => {
-    const overlayRect = el.getBoundingClientRect()
     el.style.position = 'absolute'
-    el.style.left = `${overlayRect.left}px`
-    el.style.top = `${overlayRect.top}px`
+    if (menuRef === undefined || menuRef === null) {
+      return
+    }
+    const menuNode = menuRef.current
+    if (menuNode === undefined || menuNode === null) {
+      return
+    }
+    const coords = onAlignElements(menuNode, el)
+    el.style.left = `${coords.left}px`
+    el.style.top = `${coords.top}px`
+    el.addEventListener('mouseleave', () => {
+      disclosure.setIsOpen(false)
+    })
+  }
+  const hover = props.event ? props.event === 'hover' : false
+  const click = props.event ? props.event === 'click' : false
+  if (!hover && !click) {
+    throw new Error(
+      `Dropdown event should be one of 'hover' / 'click'. Current value: ${props.event}`
+    )
+  }
+  let onMouseEnter = () => {}
+  if (hover) {
+    onMouseEnter = () => {
+      disclosure.toggleOpen()
+    }
+  }
+  let onClick = () => {}
+  if (click) {
+    onClick = () => {
+      disclosure.toggleOpen()
+    }
   }
   return (
-    <DropdownContainer>
-      <DropdownHeader
-        label={label}
-        icon={icon}
-        placement={placement}
-        disclosure={disclosure}
-      />
-      <DropdownContentContainer disclosure={disclosure}>
-        <Portal disclosure={disclosure} onElement={onElement}>
-          {children}
+    <Button ref={menuRef}>
+      <Flex
+        flexDirection='row'
+        alignItems='center'
+        justifyContent='center'
+        onMouseEnter={onMouseEnter}
+        onClick={onClick}
+      >
+        <Text
+          style={{
+            paddingRight: '1rem'
+          }}
+        >
+          {props.label}
+        </Text>
+        {!disclosure.isOpen ? (
+          <GrFormDown color={theme.colors.focus} size='1.5rem' />
+        ) : (
+          <GrFormUp color={theme.colors.focus} size='1.5rem' />
+        )}
+      </Flex>
+      {disclosure.isOpen ? (
+        <Portal
+          disclosure={disclosure}
+          onElement={onElement}
+          closeOnMouseLeave={hover}
+        >
+          {props.children}
         </Portal>
-      </DropdownContentContainer>
-    </DropdownContainer>
+      ) : null}
+    </Button>
   )
 }
-
-export default Dropdown
