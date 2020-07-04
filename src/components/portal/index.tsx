@@ -27,7 +27,7 @@ export const Portal = (props: PortalProps) => {
     props.onPositionElement === undefined ||
     props.onPositionElement === null
   ) {
-    throw new Error(`onRect function not defined`)
+    throw new Error(`onPositionElement function not defined`)
   }
   const mount = document.getElementById(portalRootId)
   if (mount === null || mount === undefined) {
