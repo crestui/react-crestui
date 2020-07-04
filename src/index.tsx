@@ -8,12 +8,7 @@ export * from './components/overlay'
 export * from './components/portal'
 export { Tooltip } from './components/tooltip'
 export { Text } from './components/text'
-export {
-  Arrow,
-  ArrowToBottom,
-  ArrowToTop,
-  ArrowToLeft,
-  ArrowToRight
-} from './components/arrow'
+export * from './components/arrow'
 export { DefaultTheme } from './theming'
 export * from './mixins/disclosure'
+export * from './contexts/mq'
