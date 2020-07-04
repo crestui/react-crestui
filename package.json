@@ -1,6 +1,6 @@
 {
   "name": "react-crestui",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "React components written in typescript and based on React 16.8.0 functional components and styled-components",
   "author": "crestui",
   "license": "MIT",
@@ -28,8 +28,8 @@
     "react-icons": ">= 3.10.0",
     "react-id-generator": ">= 3.0.0",
     "react-is": ">= 16.8.0",
-    "styled-components": ">= 5.1.0",
     "react-responsive": ">= 8.1.0",
+    "styled-components": ">= 5.1.0",
     "use-onclickoutside": ">= 0.3.1"
   },
   "devDependencies": {
