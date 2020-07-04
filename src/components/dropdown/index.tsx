@@ -94,7 +94,9 @@ export const Dropdown = (props: DropdownProps) => {
         disclosure={disclosure}
       />
       <DropdownContentContainer disclosure={disclosure}>
-        <Portal onElement={onElement}>{children}</Portal>
+        <Portal disclosure={disclosure} onElement={onElement}>
+          {children}
+        </Portal>
       </DropdownContentContainer>
     </DropdownContainer>
   )

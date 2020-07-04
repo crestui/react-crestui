@@ -1,11 +1,27 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
+// eslint-disable-next-line no-unused-vars
+import IDisclosure from '../../mixins/disclosure'
 
 export const defaultPortalRootId = 'portal-root'
 
 export const defaultZIndex = 10
 
 export interface PortalProps {
+  /**
+   * closeOnMouseLeave indicates if there is a mouseleave event ,
+   * this portal should set the disclosure to be false
+   */
+  closeOnMouseLeave?: boolean
+
+  /**
+   *
+   */
+  disclosure: IDisclosure
+
+  /**
+   * The actual description of the portal
+   */
   children: React.ReactNode
 
   /**
@@ -56,15 +72,22 @@ export const Portal = (props: PortalProps) => {
     zIndex = defaultZIndex
   }
   const el = document.createElement('div')
+  const closeOnMouseLeave = props.closeOnMouseLeave
+    ? props.closeOnMouseLeave
+    : false
+  if (closeOnMouseLeave) {
+    el.addEventListener('mouseleave', () => {
+      props.disclosure.setIsOpen(false)
+    })
+  }
   el.style.zIndex = zIndex.toString()
-
   useEffect(() => {
     mount.appendChild(el)
     props.onElement(el)
     return () => {
       mount.removeChild(el)
     }
-  }, [el, mount])
+  }, [el, mount, closeOnMouseLeave])
 
   return createPortal(props.children, el)
 }

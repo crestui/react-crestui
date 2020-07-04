@@ -18,8 +18,9 @@ export interface ButtonProps {
 export const Button = styled.button<
   ButtonProps & BoxAlignProps & SizeProps & ColorProps
 >`
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
+  align-items: flex-start;
   cursor: pointer;
   text-transform: none;
   text-decoration: none;
@@ -28,7 +29,6 @@ export const Button = styled.button<
   box-shadow: none;
   margin: 0px;
   outline: 0;
-  position: relative;
 
   ${(props) =>
     props.theme.button.borderRadius
