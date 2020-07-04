@@ -73,7 +73,7 @@ export const Dropdown = (props: DropdownProps) => {
     }
   }
   return (
-    <Button ref={menuRef} radius='2px'>
+    <Button ref={menuRef} radius='2px' link>
       <Flex
         flexDirection='row'
         alignItems='center'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MQContext, useMQ } from './MQProviderContext'
+import { MQContext, useMQ } from './mq-provider-context'
 
 type Props = {
   children: React.ReactNode
