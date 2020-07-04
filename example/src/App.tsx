@@ -1,18 +1,22 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { Flex, Box, Button, Dropdown, DropdownItem, Tooltip,
-    ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom, RadioGroup, Radio } from 'react-crestui'
+import { Flex, Box, Button, Dropdown, Tooltip,
+    ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom, RadioGroup, Radio,
+    onAlignElementsBottom, MQProvider } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
   return (
     <>
         <ThemeProvider theme={AppTheme}>
+          <MQProvider>
             <Box w={'100%'} p={1}>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
-                    <Dropdown label='Products'>
-                        <DropdownItem>Interesting Menu Item 1</DropdownItem>
-                        <DropdownItem>Interesting Menu Item 2</DropdownItem>
+                    <Dropdown event='hover' label='Products'
+                    onAlignElements={onAlignElementsBottom('right')}>
+                        <Box>
+                            Some interesting content here
+                        </Box>
                     </Dropdown>
                 </Flex>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} style={{
@@ -119,6 +123,7 @@ const App = () => {
                     </Box>
                 </Flex>
             </Box>
+          </MQProvider>
         </ThemeProvider>
     </>
   )

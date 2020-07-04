@@ -40,7 +40,7 @@ const OverlayNode = (props: TooltipProps & OverlayProps) => {
   return (
     <Overlay {...props}>
       <Arrow placement={props.placement} alignment={props.alignment} />
-      <Box bg='tooltip' color='white' p={2} radius={0.2}>
+      <Box bg='tooltip' color='white' p={2} radius='0.2rem'>
         <span>{props.title}</span>
         <span>{props.text}</span>
       </Box>
