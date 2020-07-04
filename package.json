@@ -1,6 +1,6 @@
 {
   "name": "react-crestui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React components written in typescript and based on React 16.8.0 functional components and styled-components",
   "author": "crestui",
   "license": "MIT",
@@ -59,9 +59,9 @@
     "prettier": "2.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-is": "16.13.1",
-    "react-id-generator": "3.0.0",
     "react-icons": "3.10.0",
+    "react-id-generator": "3.0.0",
+    "react-is": "16.13.1",
     "react-scripts": "3.4.1",
     "styled-components": "5.1.1",
     "typescript": "3.9.6"
