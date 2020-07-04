@@ -8,6 +8,7 @@ import { Flex } from '../flex'
 import { useDisclosure } from '../../mixins/disclosure'
 // eslint-disable-next-line no-unused-vars
 import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
+import { MQContext } from '../../contexts/mq'
 
 export interface DropdownProps {
   label: string
@@ -28,6 +29,7 @@ export const Dropdown = (props: DropdownProps) => {
   const menuRef = useRef<HTMLButtonElement>(null)
   const disclosure = useDisclosure(false)
   const theme = useContext(ThemeContext)
+  const mq = useContext(MQContext)
   const onAlignElements = props.onAlignElements
     ? props.onAlignElements
     : onAlignElementsBottom('left')
@@ -47,12 +49,16 @@ export const Dropdown = (props: DropdownProps) => {
       disclosure.setIsOpen(false)
     })
   }
-  const hover = props.event ? props.event === 'hover' : false
-  const click = props.event ? props.event === 'click' : false
+  let hover = props.event ? props.event === 'hover' : false
+  let click = props.event ? props.event === 'click' : false
   if (!hover && !click) {
     throw new Error(
       `Dropdown event should be one of 'hover' / 'click'. Current value: ${props.event}`
     )
+  }
+  if (!mq.isDesktopOrLaptop && hover) {
+    hover = false
+    click = true
   }
   let onMouseEnter = () => {}
   if (hover) {

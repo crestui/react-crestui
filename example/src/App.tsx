@@ -2,13 +2,14 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Flex, Box, Button, Dropdown, Tooltip,
     ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom, RadioGroup, Radio,
-    onAlignElementsBottom } from 'react-crestui'
+    onAlignElementsBottom, MQProvider } from 'react-crestui'
 import { AppTheme } from './theme'
 
 const App = () => {
   return (
     <>
         <ThemeProvider theme={AppTheme}>
+          <MQProvider>
             <Box w={'100%'} p={1}>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
                     <Dropdown event='hover' label='Products'
@@ -122,6 +123,7 @@ const App = () => {
                     </Box>
                 </Flex>
             </Box>
+          </MQProvider>
         </ThemeProvider>
     </>
   )
