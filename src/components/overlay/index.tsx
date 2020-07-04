@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
 import { Portal, Coords } from '../portal'
 // eslint-disable-next-line no-unused-vars
@@ -154,11 +154,21 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
   if (props.disclosure === undefined || props.disclosure === null) {
     return null
   }
-  const containerNode = props.containerRef.current
+  let containerNode = props.containerRef.current
+  useEffect(() => {
+    if (props.containerRef === undefined || props.containerRef === null) {
+      return
+    }
+    containerNode = props.containerRef.current
+  }, [props.containerRef])
   if (containerNode === undefined || containerNode === null) {
     return null
   }
-  const onRect = (overlayRect: DOMRect): Coords => {
+  const onPositionElement = (portalDiv: HTMLDivElement): Coords | null => {
+    const overlayRect = portalDiv.getBoundingClientRect()
+    if (containerNode === undefined || containerNode === null) {
+      return null
+    }
     return getCoords(
       containerNode,
       props.placement,
@@ -169,7 +179,7 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
   if (!props.disclosure.isOpen) {
     return null
   }
-  return <Portal onRect={onRect}>{props.children}</Portal>
+  return <Portal onPositionElement={onPositionElement}>{props.children}</Portal>
 }
 
 export default Overlay

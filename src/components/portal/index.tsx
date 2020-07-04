@@ -10,8 +10,8 @@ export type Coords = {
 
 export interface PortalProps {
   children: React.ReactNode
-  onRect: (rect: DOMRect) => Coords
-  domId?: string
+  onPositionElement: (el: HTMLDivElement) => Coords | null
+  portalRootId?: string
   zIndex?: string
 }
 
@@ -19,17 +19,20 @@ export interface PortalProps {
  *
  */
 export const Portal = (props: PortalProps) => {
-  let domId = props.domId
-  if (domId === undefined || domId === null) {
-    domId = defaultDomId
+  let portalRootId = props.portalRootId
+  if (portalRootId === undefined || portalRootId === null) {
+    portalRootId = defaultDomId
   }
-  if (props.onRect === undefined || props.onRect === null) {
+  if (
+    props.onPositionElement === undefined ||
+    props.onPositionElement === null
+  ) {
     throw new Error(`onRect function not defined`)
   }
-  const mount = document.getElementById(domId)
+  const mount = document.getElementById(portalRootId)
   if (mount === null || mount === undefined) {
     throw Error(
-      `No div of id ${domId} defined in index.html for separate portal use. Portals not supported hence`
+      `No div of id ${portalRootId} defined in index.html for separate portal use. Portals not supported hence`
     )
   }
   let zIndex = props.zIndex
@@ -42,8 +45,10 @@ export const Portal = (props: PortalProps) => {
 
   useEffect(() => {
     mount.appendChild(el)
-    const rect = el.getBoundingClientRect()
-    const coords = props.onRect(rect)
+    const coords = props.onPositionElement(el)
+    if (coords === undefined || coords === null) {
+      return
+    }
     el.style.left = `${coords.left}px`
     el.style.top = `${coords.top}px`
     return () => {
