@@ -4,8 +4,13 @@ import { createPortal } from 'react-dom'
 export const defaultDomId = 'portal-root'
 
 export type Coords = {
-  left?: number
-  top?: number
+  /**
+   * position indicates the 'position' css attribute of the portal div element.
+   * Usually - it is one of the two - 'fixed' / 'absolute'
+   */
+  position: string
+  left: number
+  top: number
 }
 
 export interface PortalProps {
@@ -40,7 +45,6 @@ export const Portal = (props: PortalProps) => {
     zIndex = '10'
   }
   const el = document.createElement('div')
-  el.style.position = 'absolute'
   el.style.zIndex = zIndex
 
   useEffect(() => {
@@ -49,6 +53,7 @@ export const Portal = (props: PortalProps) => {
     if (coords === undefined || coords === null) {
       return
     }
+    el.style.position = coords.position
     el.style.left = `${coords.left}px`
     el.style.top = `${coords.top}px`
     return () => {
