@@ -9,6 +9,7 @@ import { ColorProps, applyColorProps } from '../../mixins/color'
 export interface ButtonProps {
   disabled?: boolean
   variant?: string
+  radius?: string
 }
 
 /**
@@ -34,6 +35,8 @@ export const Button = styled.button<
     props.theme.button.borderRadius
       ? 'border-radius : ' + props.theme.button.borderRadius + ';'
       : ''}
+  ${(props) =>
+    props.radius ? 'border-radius : ' + props.radius + ' !important;' : ''}
 
   ${applyBoxAlignProps}
 
