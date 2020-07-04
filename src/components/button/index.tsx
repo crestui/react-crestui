@@ -28,15 +28,17 @@ export const Button = styled.button<
   -webkit-appearance: none;
   -moz-appearance: none;
   box-shadow: none;
+  background: transparent;
   margin: 0px;
+  border: none;
   outline: 0;
 
   ${(props) =>
-    props.theme.button.borderRadius
+    props.theme.button.borderRadius &&
+    props.radius === undefined &&
+    props.radius === null
       ? 'border-radius : ' + props.theme.button.borderRadius + ';'
       : ''}
-  ${(props) =>
-    props.radius ? 'border-radius : ' + props.radius + ' !important;' : ''}
 
   ${applyBoxAlignProps}
 
