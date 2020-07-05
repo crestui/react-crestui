@@ -1,18 +1,24 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { Flex, Box, Button, Dropdown, Tooltip,
-    ArrowToTop, ArrowToRight, ArrowToLeft, ArrowToBottom, RadioGroup, Radio,
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { Flex, Box, Dropdown,
     onAlignElementsBottom, MQProvider } from 'react-crestui'
-import { AppTheme } from './theme'
+import { AppTheme } from './example-theme'
 
+const GlobalStyle = createGlobalStyle`
+  body {
+  }
+`
 const App = () => {
   return (
-    <>
         <ThemeProvider theme={AppTheme}>
+          <GlobalStyle />
           <MQProvider>
-            <Box w={'100%'} p={1}>
+            <Box w={'100%'} p={1} style={{
+                outline: 'none'
+            }}>
                 <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
                     <Dropdown event='hover' label='Products'
+                    size='2.0rem'
                     onAlignElements={onAlignElementsBottom('right')}>
                         <Box>
                             Some interesting content here
@@ -57,75 +63,9 @@ const App = () => {
                     <Box py={1}>Div 1</Box>
                     <Box py={1}>Div 2</Box>
                 </Flex>
-                <Box>
-                    <Button bg='primary' p={1}>Signup</Button>
-                    <Button bg='secondary' p={1}>Login</Button>
-                </Box>
-                <Box p={10}>
-                    Some overflowing content
-                </Box>
-                <Flex justifyContent='center'>
-                    <Tooltip title='Tooltip title'
-                        text='Interesting Tooltip'
-                        buttonText='Top Left'
-                        placement='top' alignment='left' />
-                </Flex>
-                <Flex my={2}>
-                    <RadioGroup>
-                        <Radio value='mercury'>
-                            <Flex flexDirection='column'>
-                                <div>Larger content</div>
-                                <div>smaller content</div>
-                            </Flex>
-                        </Radio>
-                        <Radio value='venus'>
-                            <Flex flexDirection='column'>
-                                <div>Venus is the second planet</div>
-                                <div>Venus has a larger orbit</div>
-                            </Flex>
-                        </Radio>
-
-                    </RadioGroup>
-                </Flex>
-                <Flex my={2}>
-                    <RadioGroup direction='column'>
-                        <Radio value='jupiter'>
-                            <Flex flexDirection='column'>
-                                <div>Jupiter is the largest planet</div>
-                                <div>huge content</div>
-                            </Flex>
-                        </Radio>
-                        <Radio value='saturn'>
-                            <Flex flexDirection='column'>
-                                <div>Saturn is the sixth planet</div>
-                                <div>Saturn has a larger orbit</div>
-                            </Flex>
-                        </Radio>
-
-                    </RadioGroup>
-                </Flex>
-                <Flex>
-                    <Box pos='relative' px={1}>
-                        ArrowToTop
-                        <ArrowToTop thickness='10px' />
-                    </Box>
-                    <Box pos='relative' px={1}>
-                        ArrowToBottom
-                        <ArrowToBottom thickness='10px' />
-                    </Box>
-                    <Box pos='relative' px={1}>
-                        ArrowToLeft
-                        <ArrowToLeft thickness='10px' />
-                    </Box>
-                    <Box pos='relative' px={1}>
-                        ArrowToRight
-                        <ArrowToRight thickness='10px' top='100%' />
-                    </Box>
-                </Flex>
             </Box>
           </MQProvider>
         </ThemeProvider>
-    </>
   )
 }
 
