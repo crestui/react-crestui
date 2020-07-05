@@ -1,11 +1,14 @@
 import React, { useRef, useContext } from 'react'
-import { GrFormDown, GrFormUp } from 'react-icons/gr'
-import { ThemeContext } from 'styled-components'
+import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
+import styled, { ThemeContext } from 'styled-components'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Portal } from '../portal'
 import { Flex } from '../flex'
+import { Box } from '../box'
 import { useDisclosure } from '../../mixins/disclosure'
+// eslint-disable-next-line no-unused-vars
+import { UserSize, getIconSize } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
 import { MQContext } from '../../contexts/mq'
@@ -13,7 +16,7 @@ import { MQContext } from '../../contexts/mq'
 export interface DropdownProps {
   label: string
 
-  size?: string
+  size?: UserSize
 
   onAlignElements?: onAlignElementsFunc
 
@@ -24,6 +27,16 @@ export interface DropdownProps {
    */
   event?: string
 }
+
+const DropdownDrop = styled(Box)<{ visible: boolean }>`
+  ${({ visible }) =>
+    visible !== undefined && !visible && 'clip-path: polygon(0 0);'}
+  pointer-events: ${(props) =>
+    props.visible !== undefined && props.visible ? 'auto' : 'none'};
+  border-radius: ${(props) =>
+    props.visible !== undefined && props.visible ? '0px' : '1px'};
+  transition: border-radius ease-in 2.0s;
+`
 
 export const Dropdown = (props: DropdownProps) => {
   const menuRef = useRef<HTMLButtonElement>(null)
@@ -60,49 +73,48 @@ export const Dropdown = (props: DropdownProps) => {
     hover = false
     click = true
   }
-  let onMouseEnter = () => {}
-  if (hover) {
-    onMouseEnter = () => {
-      disclosure.toggleOpen()
+  const onMouseEnter = () => {
+    if (hover) {
+      disclosure.setIsOpen(true)
     }
   }
-  let onClick = () => {}
-  if (click) {
-    onClick = () => {
-      disclosure.toggleOpen()
+  const onClick = () => {
+    if (click) {
+      disclosure.setIsOpen()
     }
   }
+  const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
+  const textSize = props.size ? props.size : 'small'
   return (
-    <Button ref={menuRef} radius='2px'>
+    <Button ref={menuRef} link>
       <Flex
         flexDirection='row'
         alignItems='center'
         justifyContent='center'
+        alignContent='center'
         onMouseEnter={onMouseEnter}
         onClick={onClick}
       >
-        <Text
-          style={{
-            paddingRight: '1rem'
-          }}
-        >
+        <Text pr={2} fs={textSize}>
           {props.label}
         </Text>
-        {!disclosure.isOpen ? (
-          <GrFormDown color={theme.colors.focus} size='1.5rem' />
-        ) : (
-          <GrFormUp color={theme.colors.focus} size='1.5rem' />
-        )}
+        <div>
+          {!disclosure.isOpen ? (
+            <RiArrowDownSLine color={theme.colors.primary} size={iconSize} />
+          ) : (
+            <RiArrowUpSLine color={theme.colors.primary} size={iconSize} />
+          )}
+        </div>
       </Flex>
-      {disclosure.isOpen ? (
-        <Portal
-          disclosure={disclosure}
-          onElement={onElement}
-          closeOnMouseLeave={hover}
-        >
+      <Portal
+        disclosure={disclosure}
+        onElement={onElement}
+        closeOnMouseLeave={hover}
+      >
+        <DropdownDrop visible={disclosure.isOpen}>
           {props.children}
-        </Portal>
-      ) : null}
+        </DropdownDrop>
+      </Portal>
     </Button>
   )
 }

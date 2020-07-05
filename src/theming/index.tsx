@@ -5,7 +5,9 @@ export const DefaultTheme = {
     focus: '#E28413',
     tooltip: '#708090'
   },
+  spaceInRem: 0.25,
+  iconSizes: [1, 2, 4, 8, 12, 16, 24, 28],
   button: {
-    borderRadius: '2rem'
+    borderRadius: 8
   }
 }

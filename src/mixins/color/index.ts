@@ -8,8 +8,7 @@ export function getColor(colorKey: string): string {
       'Set a default theme using ThemeContextProvider before proceeding'
     )
   }
-  // eslint-disable-next-line no-prototype-builtins
-  if (theme.colors.hasOwnProperty(colorKey)) {
+  if (colorKey in theme.colors) {
     return theme.colors[colorKey]
   } else {
     return colorKey

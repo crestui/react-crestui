@@ -10,6 +10,7 @@ export interface ButtonProps {
   disabled?: boolean
   variant?: string
   radius?: string
+  link?: boolean
 }
 
 /**
@@ -30,8 +31,10 @@ export const Button = styled.button<
   box-shadow: none;
   background: transparent;
   margin: 0px;
-  border: none;
   outline: 0;
+
+  ${({ link }) => link && 'border: none; '}
+
 
   ${(props) =>
     props.theme.button.borderRadius &&

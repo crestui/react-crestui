@@ -1,2 +1,2 @@
-export * from './MQProvider'
-export * from './MQProviderContext'
+export * from './mq-provider'
+export * from './mq-provider-context'

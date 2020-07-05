@@ -3,8 +3,9 @@ import { DefaultTheme } from 'react-crestui'
 export const AppTheme = {
    ...DefaultTheme,
    colors: {
-      primary: '#0e0e52',
+      primary: '#3A0CA3',
       secondary: '#E28413',
+      focus: '#2F4F4F',
       jam: '#aa1155',
       tooltip: '#2F4F4F'
    },

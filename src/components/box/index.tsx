@@ -5,6 +5,10 @@ import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 import { SizeProps, applySizeProps } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { ColorProps, applyColorProps } from '../../mixins/color'
+// eslint-disable-next-line no-unused-vars
+import { BorderProps, applyBorderProps } from '../../mixins/border'
+// eslint-disable-next-line no-unused-vars
+import { PositionProps, applyPositionProps } from '../../mixins/position'
 
 export interface BoxProps {
   inline?: boolean
@@ -16,14 +20,25 @@ export interface BoxProps {
  * For more info,refer to :  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
  */
 export const Box = styled.div<
-  BoxProps & BoxAlignProps & SizeProps & ColorProps
+  BoxProps &
+    BoxAlignProps &
+    SizeProps &
+    ColorProps &
+    BorderProps &
+    PositionProps
 >`
   box-sizing: border-box;
-  display: ${(props) => (props.inline ? 'inline-block' : 'block')};
+  ${({ inline }) => inline && 'display: inline-block;'}
+  margin: 0;
+  min-width: 0;
 
   ${applyBoxAlignProps}
 
   ${applySizeProps}
 
   ${applyColorProps}
+
+  ${applyBorderProps}
+
+  ${applyPositionProps}
 `
