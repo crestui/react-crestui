@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from 'react'
-import { GrFormDown, GrFormUp } from 'react-icons/gr'
+import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
 import { ThemeContext } from 'styled-components'
 import { Text } from '../text'
 import { Button } from '../button'
@@ -72,6 +72,8 @@ export const Dropdown = (props: DropdownProps) => {
       disclosure.toggleOpen()
     }
   }
+  console.info(`svg color: ${theme.colors.focus}`)
+  const size = props.size ? props.size : '1.0rem'
   return (
     <Button ref={menuRef} radius='2px' link>
       <Flex
@@ -83,15 +85,15 @@ export const Dropdown = (props: DropdownProps) => {
       >
         <Text
           style={{
-            paddingRight: '1rem'
+            paddingRight: '0.5rem'
           }}
         >
           {props.label}
         </Text>
         {!disclosure.isOpen ? (
-          <GrFormDown color={theme.colors.focus} size='1.5rem' />
+          <RiArrowDownSLine color={theme.colors.primary} size={size} />
         ) : (
-          <GrFormUp color={theme.colors.focus} size='1.5rem' />
+          <RiArrowUpSLine color={theme.colors.primary} size={size} />
         )}
       </Flex>
       {disclosure.isOpen ? (
