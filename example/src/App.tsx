@@ -19,8 +19,10 @@ const App = () => {
                 <Flex justifyContent='flex-start'>
                     <Dropdown event='hover' label='Products' size={'medium'}
                     onAlignElements={onAlignElementsBottom('left')}>
-                        <Box bg='white' p={1}>
-                            Some interesting content here
+                        <Box bg='transparent' py={2}>
+                            <Box bg='white' radius={0.5} bs={'solid'} bw={0.25} bc={'primary'} p={3}>
+                                Some interesting content here
+                            </Box>
                         </Box>
                     </Dropdown>
                 </Flex>

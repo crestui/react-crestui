@@ -82,17 +82,20 @@ export const Dropdown = (props: DropdownProps) => {
         flexDirection='row'
         alignItems='center'
         justifyContent='center'
+        alignContent='center'
         onMouseEnter={onMouseEnter}
         onClick={onClick}
       >
         <Text pr={2} fs={textSize}>
           {props.label}
         </Text>
-        {!disclosure.isOpen ? (
-          <RiArrowDownSLine color={theme.colors.primary} size={iconSize} />
-        ) : (
-          <RiArrowUpSLine color={theme.colors.primary} size={iconSize} />
-        )}
+        <div>
+          {!disclosure.isOpen ? (
+            <RiArrowDownSLine color={theme.colors.primary} size={iconSize} />
+          ) : (
+            <RiArrowUpSLine color={theme.colors.primary} size={iconSize} />
+          )}
+        </div>
       </Flex>
       {disclosure.isOpen ? (
         <Portal

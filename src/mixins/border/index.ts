@@ -1,5 +1,6 @@
 import { css } from 'styled-components'
 import { getSize } from '../size'
+import { getColor } from '../color'
 
 export interface BorderProps {
   /**
@@ -10,7 +11,12 @@ export interface BorderProps {
   /**
    * bw is an alias for border-width property
    */
-  bw?: string
+  bw?: string | number
+
+  /**
+   * border-Color
+   */
+  bc?: string
 
   /**
    * Radius indicates borderRadius and the units are in 'rem'
@@ -25,4 +31,6 @@ export const applyBorderProps = css<BorderProps>`
   ${({ bs }) => bs && 'border-style: ' + bs + ';'}
 
   ${({ bw }) => bw && 'border-width: ' + getSize(bw) + ';'}
+
+  ${({ bc }) => bc && 'border-color: ' + getColor(bc) + ';'}
 `
