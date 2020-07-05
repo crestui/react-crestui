@@ -19,7 +19,9 @@ const App = () => {
                 <Flex justifyContent='flex-start'>
                     <Dropdown event='hover' label='Products' size={'medium'}
                     onAlignElements={onAlignElementsBottom('left')}>
-                        <Box bg='transparent' py={2}>
+                        <Box bg='transparent' py={1} style={{
+                            transition: 'padding-top 1.0s ease-in 1s'
+                        }}>
                             <Box bg='white' radius={0.5} bs={'solid'} bw={0.25} bc={'primary'} p={3}>
                                 Some interesting content here
                             </Box>
@@ -60,6 +62,7 @@ const App = () => {
                         <div>Purple D4</div>
                     </Flex>
                 </Flex>
+                <input name='password'></input>
                 <Flex flexDirection='column' justifyContent='center' h={'50vh'}>
                     <Box py={1}>Div 1</Box>
                     <Box py={1}>Div 2</Box>

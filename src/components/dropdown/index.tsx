@@ -1,10 +1,11 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useCallback } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Portal } from '../portal'
 import { Flex } from '../flex'
+import { Box } from '../box'
 import { useDisclosure } from '../../mixins/disclosure'
 // eslint-disable-next-line no-unused-vars
 import { UserSize, getIconSize } from '../../mixins/size'
@@ -27,6 +28,16 @@ export interface DropdownProps {
   event?: string
 }
 
+const DropdownDrop = styled(Box)<{ visible: boolean }>`
+  ${({ visible }) =>
+    visible !== undefined && !visible && 'clip-path: polygon(0 0);'}
+  pointer-events: ${(props) =>
+    props.visible !== undefined && props.visible ? 'auto' : 'none'};
+  border-radius: ${(props) =>
+    props.visible !== undefined && props.visible ? '0px' : '1px'};
+  transition: border-radius ease-in 2.0s;
+`
+
 export const Dropdown = (props: DropdownProps) => {
   const menuRef = useRef<HTMLButtonElement>(null)
   const disclosure = useDisclosure(false)
@@ -35,22 +46,25 @@ export const Dropdown = (props: DropdownProps) => {
   const onAlignElements = props.onAlignElements
     ? props.onAlignElements
     : onAlignElementsBottom('left')
-  const onElement = (el: HTMLDivElement): void => {
-    el.style.position = 'absolute'
-    if (menuRef === undefined || menuRef === null) {
-      return
-    }
-    const menuNode = menuRef.current
-    if (menuNode === undefined || menuNode === null) {
-      return
-    }
-    const coords = onAlignElements(menuNode, el)
-    el.style.left = `${coords.left}px`
-    el.style.top = `${coords.top}px`
-    el.addEventListener('mouseleave', () => {
-      disclosure.setIsOpen(false)
-    })
-  }
+  const onElement = useCallback(
+    (el: HTMLDivElement): void => {
+      el.style.position = 'absolute'
+      if (menuRef === undefined || menuRef === null) {
+        return
+      }
+      const menuNode = menuRef.current
+      if (menuNode === undefined || menuNode === null) {
+        return
+      }
+      const coords = onAlignElements(menuNode, el)
+      el.style.left = `${coords.left}px`
+      el.style.top = `${coords.top}px`
+      el.addEventListener('mouseleave', () => {
+        disclosure.setIsOpen(false)
+      })
+    },
+    [menuRef]
+  )
   let hover = props.event ? props.event === 'hover' : false
   let click = props.event ? props.event === 'click' : false
   if (!hover && !click) {
@@ -62,18 +76,16 @@ export const Dropdown = (props: DropdownProps) => {
     hover = false
     click = true
   }
-  let onMouseEnter = () => {}
-  if (hover) {
-    onMouseEnter = () => {
-      disclosure.toggleOpen()
+  const onMouseEnter = useCallback(() => {
+    if (hover) {
+      disclosure.setIsOpen(true)
     }
-  }
-  let onClick = () => {}
-  if (click) {
-    onClick = () => {
-      disclosure.toggleOpen()
+  }, [hover])
+  const onClick = useCallback(() => {
+    if (click) {
+      disclosure.setIsOpen()
     }
-  }
+  }, [click])
   const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
   const textSize = props.size ? props.size : 'small'
   return (
@@ -97,15 +109,15 @@ export const Dropdown = (props: DropdownProps) => {
           )}
         </div>
       </Flex>
-      {disclosure.isOpen ? (
-        <Portal
-          disclosure={disclosure}
-          onElement={onElement}
-          closeOnMouseLeave={hover}
-        >
+      <Portal
+        disclosure={disclosure}
+        onElement={onElement}
+        closeOnMouseLeave={hover}
+      >
+        <DropdownDrop visible={disclosure.isOpen}>
           {props.children}
-        </Portal>
-      ) : null}
+        </DropdownDrop>
+      </Portal>
     </Button>
   )
 }
