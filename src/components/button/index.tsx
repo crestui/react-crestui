@@ -32,7 +32,8 @@ export const Button = styled.button<
   box-shadow: none;
   background: transparent;
   margin: 0;
-  outline: 0;
+  outline: none;
+  border: none;
 
   ${({ link }) => link && 'border: none; '}
 

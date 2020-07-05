@@ -47,7 +47,7 @@ export const Dropdown = (props: DropdownProps) => {
     ? props.onAlignElements
     : onAlignElementsBottom('left')
   const onElement = (el: HTMLDivElement): void => {
-    el.style.position = 'absolute'
+    el.style.position = 'fixed'
     if (menuRef === undefined || menuRef === null) {
       return
     }
