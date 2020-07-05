@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 // eslint-disable-next-line no-unused-vars
 import IDisclosure from '../../mixins/disclosure'
@@ -72,7 +72,7 @@ export const Portal = (props: PortalProps) => {
   if (zIndex === undefined || zIndex === null) {
     zIndex = defaultZIndex
   }
-  const el = document.createElement('div')
+  const el = useMemo(() => document.createElement('div'), [])
   const portalRef = useRef<HTMLDivElement>(el)
   useOnClickOutside(portalRef, () => {
     props.disclosure.setIsOpen(false)
