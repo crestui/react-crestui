@@ -19,7 +19,9 @@ export const Box = styled.div<
   BoxProps & BoxAlignProps & SizeProps & ColorProps
 >`
   box-sizing: border-box;
-  display: ${(props) => (props.inline ? 'inline-block' : 'block')};
+  ${({ inline }) => inline && 'display: inline-block;'}
+  margin: 0;
+  min-width: 0;
 
   ${applyBoxAlignProps}
 

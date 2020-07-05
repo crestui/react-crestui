@@ -25,6 +25,7 @@ export const Flex = styled.div<
   display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};
   box-sizing: border-box;
   margin: 0;
+  min-width: 0;
 
   ${applyFlexProps}
 
