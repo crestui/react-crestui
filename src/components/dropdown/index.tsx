@@ -7,13 +7,15 @@ import { Portal } from '../portal'
 import { Flex } from '../flex'
 import { useDisclosure } from '../../mixins/disclosure'
 // eslint-disable-next-line no-unused-vars
+import { UserSize, getIconSize } from '../../mixins/size'
+// eslint-disable-next-line no-unused-vars
 import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
 import { MQContext } from '../../contexts/mq'
 
 export interface DropdownProps {
   label: string
 
-  size?: string
+  size?: UserSize
 
   onAlignElements?: onAlignElementsFunc
 
@@ -72,8 +74,8 @@ export const Dropdown = (props: DropdownProps) => {
       disclosure.toggleOpen()
     }
   }
-  console.info(`svg color: ${theme.colors.focus}`)
-  const size = props.size ? props.size : '1.0rem'
+  const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
+  const textSize = props.size ? props.size : 'small'
   return (
     <Button ref={menuRef} link>
       <Flex
@@ -83,17 +85,13 @@ export const Dropdown = (props: DropdownProps) => {
         onMouseEnter={onMouseEnter}
         onClick={onClick}
       >
-        <Text
-          style={{
-            paddingRight: '0.5rem'
-          }}
-        >
+        <Text pr={2} fs={textSize}>
           {props.label}
         </Text>
         {!disclosure.isOpen ? (
-          <RiArrowDownSLine color={theme.colors.primary} size={size} />
+          <RiArrowDownSLine color={theme.colors.primary} size={iconSize} />
         ) : (
-          <RiArrowUpSLine color={theme.colors.primary} size={size} />
+          <RiArrowUpSLine color={theme.colors.primary} size={iconSize} />
         )}
       </Flex>
       {disclosure.isOpen ? (

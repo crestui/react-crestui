@@ -17,8 +17,7 @@ const App = () => {
                 outline: 'none'
             }}>
                 <Flex justifyContent='flex-start'>
-                    <Dropdown event='hover' label='Products'
-                    size='2.0rem'
+                    <Dropdown event='hover' label='Products' size={'medium'}
                     onAlignElements={onAlignElementsBottom('left')}>
                         <Box bg='white' p={1}>
                             Some interesting content here

@@ -3,6 +3,16 @@ import { ThemeContext, css } from 'styled-components'
 
 const isNumber = (n: string | number) => typeof n === 'number' && !isNaN(n)
 
+export type UserSize =
+  | 'xx-small'
+  | 'x-small'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'x-large'
+  | 'xx-large'
+  | 'xxx-large'
+
 export function getSize(size: number | string): string {
   const theme = useContext(ThemeContext)
   if (theme === null || theme === undefined) {
@@ -15,6 +25,38 @@ export function getSize(size: number | string): string {
     return theme.spaceInRem * y + 'rem'
   } else {
     return size.toString()
+  }
+}
+
+export function getIconSize(userSize: UserSize): string {
+  const theme = useContext(ThemeContext)
+  switch (userSize) {
+    case 'xx-small':
+      return getSize(theme.iconSizes[0])
+      break
+    case 'x-small':
+      return getSize(theme.iconSizes[1])
+      break
+    case 'small':
+      return getSize(theme.iconSizes[2])
+      break
+    case 'medium':
+      return getSize(theme.iconSizes[3])
+      break
+    case 'large':
+      return getSize(theme.iconSizes[4])
+      break
+    case 'x-large':
+      return getSize(theme.iconSizes[5])
+      break
+    case 'xx-large':
+      return getSize(theme.iconSizes[6])
+      break
+    case 'xxx-large':
+      return getSize(theme.iconSizes[7])
+      break
+    default:
+      throw new Error(`Invalid size value - ${userSize} given as parameter`)
   }
 }
 
@@ -35,6 +77,8 @@ export interface SizeProps {
   mb?: number | string
   ml?: number | string
   mr?: number | string
+
+  fs?: string
 }
 
 export const applySizeProps = css<SizeProps>`
@@ -88,5 +132,5 @@ export const applySizeProps = css<SizeProps>`
 
   ${({ mr }) => mr && 'margin-right: ' + getSize(mr) + ';'}
 
-  ${({ h }) => h && 'height: ' + h + ';'}
+  ${({ fs }) => fs && 'font-size: ' + fs + ';'}
 `
