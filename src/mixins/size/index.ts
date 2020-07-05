@@ -1,24 +1,40 @@
-import { css } from 'styled-components'
+import { useContext } from 'react'
+import { ThemeContext, css } from 'styled-components'
+
+const isNumber = (n: string | number) => typeof n === 'number' && !isNaN(n)
+
+export function getSize(size: number | string): string {
+  const theme = useContext(ThemeContext)
+  if (theme === null || theme === undefined) {
+    throw new Error(
+      'Set a default theme using ThemeContextProvider before proceeding'
+    )
+  }
+  if (isNumber(size)) {
+    const y = +size
+    return theme.spaceInRem * y + 'rem'
+  } else {
+    return size.toString()
+  }
+}
 
 export interface SizeProps {
-  w?: string | number
+  w?: string
   h?: string
-  p?: number
-  px?: number
-  py?: number
-  m?: number
-  mx?: number
-  my?: number
-
-  /**
-   * Radius indicates borderRadius and the units are in 'rem'
-   */
-  radius?: string
-
-  /**
-   * Indicates position attribute
-   */
-  pos?: string
+  p?: number | string
+  px?: number | string
+  py?: number | string
+  pt?: number | string
+  pb?: number | string
+  pl?: number | string
+  pr?: number | string
+  m?: number | string
+  mx?: number | string
+  my?: number | string
+  mt?: number | string
+  mb?: number | string
+  ml?: number | string
+  mr?: number | string
 }
 
 export const applySizeProps = css<SizeProps>`
@@ -26,25 +42,51 @@ export const applySizeProps = css<SizeProps>`
 
   ${({ h }) => h && 'height: ' + h + ';'}
 
-  ${({ p }) => p && 'padding: ' + p + 'rem;'}
+  ${({ p }) => p && 'padding: ' + getSize(p) + ';'}
 
   ${({ px }) =>
-    px && 'padding-left: ' + px + 'rem;' + ' padding-right: ' + px + 'rem; '}
+    px &&
+    'padding-left: ' +
+      getSize(px) +
+      ';' +
+      ' padding-right: ' +
+      getSize(px) +
+      '; '}
 
   ${({ py }) =>
-    py && 'padding-top: ' + py + 'rem;' + ' padding-bottom: ' + py + 'rem; '}
+    py &&
+    'padding-top: ' +
+      getSize(py) +
+      ';' +
+      ' padding-bottom: ' +
+      getSize(py) +
+      '; '}
 
-  ${({ m }) => m && 'margin: ' + m + 'rem;'}
+  ${({ pt }) => pt && 'padding-top: ' + getSize(pt) + ';'}
+
+  ${({ pb }) => pb && 'padding-bottom: ' + getSize(pb) + ';'}
+
+  ${({ pl }) => pl && 'padding-left: ' + getSize(pl) + ';'}
+
+  ${({ pr }) => pr && 'padding-right: ' + getSize(pr) + ';'}
+
+  ${({ m }) => m && 'margin: ' + getSize(m) + ';'}
 
   ${({ mx }) =>
-    mx && 'margin-left: ' + mx + 'rem;' + ' margin-right: ' + mx + 'rem; '}
+    mx &&
+    'margin-left: ' + getSize(mx) + ';' + ' margin-right: ' + getSize(mx) + ';'}
 
   ${({ my }) =>
-    my && 'margin-top: ' + my + 'rem;' + ' margin-bottom: ' + my + 'rem; '}
+    my &&
+    'margin-top: ' + getSize(my) + ';' + ' margin-bottom: ' + getSize(my) + ';'}
+
+  ${({ mt }) => mt && 'margin-top: ' + getSize(mt) + ';'}
+
+  ${({ mb }) => mb && 'margin-bottom: ' + getSize(mb) + ';'}
+
+  ${({ ml }) => ml && 'margin-left: ' + getSize(ml) + ';'}
+
+  ${({ mr }) => mr && 'margin-right: ' + getSize(mr) + ';'}
 
   ${({ h }) => h && 'height: ' + h + ';'}
-
-  ${({ radius }) => radius && 'border-radius: ' + radius + ' !important;'}
-
-  ${({ pos }) => pos && 'position: ' + pos + ';'}
 `

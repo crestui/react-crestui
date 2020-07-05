@@ -75,7 +75,7 @@ export const Dropdown = (props: DropdownProps) => {
   console.info(`svg color: ${theme.colors.focus}`)
   const size = props.size ? props.size : '1.0rem'
   return (
-    <Button ref={menuRef} radius='2px' link>
+    <Button ref={menuRef} link>
       <Flex
         flexDirection='row'
         alignItems='center'

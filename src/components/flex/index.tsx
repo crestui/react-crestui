@@ -7,6 +7,10 @@ import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 import { SizeProps, applySizeProps } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { ColorProps, applyColorProps } from '../../mixins/color'
+// eslint-disable-next-line no-unused-vars
+import { BorderProps, applyBorderProps } from '../../mixins/border'
+// eslint-disable-next-line no-unused-vars
+import { PositionProps, applyPositionProps } from '../../mixins/position'
 
 export interface LocalFlexProps {
   inline?: boolean
@@ -19,7 +23,13 @@ export interface LocalFlexProps {
  * Courtesy:  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
  */
 export const Flex = styled.div<
-  LocalFlexProps & FlexProps & BoxAlignProps & SizeProps & ColorProps
+  LocalFlexProps &
+    FlexProps &
+    BoxAlignProps &
+    SizeProps &
+    ColorProps &
+    BorderProps &
+    PositionProps
 >`
 
   display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};
@@ -34,6 +44,10 @@ export const Flex = styled.div<
   ${applySizeProps}
 
   ${applyColorProps}
+
+  ${applyBorderProps}
+
+  ${applyPositionProps}
 `
 
 export default Flex

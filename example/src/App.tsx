@@ -16,11 +16,11 @@ const App = () => {
             <Box w={'100%'} p={1} style={{
                 outline: 'none'
             }}>
-                <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} p={1}>
+                <Flex justifyContent='flex-start'>
                     <Dropdown event='hover' label='Products'
                     size='2.0rem'
-                    onAlignElements={onAlignElementsBottom('right')}>
-                        <Box>
+                    onAlignElements={onAlignElementsBottom('left')}>
+                        <Box bg='white' p={1}>
                             Some interesting content here
                         </Box>
                     </Dropdown>
@@ -31,7 +31,7 @@ const App = () => {
                     <div>Div 1</div>
                     <div>Div 2</div>
                 </Flex>
-                <Flex w={1} justifyContent='center' alignItems={'center'} alignContent={'center'}>
+                <Flex w={'100%'} justifyContent='center' alignItems={'center'} alignContent={'center'}>
                     <Flex style={{
                             backgroundColor: 'green'
                             }}>
@@ -45,7 +45,7 @@ const App = () => {
                         <div>Purple Div 4</div>
                     </Flex>
                 </Flex>
-                <Flex w={1} justifyContent='center' alignItems={'center'} alignContent={'center'}>
+                <Flex w={'100%'} justifyContent='center' alignItems={'center'} alignContent={'center'}>
                     <Flex flexGrow={1}  style={{
                             backgroundColor: 'green'
                             }}>
