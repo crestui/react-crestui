@@ -28,13 +28,6 @@ export interface DropdownProps {
   event?: string
 }
 
-const DropdownDrop = styled(Box)<{ visible: boolean }>`
-  ${({ visible }) =>
-    visible !== undefined && !visible && 'clip-path: polygon(0 0);'}
-  pointer-events: ${(props) =>
-    props.visible !== undefined && props.visible ? 'auto' : 'none'};
-`
-
 export const Dropdown = (props: DropdownProps) => {
   const menuRef = useRef<HTMLButtonElement>(null)
   const disclosure = useDisclosure(false)
@@ -108,9 +101,7 @@ export const Dropdown = (props: DropdownProps) => {
         onElement={onElement}
         closeOnMouseLeave={hover}
       >
-        <DropdownDrop visible={disclosure.isOpen}>
-          {props.children}
-        </DropdownDrop>
+        {disclosure.isOpen && props.children}
       </Portal>
     </Button>
   )
