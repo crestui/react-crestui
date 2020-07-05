@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Portal } from '../portal'
@@ -26,6 +26,10 @@ export interface DropdownProps {
    */
   event?: string
 }
+
+const DropdownButton = styled(Button).attrs({
+  type: 'button'
+})``
 
 export const Dropdown = (props: DropdownProps) => {
   const menuRef = useRef<HTMLButtonElement>(null)
@@ -75,7 +79,7 @@ export const Dropdown = (props: DropdownProps) => {
   const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
   const textSize = props.size ? props.size : 'small'
   return (
-    <Button ref={menuRef} link>
+    <DropdownButton ref={menuRef} link>
       <Flex
         flexDirection='row'
         alignItems='center'
@@ -102,6 +106,6 @@ export const Dropdown = (props: DropdownProps) => {
       >
         {disclosure.isOpen && props.children}
       </Portal>
-    </Button>
+    </DropdownButton>
   )
 }
