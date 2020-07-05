@@ -1,11 +1,10 @@
 import React, { useRef, useContext } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
-import styled, { ThemeContext } from 'styled-components'
+import { ThemeContext } from 'styled-components'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Portal } from '../portal'
 import { Flex } from '../flex'
-import { Box } from '../box'
 import { useDisclosure } from '../../mixins/disclosure'
 // eslint-disable-next-line no-unused-vars
 import { UserSize, getIconSize } from '../../mixins/size'
