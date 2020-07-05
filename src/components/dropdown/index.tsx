@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useCallback } from 'react'
+import React, { useRef, useContext } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
 import styled, { ThemeContext } from 'styled-components'
 import { Text } from '../text'
@@ -46,25 +46,22 @@ export const Dropdown = (props: DropdownProps) => {
   const onAlignElements = props.onAlignElements
     ? props.onAlignElements
     : onAlignElementsBottom('left')
-  const onElement = useCallback(
-    (el: HTMLDivElement): void => {
-      el.style.position = 'absolute'
-      if (menuRef === undefined || menuRef === null) {
-        return
-      }
-      const menuNode = menuRef.current
-      if (menuNode === undefined || menuNode === null) {
-        return
-      }
-      const coords = onAlignElements(menuNode, el)
-      el.style.left = `${coords.left}px`
-      el.style.top = `${coords.top}px`
-      el.addEventListener('mouseleave', () => {
-        disclosure.setIsOpen(false)
-      })
-    },
-    [menuRef]
-  )
+  const onElement = (el: HTMLDivElement): void => {
+    el.style.position = 'absolute'
+    if (menuRef === undefined || menuRef === null) {
+      return
+    }
+    const menuNode = menuRef.current
+    if (menuNode === undefined || menuNode === null) {
+      return
+    }
+    const coords = onAlignElements(menuNode, el)
+    el.style.left = `${coords.left}px`
+    el.style.top = `${coords.top}px`
+    el.addEventListener('mouseleave', () => {
+      disclosure.setIsOpen(false)
+    })
+  }
   let hover = props.event ? props.event === 'hover' : false
   let click = props.event ? props.event === 'click' : false
   if (!hover && !click) {
@@ -76,16 +73,16 @@ export const Dropdown = (props: DropdownProps) => {
     hover = false
     click = true
   }
-  const onMouseEnter = useCallback(() => {
+  const onMouseEnter = () => {
     if (hover) {
       disclosure.setIsOpen(true)
     }
-  }, [hover])
-  const onClick = useCallback(() => {
+  }
+  const onClick = () => {
     if (click) {
       disclosure.setIsOpen()
     }
-  }, [click])
+  }
   const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
   const textSize = props.size ? props.size : 'small'
   return (
