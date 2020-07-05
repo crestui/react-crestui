@@ -33,9 +33,6 @@ const DropdownDrop = styled(Box)<{ visible: boolean }>`
     visible !== undefined && !visible && 'clip-path: polygon(0 0);'}
   pointer-events: ${(props) =>
     props.visible !== undefined && props.visible ? 'auto' : 'none'};
-  border-radius: ${(props) =>
-    props.visible !== undefined && props.visible ? '0px' : '1px'};
-  transition: border-radius ease-in 2.0s;
 `
 
 export const Dropdown = (props: DropdownProps) => {
