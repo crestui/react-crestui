@@ -56,7 +56,7 @@ export interface ToggleProps {
 }
 
 export const Toggle = (props: ToggleProps) => {
-  const thisId = nextId()
+  const thisId = nextId('toggle-id-')
   return (
     <Label pos='relative' htmlFor={thisId} p={1}>
       <ToggleInput

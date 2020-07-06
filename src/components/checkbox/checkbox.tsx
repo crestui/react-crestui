@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { applyHiddenInput } from './mixins'
 import nextId from 'react-id-generator'
 import { Label } from '../label'
+// eslint-disable-next-line no-unused-vars
+import { CheckboxState } from './use-checkbox'
 
 const CheckboxContent = styled.div<{ disabled?: boolean }>`
   position: relative;
@@ -48,22 +50,21 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 
 export interface CheckboxProps {
   children: React.ReactNode
-  value: boolean
+  checkboxState: CheckboxState
   name: string
   disabled?: boolean
 }
 
 export const Checkbox = (props: CheckboxProps) => {
-  const [checked, setChecked] = useState(props.value)
-  const thisId = nextId()
+  const thisId = nextId('checkbox-id-')
   return (
     <Label pos='relative' htmlFor={thisId} p={1}>
       <CheckboxInput
         id={thisId}
         name={props.name}
-        checked={checked}
+        checked={props.checkboxState.checked}
         onChange={() => {
-          setChecked(props.value)
+          props.checkboxState.toggleChecked()
         }}
       />
       <CheckboxContent>{props.children}</CheckboxContent>
