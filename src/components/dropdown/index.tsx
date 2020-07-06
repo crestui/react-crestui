@@ -56,15 +56,15 @@ export const Dropdown = (props: DropdownProps) => {
     })
   }
   let hover = props.event ? props.event === 'hover' : false
-  let click = props.event ? props.event === 'click' : false
-  if (!hover && !click) {
+  let focus = props.event ? props.event === 'focus' : false
+  if (!hover && !focus) {
     throw new Error(
-      `Dropdown event should be one of 'hover' / 'click'. Current value: ${props.event}`
+      `Dropdown event should be one of 'hover' / 'focus'. Current value: ${props.event}`
     )
   }
   if (!mq.isDesktopOrLaptop && hover) {
     hover = false
-    click = true
+    focus = true
   }
   const onMouseEnter = () => {
     if (hover) {
@@ -72,7 +72,7 @@ export const Dropdown = (props: DropdownProps) => {
     }
   }
   const onClick = () => {
-    if (click) {
+    if (focus) {
       disclosure.setIsOpen()
     }
   }
