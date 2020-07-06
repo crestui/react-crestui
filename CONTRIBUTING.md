@@ -5,18 +5,18 @@
 The documentation are written using gitbook.
 
 `
-$ npm install gitbook-cli -g
+$ npm install docsify-cli -g
 `
 
 ### View
 
 `
-$ gitbook serve
+$ docsify serve
 `
 
 ### Build
 
 `
-$ gitbook build
+$ docsify build
 `
 
