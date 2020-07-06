@@ -1,4 +1,4 @@
-import { Checkbox } from '.'
+import { Checkbox } from './checkbox'
 
 describe('Checkbox', () => {
   it('is truthy', () => {
