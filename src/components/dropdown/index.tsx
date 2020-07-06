@@ -5,7 +5,6 @@ import { Text } from '../text'
 import { Button } from '../button'
 import { Portal } from '../portal'
 import { Flex } from '../flex'
-import { Box } from '../box'
 import { useDisclosure } from '../../mixins/disclosure'
 // eslint-disable-next-line no-unused-vars
 import { UserSize, getIconSize } from '../../mixins/size'
@@ -28,15 +27,9 @@ export interface DropdownProps {
   event?: string
 }
 
-const DropdownDrop = styled(Box)<{ visible: boolean }>`
-  ${({ visible }) =>
-    visible !== undefined && !visible && 'clip-path: polygon(0 0);'}
-  pointer-events: ${(props) =>
-    props.visible !== undefined && props.visible ? 'auto' : 'none'};
-  border-radius: ${(props) =>
-    props.visible !== undefined && props.visible ? '0px' : '1px'};
-  transition: border-radius ease-in 2.0s;
-`
+const DropdownButton = styled(Button).attrs({
+  type: 'button'
+})``
 
 export const Dropdown = (props: DropdownProps) => {
   const menuRef = useRef<HTMLButtonElement>(null)
@@ -47,7 +40,7 @@ export const Dropdown = (props: DropdownProps) => {
     ? props.onAlignElements
     : onAlignElementsBottom('left')
   const onElement = (el: HTMLDivElement): void => {
-    el.style.position = 'absolute'
+    el.style.position = 'fixed'
     if (menuRef === undefined || menuRef === null) {
       return
     }
@@ -63,15 +56,15 @@ export const Dropdown = (props: DropdownProps) => {
     })
   }
   let hover = props.event ? props.event === 'hover' : false
-  let click = props.event ? props.event === 'click' : false
-  if (!hover && !click) {
+  let focus = props.event ? props.event === 'focus' : false
+  if (!hover && !focus) {
     throw new Error(
-      `Dropdown event should be one of 'hover' / 'click'. Current value: ${props.event}`
+      `Dropdown event should be one of 'hover' / 'focus'. Current value: ${props.event}`
     )
   }
   if (!mq.isDesktopOrLaptop && hover) {
     hover = false
-    click = true
+    focus = true
   }
   const onMouseEnter = () => {
     if (hover) {
@@ -79,14 +72,14 @@ export const Dropdown = (props: DropdownProps) => {
     }
   }
   const onClick = () => {
-    if (click) {
+    if (focus) {
       disclosure.setIsOpen()
     }
   }
   const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
   const textSize = props.size ? props.size : 'small'
   return (
-    <Button ref={menuRef} link>
+    <DropdownButton ref={menuRef} link>
       <Flex
         flexDirection='row'
         alignItems='center'
@@ -111,10 +104,8 @@ export const Dropdown = (props: DropdownProps) => {
         onElement={onElement}
         closeOnMouseLeave={hover}
       >
-        <DropdownDrop visible={disclosure.isOpen}>
-          {props.children}
-        </DropdownDrop>
+        {disclosure.isOpen && props.children}
       </Portal>
-    </Button>
+    </DropdownButton>
   )
 }

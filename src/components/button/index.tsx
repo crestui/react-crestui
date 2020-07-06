@@ -5,11 +5,12 @@ import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 import { SizeProps, applySizeProps } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { ColorProps, applyColorProps } from '../../mixins/color'
+// eslint-disable-next-line no-unused-vars
+import { BorderProps, applyBorderProps } from '../../mixins/border'
 
 export interface ButtonProps {
   disabled?: boolean
   variant?: string
-  radius?: string
   link?: boolean
 }
 
@@ -18,9 +19,9 @@ export interface ButtonProps {
  */
 // eslint-disable-next-line no-empty-pattern
 export const Button = styled.button<
-  ButtonProps & BoxAlignProps & SizeProps & ColorProps
+  ButtonProps & BoxAlignProps & SizeProps & ColorProps & BorderProps
 >`
-  display: block;
+  display: inline-block;
   box-sizing: border-box;
   align-items: flex-start;
   cursor: pointer;
@@ -30,8 +31,9 @@ export const Button = styled.button<
   -moz-appearance: none;
   box-shadow: none;
   background: transparent;
-  margin: 0px;
-  outline: 0;
+  margin: 0;
+  outline: none;
+  border: none;
 
   ${({ link }) => link && 'border: none; '}
 
@@ -48,4 +50,7 @@ export const Button = styled.button<
   ${applySizeProps}
 
   ${applyColorProps}
+
+  ${applyBorderProps}
+
 `

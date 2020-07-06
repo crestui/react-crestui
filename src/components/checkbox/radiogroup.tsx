@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useMemo } from 'react'
 import { Flex } from '../flex'
 import nextId from 'react-id-generator'
 
@@ -19,21 +19,39 @@ export const RadioGroupContext = createContext<RadioGroupState>({
   setValue: () => {}
 })
 
+export function useRadioGroup(
+  pValue?: string,
+  pName?: string
+): RadioGroupState {
+  const actualName =
+    pName !== undefined && pName !== null ? pName : nextId('rg-name-')
+  const actualValue = pValue !== undefined && pValue !== null ? pValue : ''
+  const [name, setName] = useState(actualName)
+  const [value, setValue] = useState(actualValue)
+  return useMemo(
+    () => ({
+      name,
+      setName,
+      value,
+      setValue
+    }),
+    [name, setName, value, setValue]
+  )
+}
+
 export interface RadioGroupProps {
   children: React.ReactNode
-  name?: string
-  selectedValue?: string
+  rgState: RadioGroupState
   direction?: string
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const selectedValue = props.selectedValue ? props.selectedValue : ''
-  const direction = props.direction ? props.direction : 'row'
-  const [value, setValue] = useState(selectedValue)
-  const givenName = props.name ? props.name : nextId('rg-name-')
-  const [name, setName] = useState(givenName)
+  const direction =
+    props.direction !== undefined && props.direction !== null
+      ? props.direction
+      : 'row'
   return (
-    <RadioGroupContext.Provider value={{ name, setName, value, setValue }}>
+    <RadioGroupContext.Provider value={props.rgState}>
       <Flex
         flexDirection={direction}
         style={{
@@ -45,3 +63,5 @@ export const RadioGroup = (props: RadioGroupProps) => {
     </RadioGroupContext.Provider>
   )
 }
+
+export default RadioGroup

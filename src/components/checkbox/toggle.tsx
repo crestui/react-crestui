@@ -6,7 +6,7 @@ import { Label } from '../label'
 // eslint-disable-next-line no-unused-vars
 import { CheckboxState } from './use-checkbox'
 
-const CheckboxContent = styled.div<{ disabled?: boolean }>`
+const ToggleContent = styled.div<{ disabled?: boolean }>`
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -29,37 +29,37 @@ const CheckboxContent = styled.div<{ disabled?: boolean }>`
   }
 `
 
-const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
+const ToggleInput = styled.input.attrs({ type: 'radio' })`
   ${applyHiddenInput}
 
 
-  &:checked ~ ${CheckboxContent}::before {
+  &:checked ~ ${ToggleContent}::before {
     ${(props) =>
       'background-color: ' + props.theme.colors.primary + ' !important;'}
   }
 
-  &:focus ~ ${CheckboxContent}::before {
+  &:focus ~ ${ToggleContent}::before {
     ${(props) =>
       'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
   }
 
-  &:hover ~ ${CheckboxContent}::before {
+  &:hover ~ ${ToggleContent}::before {
     ${(props) => 'box-shadow: 0 0 0 2px ' + props.theme.colors.primary + ';'};
   }
 `
 
-export interface CheckboxProps {
+export interface ToggleProps {
   children: React.ReactNode
-  checkboxState: CheckboxState
   name: string
+  checkboxState: CheckboxState
   disabled?: boolean
 }
 
-export const Checkbox = (props: CheckboxProps) => {
-  const thisId = nextId('checkbox-id-')
+export const Toggle = (props: ToggleProps) => {
+  const thisId = nextId('toggle-id-')
   return (
     <Label pos='relative' htmlFor={thisId} p={1}>
-      <CheckboxInput
+      <ToggleInput
         id={thisId}
         name={props.name}
         checked={props.checkboxState.checked}
@@ -67,9 +67,9 @@ export const Checkbox = (props: CheckboxProps) => {
           props.checkboxState.toggleChecked()
         }}
       />
-      <CheckboxContent>{props.children}</CheckboxContent>
+      <ToggleContent>{props.children}</ToggleContent>
     </Label>
   )
 }
 
-export default Checkbox
+export default Toggle

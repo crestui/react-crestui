@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import nextId from 'react-id-generator'
+import { applyHiddenInput } from './mixins'
 import { Label } from '../label'
 import { RadioGroupContext } from './radiogroup'
 
@@ -25,19 +26,6 @@ const RadioContent = styled.div<{ disabled?: boolean }>`
     cursor: pointer;
     transform: translateY(50%);
   }
-`
-
-export const applyHiddenInput = css`
-  position: absolute;
-  box-sizing: border-box;
-  clip-path: polygon(0 0);
-  float: left;
-  width: 1px;
-  height: 1px;
-  border: 0;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
 `
 
 const RadioInput = styled.input.attrs({ type: 'radio' })`
