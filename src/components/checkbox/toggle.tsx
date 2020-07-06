@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { applyHiddenInput } from './mixins'
 import nextId from 'react-id-generator'
 import { Label } from '../label'
-import { RadioGroupContext } from './radiogroup'
 
 const ToggleContent = styled.div<{ disabled?: boolean }>`
   position: relative;
@@ -49,25 +48,22 @@ const ToggleInput = styled.input.attrs({ type: 'radio' })`
 
 export interface ToggleProps {
   children: React.ReactNode
-  value: string
+  value: boolean
+  name: string
   disabled?: boolean
 }
 
 export const Toggle = (props: ToggleProps) => {
-  const rgContext = useContext(RadioGroupContext)
-  const [checked, setChecked] = useState(rgContext.value === props.value)
-  useEffect(() => {
-    setChecked(rgContext.value === props.value)
-  }, [rgContext.value])
+  const [checked, setChecked] = useState(props.value)
   const thisId = nextId()
   return (
     <Label pos='relative' htmlFor={thisId} p={1}>
       <ToggleInput
         id={thisId}
-        name={rgContext.name}
+        name={props.name}
         checked={checked}
         onChange={() => {
-          rgContext.setValue(props.value)
+          setChecked(props.value)
         }}
       />
       <ToggleContent>{props.children}</ToggleContent>
