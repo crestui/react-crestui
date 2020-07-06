@@ -1,4 +1,4 @@
-export { Checkbox } from './checkbox'
-export { Radio } from './radio'
-export { RadioGroup } from './radiogroup'
-export { Toggle } from './toggle'
+export * from './checkbox'
+export * from './radio'
+export * from './radiogroup'
+export * from './toggle'
