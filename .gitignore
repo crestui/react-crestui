@@ -25,3 +25,6 @@ _bundles
 
 # no npm please. Use yarn preferably
 package-lock.json
+
+# gitbook
+_book
