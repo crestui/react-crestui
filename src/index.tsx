@@ -1,6 +1,6 @@
 export { Flex } from './components/flex'
 export { Box } from './components/box'
-export { Checkbox, Radio, RadioGroup } from './components/checkbox'
+export * from './components/checkbox'
 export { Container } from './components/container'
 export { Button } from './components/button'
 export * from './components/input'

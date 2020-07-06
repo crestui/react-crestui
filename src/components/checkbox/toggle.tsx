@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { applyHiddenInput } from './mixins'
 import nextId from 'react-id-generator'
 import { Label } from '../label'
+// eslint-disable-next-line no-unused-vars
+import { CheckboxState } from './use-checkbox'
 
 const ToggleContent = styled.div<{ disabled?: boolean }>`
   position: relative;
@@ -48,22 +50,21 @@ const ToggleInput = styled.input.attrs({ type: 'radio' })`
 
 export interface ToggleProps {
   children: React.ReactNode
-  value: boolean
   name: string
+  checkboxState: CheckboxState
   disabled?: boolean
 }
 
 export const Toggle = (props: ToggleProps) => {
-  const [checked, setChecked] = useState(props.value)
   const thisId = nextId()
   return (
     <Label pos='relative' htmlFor={thisId} p={1}>
       <ToggleInput
         id={thisId}
         name={props.name}
-        checked={checked}
+        checked={props.checkboxState.checked}
         onChange={() => {
-          setChecked(props.value)
+          props.checkboxState.toggleChecked()
         }}
       />
       <ToggleContent>{props.children}</ToggleContent>
