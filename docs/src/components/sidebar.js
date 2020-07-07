@@ -21,6 +21,11 @@ const ComponentsSidebar = ({ children }) => {
             <Text>Box</Text>
           </StyledGatsbyLink>
         </Box>
+        <Box py={2}>
+          <StyledGatsbyLink to="/react-crestui/components/dropdown">
+            <Text>Dropdown</Text>
+          </StyledGatsbyLink>
+        </Box>
       </Flex>
       <Box>
         { children }
