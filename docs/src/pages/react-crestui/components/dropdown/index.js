@@ -1,9 +1,7 @@
 import React from "react"
 import { LiveProvider , LiveEditor, LiveError, LivePreview } from 'react-live'
-import ComponentsSidebar from "@components/sidebar"
-import Layout from "@components/layout"
-import SEO from "@components/seo"
-import { MQProvider, Dropdown, Box } from 'react-crestui'
+import ReactComponentsLayout from "@components/react-component-layout"
+import { MQProvider, Dropdown, Box, onAlignElementsBottom } from 'react-crestui'
 
 const ReactCrestComponentDropdown = () =>  {
   const code = `
@@ -18,19 +16,16 @@ const ReactCrestComponentDropdown = () =>  {
     </Dropdown>
   </MQProvider>
   `
-  const scope = { Dropdown, Box, MQProvider }
+  const scope = { Dropdown, Box, MQProvider, onAlignElementsBottom }
   return (
-      <Layout>
-        <SEO title="Dropdown - Components - React CrestUI" />
-        <ComponentsSidebar>
+      <ReactComponentsLayout title="Dropdown - Components - React CrestUI">
           <h2>Dropdown - Components - React CrestUI</h2>
           <LiveProvider code={code} scope={scope}>
             <LiveEditor />
             <LiveError />
             <LivePreview />
           </LiveProvider>
-        </ComponentsSidebar>
-      </Layout>
+      </ReactComponentsLayout>
   )
 }
 

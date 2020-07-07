@@ -1,8 +1,6 @@
 import React from "react"
+import ReactComponentsLayout from "@components/react-component-layout"
 import { LiveProvider , LiveEditor, LiveError, LivePreview } from 'react-live'
-import ComponentsSidebar from "../dropdown/node_modules/@components/sidebar"
-import Layout from "../dropdown/node_modules/@components/layout"
-import SEO from "../dropdown/node_modules/@components/seo"
 import { Flex } from 'react-crestui'
 
 const ReactCrestComponentFlex = () =>  {
@@ -46,17 +44,14 @@ const ReactCrestComponentFlex = () =>  {
   `
   const scope = { Flex }
   return (
-      <Layout>
-        <SEO title="Flex - Components - React CrestUI" />
-        <ComponentsSidebar>
-          <h2>Flex - Components - React CrestUI</h2>
+    <ReactComponentsLayout title="Flex - Components - React CrestUI">
+      <h2>Flex - Components - React CrestUI</h2>
           <LiveProvider code={code} scope={scope}>
             <LiveEditor />
             <LiveError />
             <LivePreview />
           </LiveProvider>
-        </ComponentsSidebar>
-      </Layout>
+    </ReactComponentsLayout>
   )
 }
 

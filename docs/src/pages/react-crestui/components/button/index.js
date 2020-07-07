@@ -1,15 +1,10 @@
 import React from "react"
-import ComponentsSidebar from "@components/sidebar"
-import Layout from "@components/layout"
-import SEO from "@components/seo"
+import ReactComponentsLayout from "@components/react-component-layout"
 
 const ReactCrestComponentButton = () => (
-  <Layout>
-    <SEO title="Button - Components - React CrestUI" />
-    <ComponentsSidebar>
-      <h2>Button - Components - React CrestUI</h2>
-    </ComponentsSidebar>
-  </Layout>
+  <ReactComponentsLayout title="Button - Components - React CrestUI">
+      <h2>Button</h2>
+  </ReactComponentsLayout>
 )
 
 export default ReactCrestComponentButton

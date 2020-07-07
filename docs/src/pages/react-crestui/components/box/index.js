@@ -1,15 +1,11 @@
 import React from "react"
-import ComponentsSidebar from "@components/sidebar"
-import Layout from "@components/layout"
-import SEO from "@components/seo"
+import ReactComponentsLayout from "@components/react-component-layout"
+
 
 const ReactCrestComponentBox = () => (
-  <Layout>
-    <SEO title="Box - Components - React CrestUI" />
-    <ComponentsSidebar>
+  <ReactComponentsLayout title="Box - Components - React CrestUI">
       <h2>Box - Components - React CrestUI</h2>
-    </ComponentsSidebar>
-  </Layout>
+  </ReactComponentsLayout>
 )
 
 export default ReactCrestComponentBox
