@@ -1,5 +1,5 @@
 import React from "react"
-import ComponentsSidebar from "@components/sidebar"
+import ComponentsSidebar from "@components/react-components-sidebar"
 import Layout from "@components/layout"
 import SEO from "@components/seo"
 
