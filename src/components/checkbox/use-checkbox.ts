@@ -20,7 +20,7 @@ export function useCheckbox(pChecked?: boolean): CheckboxState {
   const [checked, setChecked] = useState(actualChecked)
   const toggleChecked = useCallback(() => {
     setChecked(!checked)
-  }, [checked])
+  }, [checked, setChecked])
   return useMemo(
     () => ({
       checked,

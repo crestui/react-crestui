@@ -12,14 +12,14 @@ export function useDisclosure(open: boolean): IDisclosure {
   const [isOpen, setIsOpen] = useState(open)
   const toggleOpen = useCallback(() => {
     setIsOpen(!isOpen)
-  }, [isOpen])
+  }, [isOpen, setIsOpen])
   return useMemo(
     () => ({
       isOpen,
       setIsOpen,
       toggleOpen
     }),
-    [isOpen, toggleOpen]
+    [isOpen, setIsOpen, toggleOpen]
   )
 }
 
