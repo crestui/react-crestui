@@ -1,6 +1,6 @@
 import React from "react"
 import ReactComponentsLayout from "@components/react-component-layout"
-import { LiveProvider , LiveEditor, LiveError, LivePreview } from 'react-live'
+import LiveCodeComponent from "@components/live-code"
 import { Flex } from 'react-crestui'
 
 const ReactCrestComponentFlex = () =>  {
@@ -46,11 +46,7 @@ const ReactCrestComponentFlex = () =>  {
   return (
     <ReactComponentsLayout title="Flex - Components - React CrestUI">
       <h2>Flex - Components - React CrestUI</h2>
-          <LiveProvider code={code} scope={scope}>
-            <LiveEditor />
-            <LiveError />
-            <LivePreview />
-          </LiveProvider>
+      <LiveCodeComponent code={code} scope={scope} />
     </ReactComponentsLayout>
   )
 }

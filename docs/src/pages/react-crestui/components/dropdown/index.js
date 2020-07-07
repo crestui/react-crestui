@@ -1,6 +1,6 @@
 import React from "react"
-import { LiveProvider , LiveEditor, LiveError, LivePreview } from 'react-live'
 import ReactComponentsLayout from "@components/react-component-layout"
+import LiveCodeComponent from "@components/live-code"
 import { MQProvider, Dropdown, Box, onAlignElementsBottom } from 'react-crestui'
 
 const ReactCrestComponentDropdown = () =>  {
@@ -19,12 +19,8 @@ const ReactCrestComponentDropdown = () =>  {
   const scope = { Dropdown, Box, MQProvider, onAlignElementsBottom }
   return (
       <ReactComponentsLayout title="Dropdown - Components - React CrestUI">
-          <h2>Dropdown - Components - React CrestUI</h2>
-          <LiveProvider code={code} scope={scope}>
-            <LiveEditor />
-            <LiveError />
-            <LivePreview />
-          </LiveProvider>
+        <h2>Dropdown - Components - React CrestUI</h2>
+        <LiveCodeComponent code={code} scope={scope} />
       </ReactComponentsLayout>
   )
 }
