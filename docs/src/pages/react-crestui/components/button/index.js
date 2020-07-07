@@ -1,22 +1,15 @@
 import React from "react"
-import { Box } from 'react-crestui'
-import StyledGatsbyLink from "@components/link"
+import ComponentsSidebar from "@components/sidebar"
 import Layout from "@components/layout"
 import SEO from "@components/seo"
 
-const ReactCrestUIComponentsHome = () => (
+const ReactCrestComponentButton = () => (
   <Layout>
-    <SEO title="Home" />
-    <h2>Components - React CrestUI</h2>
-    <Box pl={'10%'}>
-      <StyledGatsbyLink to="button">
-        Button
-      </StyledGatsbyLink>
-      <StyledGatsbyLink to="flex">
-        Flex
-      </StyledGatsbyLink>
-    </Box>
+    <SEO title="Button - Components - React CrestUI" />
+    <ComponentsSidebar>
+      <h2>Button - Components - React CrestUI</h2>
+    </ComponentsSidebar>
   </Layout>
 )
 
-export default ReactCrestUIComponentsHome
+export default ReactCrestComponentButton
