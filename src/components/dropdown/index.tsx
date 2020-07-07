@@ -73,7 +73,7 @@ export const Dropdown = (props: DropdownProps) => {
   }
   const onClick = () => {
     if (focus) {
-      disclosure.setIsOpen()
+      disclosure.setIsOpen(true)
     }
   }
   const iconSize = props.size ? getIconSize(theme, props.size) : '1.0rem'

@@ -32,14 +32,14 @@ export interface BorderProps {
 }
 
 export const applyBorderProps = css<BorderProps>`
-  ${({ radius }) =>
-    radius && 'border-radius: ' + getSize(radius) + ' !important;'}
+  ${({ theme, radius }) =>
+    radius && 'border-radius: ' + getSize(theme, radius) + ' !important;'}
 
   ${({ bs }) => bs && 'border-style: ' + bs + ';'}
 
-  ${({ bw }) => bw && 'border-width: ' + getSize(bw) + ';'}
+  ${({ theme, bw }) => bw && 'border-width: ' + getSize(theme, bw) + ';'}
 
-  ${({ bc }) => bc && 'border-color: ' + getColor(bc) + ';'}
+  ${({ theme, bc }) => bc && 'border-color: ' + getColor(theme, bc) + ';'}
 
   ${({ shadow }) => shadow && 'box-shadow: ' + shadow + ';'}
 `
