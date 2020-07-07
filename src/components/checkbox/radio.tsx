@@ -58,7 +58,7 @@ export const Radio = (props: RadioProps) => {
   const [checked, setChecked] = useState(rgContext.value === props.value)
   useEffect(() => {
     setChecked(rgContext.value === props.value)
-  }, [rgContext.value])
+  }, [rgContext.value, props.value])
   const thisId = nextId()
   return (
     <Label pos='relative' htmlFor={thisId} p={1}>

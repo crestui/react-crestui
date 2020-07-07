@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 
 export interface IDisclosure {
   isOpen: boolean
@@ -10,16 +10,16 @@ export interface IDisclosure {
 
 export function useDisclosure(open: boolean): IDisclosure {
   const [isOpen, setIsOpen] = useState(open)
-  const toggleOpen = () => {
+  const toggleOpen = useCallback(() => {
     setIsOpen(!isOpen)
-  }
+  }, [isOpen])
   return useMemo(
     () => ({
       isOpen,
       setIsOpen,
       toggleOpen
     }),
-    [isOpen]
+    [isOpen, toggleOpen]
   )
 }
 

@@ -87,13 +87,14 @@ export const Portal = (props: PortalProps) => {
     })
   }
   el.style.zIndex = zIndex.toString()
+  const onElement = props.onElement
   useEffect(() => {
     mount.appendChild(el)
-    props.onElement(el)
+    onElement(el)
     return () => {
       mount.removeChild(el)
     }
-  }, [el, mount, closeOnMouseLeave])
+  }, [el, mount, closeOnMouseLeave, onElement])
 
   return createPortal(props.children, el)
 }

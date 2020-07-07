@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from 'react'
+import { createContext, useState, useMemo, useCallback } from 'react'
 
 export interface CheckboxState {
   checked: boolean
@@ -18,9 +18,9 @@ export function useCheckbox(pChecked?: boolean): CheckboxState {
   const actualChecked =
     pChecked !== undefined && pChecked !== null ? pChecked : false
   const [checked, setChecked] = useState(actualChecked)
-  const toggleChecked = () => {
+  const toggleChecked = useCallback(() => {
     setChecked(!checked)
-  }
+  }, [checked])
   return useMemo(
     () => ({
       checked,
