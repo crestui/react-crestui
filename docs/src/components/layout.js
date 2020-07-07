@@ -12,7 +12,14 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Flex } from 'react-crestui'
 import { DocsTheme } from './docs-theme'
 import Header from "./header"
+import { createGlobalStyle } from 'styled-components';
 import "./layout.css"
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    font: 400 18px Rubik, sans-serif;
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,13 +34,12 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={DocsTheme}>
+      <GlobalStyles />
       <Header siteTitle={data.site.siteMetadata.title} />
       <Flex flexDirection='column' p={5}>
         <main p={2}>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          © {new Date().getFullYear()}
         </footer>
       </Flex>
     </ThemeProvider>

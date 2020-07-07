@@ -13,14 +13,18 @@
     "gatsby-plugin-sharp": "2.6.18",
     "gatsby-source-filesystem": "2.3.18",
     "gatsby-transformer-sharp": "2.5.10",
+    "gatsby-plugin-styled-components": "3.3.9",
     "prop-types": "15.7.2",
     "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom",
-    "typescript": "link:../node_modules/typescript",
     "react-crestui": "link:..",
+    "react-dom": "link:../node_modules/react-dom",
     "react-helmet": "6.1.0",
+    "react-is": "link:../node_modules/react-is",
     "react-live": "2.2.2",
-    "react-refresh": "0.8.3"
+    "react-refresh": "0.8.3",
+    "babel-plugin-styled-components" : "1.10.7",
+    "typeface-rubik": "^0.0.72",
+    "typescript": "link:../node_modules/typescript"
   },
   "devDependencies": {
     "prettier": "2.0.5"
