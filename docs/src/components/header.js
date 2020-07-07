@@ -1,20 +1,8 @@
-import { Link } from 'gatsby';
 import PropTypes from "prop-types"
 import React from "react"
-import styled from 'styled-components'
 import { Flex, Box } from 'react-crestui'
+import StyledGatsbyLink from './link'
 
-export const StyledGatsbyLink = styled(Link)`
-  box-shadow: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: black;
-
-  &:hover {
-    color: #30359B;
-    text-decoration: 'underline';
-  }
-`
 
 const Header = ({ siteTitle }) => (
   <header>
