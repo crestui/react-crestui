@@ -9,6 +9,7 @@ export const DocsTheme = {
       jam: '#aa1155',
       tooltip: '#2F4F4F'
    },
+   spaceInRem: 0.25,
    button: {
     borderRadius: '3.0rem'
    }

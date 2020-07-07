@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={DocsTheme}>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <Flex flexDirection='column' p={2}>
+      <Flex flexDirection='column' p={5}>
         <main p={2}>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 // eslint-disable-next-line no-unused-vars
 import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
-import { SizeProps, applySizeProps } from '../../mixins/size'
+import { SizeProps, applySizeProps, getSize } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { ColorProps, applyColorProps } from '../../mixins/color'
 // eslint-disable-next-line no-unused-vars
@@ -38,11 +38,9 @@ export const Button = styled.button<
   ${({ link }) => link && 'border: none; '}
 
 
-  ${(props) =>
-    props.theme.button.borderRadius &&
-    props.radius === undefined &&
-    props.radius === null
-      ? 'border-radius : ' + props.theme.button.borderRadius + ';'
+  ${({ theme, radius }) =>
+    theme.button.borderRadius && radius === undefined && radius === null
+      ? 'border-radius : ' + getSize(theme, theme.button.borderRadius) + ';'
       : ''}
 
   ${applyBoxAlignProps}
