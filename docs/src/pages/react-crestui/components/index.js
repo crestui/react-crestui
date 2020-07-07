@@ -1,8 +1,8 @@
 import React from "react"
 import { Flex, Box, Text } from 'react-crestui'
-import StyledGatsbyLink from "../../../components/link"
-import Layout from "../../../components/layout"
-import SEO from "../../../components/seo"
+import StyledGatsbyLink from "@components/link"
+import Layout from "@components/layout"
+import SEO from "@components/seo"
 
 const ReactCrestUIComponentsHome = () => (
   <Layout>
