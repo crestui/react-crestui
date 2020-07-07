@@ -2,13 +2,12 @@ import { Link } from 'gatsby';
 import PropTypes from "prop-types"
 import React from "react"
 import styled from 'styled-components'
-import { Flex } from 'react-crestui'
+import { Flex, Box } from 'react-crestui'
 
-const StyledGatsbyLink = styled(Link)`
+export const StyledGatsbyLink = styled(Link)`
   box-shadow: none;
   text-decoration: none;
   text-transform: uppercase;
-  padding-left: 20px;
   color: black;
 
   &:hover {
@@ -19,10 +18,18 @@ const StyledGatsbyLink = styled(Link)`
 
 const Header = ({ siteTitle }) => (
   <header>
-    <Flex flexDirection='row' py={4} px={1}>
-        <StyledGatsbyLink to="/">
-          {siteTitle}
-        </StyledGatsbyLink>
+    <Flex flexDirection='row'
+      justifyContent='space-between' py={4} px={1}>
+        <Box pl={'10%'}>
+          <StyledGatsbyLink to="/">
+            {siteTitle}
+          </StyledGatsbyLink>
+        </Box>
+        <Box pr={'10%'}>
+          <StyledGatsbyLink to="/react-crestui">
+            react-crestui
+          </StyledGatsbyLink>
+        </Box>
     </Flex>
   </header>
 )

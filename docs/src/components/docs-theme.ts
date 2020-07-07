@@ -10,6 +10,6 @@ export const DocsTheme = {
    },
    spaceInRem: 0.25,
    button: {
-    borderRadius: '3.0rem'
+    borderRadius: 3
    }
 }

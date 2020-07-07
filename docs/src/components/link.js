@@ -1,11 +1,18 @@
 import { Link } from 'gatsby';
 import styled from 'styled-components'
-import getColor from 'react-crestui'
 
 const StyledGatsbyLink = styled(Link)`
-  ${({ theme, color }) => color && 'color: ' + getColor(theme, color) + ';'}
+  box-shadow: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
 
-  ${({ theme, bg }) => bg && 'background-color: ' + getColor(theme, bg) + ';'}
-`;
+  &:hover {
+    color: #30359B;
+    text-decoration: 'underline';
+  }
+`
+
+StyledGatsbyLink.propTypes = Link.propTypes
 
 export default StyledGatsbyLink
