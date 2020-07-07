@@ -12,7 +12,7 @@ export type UserSize =
   | 'xx-large'
   | 'xxx-large'
 
-export function getSize(theme: any, size: number | string): string {
+export const getSize = (theme: any, size: number | string): string => {
   if (isNumber(size)) {
     const y = +size
     return theme.spaceInRem * y + 'rem'
@@ -21,7 +21,7 @@ export function getSize(theme: any, size: number | string): string {
   }
 }
 
-export function getIconSize(theme: any, userSize: UserSize): string {
+export const getIconSize = (theme: any, userSize: UserSize): string => {
   switch (userSize) {
     case 'xx-small':
       return getSize(theme, theme.iconSizes[0])

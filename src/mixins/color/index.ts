@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-export function getColor(theme: any, colorKey: string): string {
+export const getColor = (theme: any, colorKey: string): string => {
   if (colorKey in theme.colors) {
     return theme.colors[colorKey]
   } else {
