@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `React Components for CrestUI`,
+    title: `CrestUI`,
     description: `Description for react components for crest-ui library.`,
     author: `@crestui`,
   },

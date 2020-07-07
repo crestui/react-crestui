@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 
 const isNumber = (n: string | number) => typeof n === 'number' && !isNaN(n)
 
-export type UserSize =
+export type ComponentSize =
   | 'xx-small'
   | 'x-small'
   | 'small'
@@ -21,8 +21,11 @@ export const getSize = (theme: any, size: number | string): string => {
   }
 }
 
-export const getIconSize = (theme: any, userSize: UserSize): string => {
-  switch (userSize) {
+export const getIconSize = (
+  theme: any,
+  componentSize: ComponentSize
+): string => {
+  switch (componentSize) {
     case 'xx-small':
       return getSize(theme, theme.iconSizes[0])
       break
@@ -48,7 +51,9 @@ export const getIconSize = (theme: any, userSize: UserSize): string => {
       return getSize(theme, theme.iconSizes[7])
       break
     default:
-      throw new Error(`Invalid size value - ${userSize} given as parameter`)
+      throw new Error(
+        `Invalid size value - ${componentSize} given as parameter`
+      )
   }
 }
 

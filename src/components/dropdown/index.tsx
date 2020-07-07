@@ -7,7 +7,7 @@ import { Portal } from '../portal'
 import { Flex } from '../flex'
 import { useDisclosure } from '../../mixins/disclosure'
 // eslint-disable-next-line no-unused-vars
-import { UserSize, getIconSize } from '../../mixins/size'
+import { ComponentSize, getIconSize } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
 import { MQContext } from '../../contexts/mq'
@@ -15,7 +15,7 @@ import { MQContext } from '../../contexts/mq'
 export interface DropdownProps {
   label: string
 
-  size?: UserSize
+  size?: ComponentSize
 
   onAlignElements?: onAlignElementsFunc
 
