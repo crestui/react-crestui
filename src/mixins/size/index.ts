@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import { ThemeContext, css } from 'styled-components'
+import { css } from 'styled-components'
 
 const isNumber = (n: string | number) => typeof n === 'number' && !isNaN(n)
 
@@ -13,13 +12,7 @@ export type UserSize =
   | 'xx-large'
   | 'xxx-large'
 
-export function getSize(size: number | string): string {
-  const theme = useContext(ThemeContext)
-  if (theme === null || theme === undefined) {
-    throw new Error(
-      'Set a default theme using ThemeContextProvider before proceeding'
-    )
-  }
+export function getSize(theme: any, size: number | string): string {
   if (isNumber(size)) {
     const y = +size
     return theme.spaceInRem * y + 'rem'
@@ -28,32 +21,31 @@ export function getSize(size: number | string): string {
   }
 }
 
-export function getIconSize(userSize: UserSize): string {
-  const theme = useContext(ThemeContext)
+export function getIconSize(theme: any, userSize: UserSize): string {
   switch (userSize) {
     case 'xx-small':
-      return getSize(theme.iconSizes[0])
+      return getSize(theme, theme.iconSizes[0])
       break
     case 'x-small':
-      return getSize(theme.iconSizes[1])
+      return getSize(theme, theme.iconSizes[1])
       break
     case 'small':
-      return getSize(theme.iconSizes[2])
+      return getSize(theme, theme.iconSizes[2])
       break
     case 'medium':
-      return getSize(theme.iconSizes[3])
+      return getSize(theme, theme.iconSizes[3])
       break
     case 'large':
-      return getSize(theme.iconSizes[4])
+      return getSize(theme, theme.iconSizes[4])
       break
     case 'x-large':
-      return getSize(theme.iconSizes[5])
+      return getSize(theme, theme.iconSizes[5])
       break
     case 'xx-large':
-      return getSize(theme.iconSizes[6])
+      return getSize(theme, theme.iconSizes[6])
       break
     case 'xxx-large':
-      return getSize(theme.iconSizes[7])
+      return getSize(theme, theme.iconSizes[7])
       break
     default:
       throw new Error(`Invalid size value - ${userSize} given as parameter`)
@@ -86,51 +78,61 @@ export const applySizeProps = css<SizeProps>`
 
   ${({ h }) => h && 'height: ' + h + ';'}
 
-  ${({ p }) => p && 'padding: ' + getSize(p) + ';'}
+  ${({ theme, p }) => p && 'padding: ' + getSize(theme, p) + ';'}
 
-  ${({ px }) =>
+  ${({ theme, px }) =>
     px &&
     'padding-left: ' +
-      getSize(px) +
+      getSize(theme, px) +
       ';' +
       ' padding-right: ' +
-      getSize(px) +
+      getSize(theme, px) +
       '; '}
 
-  ${({ py }) =>
+  ${({ theme, py }) =>
     py &&
     'padding-top: ' +
-      getSize(py) +
+      getSize(theme, py) +
       ';' +
       ' padding-bottom: ' +
-      getSize(py) +
+      getSize(theme, py) +
       '; '}
 
-  ${({ pt }) => pt && 'padding-top: ' + getSize(pt) + ';'}
+  ${({ theme, pt }) => pt && 'padding-top: ' + getSize(theme, pt) + ';'}
 
-  ${({ pb }) => pb && 'padding-bottom: ' + getSize(pb) + ';'}
+  ${({ theme, pb }) => pb && 'padding-bottom: ' + getSize(theme, pb) + ';'}
 
-  ${({ pl }) => pl && 'padding-left: ' + getSize(pl) + ';'}
+  ${({ theme, pl }) => pl && 'padding-left: ' + getSize(theme, pl) + ';'}
 
-  ${({ pr }) => pr && 'padding-right: ' + getSize(pr) + ';'}
+  ${({ theme, pr }) => pr && 'padding-right: ' + getSize(theme, pr) + ';'}
 
-  ${({ m }) => m && 'margin: ' + getSize(m) + ';'}
+  ${({ theme, m }) => m && 'margin: ' + getSize(theme, m) + ';'}
 
-  ${({ mx }) =>
+  ${({ theme, mx }) =>
     mx &&
-    'margin-left: ' + getSize(mx) + ';' + ' margin-right: ' + getSize(mx) + ';'}
+    'margin-left: ' +
+      getSize(theme, mx) +
+      ';' +
+      ' margin-right: ' +
+      getSize(theme, mx) +
+      ';'}
 
-  ${({ my }) =>
+  ${({ theme, my }) =>
     my &&
-    'margin-top: ' + getSize(my) + ';' + ' margin-bottom: ' + getSize(my) + ';'}
+    'margin-top: ' +
+      getSize(theme, my) +
+      ';' +
+      ' margin-bottom: ' +
+      getSize(theme, my) +
+      ';'}
 
-  ${({ mt }) => mt && 'margin-top: ' + getSize(mt) + ';'}
+  ${({ theme, mt }) => mt && 'margin-top: ' + getSize(theme, mt) + ';'}
 
-  ${({ mb }) => mb && 'margin-bottom: ' + getSize(mb) + ';'}
+  ${({ theme, mb }) => mb && 'margin-bottom: ' + getSize(theme, mb) + ';'}
 
-  ${({ ml }) => ml && 'margin-left: ' + getSize(ml) + ';'}
+  ${({ theme, ml }) => ml && 'margin-left: ' + getSize(theme, ml) + ';'}
 
-  ${({ mr }) => mr && 'margin-right: ' + getSize(mr) + ';'}
+  ${({ theme, mr }) => mr && 'margin-right: ' + getSize(theme, mr) + ';'}
 
   ${({ fs }) => fs && 'font-size: ' + fs + ';'}
 `

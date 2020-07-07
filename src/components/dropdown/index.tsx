@@ -76,7 +76,7 @@ export const Dropdown = (props: DropdownProps) => {
       disclosure.setIsOpen()
     }
   }
-  const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
+  const iconSize = props.size ? getIconSize(theme, props.size) : '1.0rem'
   const textSize = props.size ? props.size : 'small'
   return (
     <DropdownButton ref={menuRef} link>
