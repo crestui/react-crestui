@@ -14,12 +14,13 @@
     "gatsby-source-filesystem": "2.3.18",
     "gatsby-transformer-sharp": "2.5.10",
     "prop-types": "15.7.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
+    "typescript": "link:../node_modules/typescript",
+    "react-crestui": "link:..",
     "react-helmet": "6.1.0",
     "react-live": "2.2.2",
-    "react-refresh": "0.8.3",
-    "typescript": "3.9.6"
+    "react-refresh": "0.8.3"
   },
   "devDependencies": {
     "prettier": "2.0.5"
