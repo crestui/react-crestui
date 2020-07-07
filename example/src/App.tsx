@@ -17,10 +17,10 @@ const App = () => {
                 outline: 'none'
             }}>
                 <Flex justifyContent='flex-start'>
-                    <Dropdown event='hover' label='Products' size={'medium'}
+                    <Dropdown event='focus' label='Products' size={'medium'}
                     onAlignElements={onAlignElementsBottom('left')}>
                         <Box bg='transparent' py={1} style={{
-                            transition: 'padding-top 1.0s ease-in 1s'
+
                         }}>
                             <Box bg='white' radius={0.5} bs={'solid'} bw={0.25} bc={'primary'} p={3}>
                                 Some interesting content here
