@@ -7,9 +7,10 @@
 
 import React from "react"
 import PropTypes from "prop-types"
+import { ThemeProvider } from 'styled-components'
 import { useStaticQuery, graphql } from "gatsby"
 import { Flex } from 'react-crestui'
-
+import { DocsTheme } from './docs-theme'
 import Header from "./header"
 import "./layout.css"
 
@@ -25,20 +26,17 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <ThemeProvider theme={DocsTheme}>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-        }}
-      >
-        <main>{children}</main>
+      <Flex flexDirection='column' p={2}>
+        <main p={2}>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
-    </>
+      </Flex>
+    </ThemeProvider>
   )
 }
 
