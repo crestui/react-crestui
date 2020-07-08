@@ -1,4 +1,4 @@
-import { Portal } from '.'
+import { Portal } from './functional-component'
 
 describe('Portal', () => {
   it('is truthy', () => {
