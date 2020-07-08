@@ -2,6 +2,7 @@ import React, { useRef, useContext, useEffect, useCallback } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
 import styled, { ThemeContext } from 'styled-components'
 import { Portal } from 'react-portal'
+import useOnClickOutside from 'use-onclickoutside'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Flex } from '../flex'
@@ -41,6 +42,9 @@ export const Dropdown = (props: DropdownProps) => {
     ? props.onAlignElements
     : onAlignElementsBottom('left')
   const portalRef = useRef<HTMLDivElement>(null)
+  useOnClickOutside(portalRef, () => {
+    disclosure.setIsOpen(false)
+  })
   const onElement = useCallback(
     (el: HTMLDivElement): void => {
       el.style.position = 'fixed'
