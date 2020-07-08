@@ -55,12 +55,15 @@ export interface PortalProps {
  *
  */
 export const Portal = (props: PortalProps) => {
+  if (typeof document === undefined) {
+    return null
+  }
   let portalRootId = props.portalRootId
   if (portalRootId === undefined || portalRootId === null) {
     portalRootId = defaultPortalRootId
   }
   if (props.onElement === undefined || props.onElement === null) {
-    throw new Error(`onElement function not defined`)
+    throw new Error(`props.onElement function not defined`)
   }
   const mount = document.getElementById(portalRootId)
   if (mount === null || mount === undefined) {
