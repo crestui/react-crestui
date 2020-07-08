@@ -4,7 +4,11 @@ import { createPortal } from 'react-dom'
 import IDisclosure from '../../mixins/disclosure'
 import useOnClickOutside from 'use-onclickoutside'
 
-export const defaultPortalRootId = 'portal-root'
+// Use a ternary operator to make sure that the document object is defined
+const portalRoot =
+  typeof document !== `undefined`
+    ? document.getElementById('portal-root')
+    : null
 
 export const defaultZIndex = 10
 
@@ -33,16 +37,6 @@ export interface PortalProps {
   onElement: (el: HTMLDivElement) => void
 
   /**
-   * portalRootId represents the id of the div in index.html under which portals are created.
-   *
-   * If not given, it defaults to 'defaultPortalRootId' variable published from react-crestui ( i.e. 'portal-root ).
-   *
-   * Unless there is a collision with the same div id, for most practical purposes, this variable is best left untouched
-   *
-   */
-  portalRootId?: string
-
-  /**
    * zIndex represents the zIndex to be given for this portal.
    *
    * If not given, it defaults to 'defaultZIndex' variable published from react-crestui ( i.e. 10 ).
@@ -55,51 +49,43 @@ export interface PortalProps {
  *
  */
 export const Portal = (props: PortalProps) => {
-  if (typeof document === undefined) {
-    return null
-  }
-  let portalRootId = props.portalRootId
-  if (portalRootId === undefined || portalRootId === null) {
-    portalRootId = defaultPortalRootId
-  }
-  if (props.onElement === undefined || props.onElement === null) {
-    throw new Error(`props.onElement function not defined`)
-  }
-  const mount = document.getElementById(portalRootId)
-  if (mount === null || mount === undefined) {
-    throw Error(
-      `No div of id ${portalRootId} defined in index.html for separate portal use. Portals not supported hence`
-    )
-  }
-  let zIndex = props.zIndex
-  if (zIndex === undefined || zIndex === null) {
-    zIndex = defaultZIndex
-  }
-  const el = document.createElement('div')
-  const portalRef = useRef<HTMLDivElement>(el)
+  console.info(`typeof document: ${typeof document}`)
+  const el =
+    typeof document !== `undefined` ? document.createElement('div') : null
+  const portalRef = useRef<HTMLElement>(el)
   useOnClickOutside(portalRef, () => {
     props.disclosure.setIsOpen(false)
   })
-  portalRef.current = el
-  const closeOnMouseLeave = props.closeOnMouseLeave
-    ? props.closeOnMouseLeave
-    : false
-  if (closeOnMouseLeave) {
-    el.addEventListener('mouseleave', () => {
-      props.disclosure.setIsOpen(false)
-    })
-  }
-  el.style.zIndex = zIndex.toString()
-  const onElement = props.onElement
   useEffect(() => {
-    mount.appendChild(el)
-    onElement(el)
-    return () => {
-      mount.removeChild(el)
+    if (portalRoot === null) {
+      return
     }
-  }, [el, mount, closeOnMouseLeave, onElement])
-
-  return createPortal(props.children, el)
+    if (props.onElement === undefined || props.onElement === null) {
+      throw new Error(`props.onElement function not defined`)
+    }
+    if (el === null) {
+      return
+    }
+    portalRoot.appendChild(el)
+    let zIndex = props.zIndex
+    if (zIndex === undefined || zIndex === null) {
+      zIndex = defaultZIndex
+    }
+    el.style.zIndex = zIndex.toString()
+    const closeOnMouseLeave = props.closeOnMouseLeave
+      ? props.closeOnMouseLeave
+      : false
+    if (closeOnMouseLeave) {
+      el.addEventListener('mouseleave', () => {
+        props.disclosure.setIsOpen(false)
+      })
+    }
+    props.onElement(el)
+    return () => {
+      portalRoot.removeChild(el)
+    }
+  }, [props, el])
+  return el !== null ? createPortal(props.children, el) : null
 }
 
 export default Portal
