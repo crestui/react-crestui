@@ -49,42 +49,43 @@ export interface PortalProps {
  *
  */
 export const Portal = (props: PortalProps) => {
-  console.info(`typeof document: ${typeof document}`)
   const el =
     typeof document !== `undefined` ? document.createElement('div') : null
   const portalRef = useRef<HTMLElement>(el)
   useOnClickOutside(portalRef, () => {
     props.disclosure.setIsOpen(false)
   })
+  const closeOnMouseLeave = props.closeOnMouseLeave
+    ? props.closeOnMouseLeave
+    : false
+  const onElement = props.onElement
+  const zIndex =
+    props.zIndex === undefined || props.zIndex === null
+      ? defaultZIndex
+      : props.zIndex
+  const disclosure = props.disclosure
   useEffect(() => {
     if (portalRoot === null) {
       return
     }
-    if (props.onElement === undefined || props.onElement === null) {
+    if (onElement === undefined || onElement === null) {
       throw new Error(`props.onElement function not defined`)
     }
     if (el === null) {
       return
     }
     portalRoot.appendChild(el)
-    let zIndex = props.zIndex
-    if (zIndex === undefined || zIndex === null) {
-      zIndex = defaultZIndex
-    }
     el.style.zIndex = zIndex.toString()
-    const closeOnMouseLeave = props.closeOnMouseLeave
-      ? props.closeOnMouseLeave
-      : false
     if (closeOnMouseLeave) {
       el.addEventListener('mouseleave', () => {
-        props.disclosure.setIsOpen(false)
+        disclosure.setIsOpen(false)
       })
     }
-    props.onElement(el)
+    onElement(el)
     return () => {
       portalRoot.removeChild(el)
     }
-  }, [props, el])
+  }, [onElement, closeOnMouseLeave, zIndex, disclosure, el])
   return el !== null ? createPortal(props.children, el) : null
 }
 
