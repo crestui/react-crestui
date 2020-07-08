@@ -1,15 +1,24 @@
-import styled from 'styled-components'
+import React from 'react'
+import { Flex } from '../flex'
 // eslint-disable-next-line no-unused-vars
-import { SizeProps, applySizeProps } from '../../mixins/size'
-// eslint-disable-next-line no-unused-vars
-import { ColorProps, applyColorProps } from '../../mixins/color'
-// eslint-disable-next-line no-unused-vars
-import { BorderProps, applyBorderProps } from '../../mixins/border'
+import { TabContext, TabState } from './use-tab'
 
-export const Tabs = styled.span<SizeProps & ColorProps & BorderProps>`
-  ${applySizeProps}
+export interface TabProps {
+  children: React.ReactNode
+  tabState: TabState
+}
 
-  ${applyColorProps}
-
-  ${applyBorderProps}
-`
+export const Tabs = (props: TabProps) => {
+  return (
+    <TabContext.Provider value={props.tabState}>
+      <Flex
+        flexDirection='row'
+        style={{
+          verticalAlign: 'middle'
+        }}
+      >
+        {props.children}
+      </Flex>
+    </TabContext.Provider>
+  )
+}
