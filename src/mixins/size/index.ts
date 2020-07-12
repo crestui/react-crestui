@@ -59,7 +59,11 @@ export const getIconSize = (
 
 export interface SizeProps {
   w?: string
+  minW?: string
+  maxW?: string
   h?: string
+  minH?: string
+  maxH?: string
   p?: number | string
   px?: number | string
   py?: number | string
@@ -80,8 +84,12 @@ export interface SizeProps {
 
 export const applySizeProps = css<SizeProps>`
   ${({ w }) => w && 'width: ' + w + ';'}
+  ${({ minW }) => minW && 'min-width: ' + minW + ';'}
+  ${({ maxW }) => maxW && 'max-width: ' + maxW + ';'}
 
   ${({ h }) => h && 'height: ' + h + ';'}
+  ${({ minH }) => minH && 'min-height: ' + minH + ';'}
+  ${({ maxH }) => maxH && 'max-height: ' + maxH + ';'}
 
   ${({ theme, p }) => p && 'padding: ' + getSize(theme, p) + ';'}
 
