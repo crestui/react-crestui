@@ -1,13 +1,15 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useEffect, useCallback } from 'react'
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
 import styled, { ThemeContext } from 'styled-components'
+import { Portal } from 'react-portal'
+import useOnClickOutside from 'use-onclickoutside'
 import { Text } from '../text'
 import { Button } from '../button'
-import { Portal } from '../portal'
 import { Flex } from '../flex'
 import { useDisclosure } from '../../mixins/disclosure'
+
 // eslint-disable-next-line no-unused-vars
-import { UserSize, getIconSize } from '../../mixins/size'
+import { ComponentSize, getIconSize } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
 import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
 import { MQContext } from '../../contexts/mq'
@@ -15,7 +17,7 @@ import { MQContext } from '../../contexts/mq'
 export interface DropdownProps {
   label: string
 
-  size?: UserSize
+  size?: ComponentSize
 
   onAlignElements?: onAlignElementsFunc
 
@@ -39,22 +41,36 @@ export const Dropdown = (props: DropdownProps) => {
   const onAlignElements = props.onAlignElements
     ? props.onAlignElements
     : onAlignElementsBottom('left')
-  const onElement = (el: HTMLDivElement): void => {
-    el.style.position = 'fixed'
-    if (menuRef === undefined || menuRef === null) {
+  const portalRef = useRef<HTMLDivElement>(null)
+  useOnClickOutside(portalRef, () => {
+    disclosure.setIsOpen(false)
+  })
+  const onElement = useCallback(
+    (el: HTMLDivElement): void => {
+      el.style.position = 'fixed'
+      if (menuRef === undefined || menuRef === null) {
+        return
+      }
+      const menuNode = menuRef.current
+      if (menuNode === undefined || menuNode === null) {
+        return
+      }
+      const coords = onAlignElements(menuNode, el)
+      el.style.left = `${coords.left}px`
+      el.style.top = `${coords.top}px`
+    },
+    [onAlignElements]
+  )
+  useEffect(() => {
+    if (portalRef === undefined || portalRef === null) {
       return
     }
-    const menuNode = menuRef.current
-    if (menuNode === undefined || menuNode === null) {
+    const portalNode = portalRef.current
+    if (portalNode === undefined || portalNode === null) {
       return
     }
-    const coords = onAlignElements(menuNode, el)
-    el.style.left = `${coords.left}px`
-    el.style.top = `${coords.top}px`
-    el.addEventListener('mouseleave', () => {
-      disclosure.setIsOpen(false)
-    })
-  }
+    onElement(portalNode)
+  }, [portalRef, onElement])
   let hover = props.event ? props.event === 'hover' : false
   let focus = props.event ? props.event === 'focus' : false
   if (!hover && !focus) {
@@ -73,10 +89,10 @@ export const Dropdown = (props: DropdownProps) => {
   }
   const onClick = () => {
     if (focus) {
-      disclosure.setIsOpen()
+      disclosure.toggleOpen()
     }
   }
-  const iconSize = props.size ? getIconSize(props.size) : '1.0rem'
+  const iconSize = props.size ? getIconSize(theme, props.size) : '1.0rem'
   const textSize = props.size ? props.size : 'small'
   return (
     <DropdownButton ref={menuRef} link>
@@ -99,12 +115,8 @@ export const Dropdown = (props: DropdownProps) => {
           )}
         </div>
       </Flex>
-      <Portal
-        disclosure={disclosure}
-        onElement={onElement}
-        closeOnMouseLeave={hover}
-      >
-        {disclosure.isOpen && props.children}
+      <Portal>
+        <div ref={portalRef}>{disclosure.isOpen && props.children}</div>
       </Portal>
     </DropdownButton>
   )

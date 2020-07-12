@@ -8,6 +8,6 @@ export const DefaultTheme = {
   spaceInRem: 0.25,
   iconSizes: [1, 2, 4, 8, 12, 16, 24, 28],
   button: {
-    borderRadius: 8
+    borderRadius: 0.5
   }
 }

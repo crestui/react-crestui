@@ -1,13 +1,6 @@
-import { useContext } from 'react'
-import { ThemeContext, css } from 'styled-components'
+import { css } from 'styled-components'
 
-export function getColor(colorKey: string): string {
-  const theme = useContext(ThemeContext)
-  if (theme === null || theme === undefined) {
-    throw new Error(
-      'Set a default theme using ThemeContextProvider before proceeding'
-    )
-  }
+export const getColor = (theme: any, colorKey: string): string => {
   if (colorKey in theme.colors) {
     return theme.colors[colorKey]
   } else {
@@ -21,7 +14,7 @@ export interface ColorProps {
 }
 
 export const applyColorProps = css<ColorProps>`
-  ${({ color }) => color && 'color: ' + getColor(color) + ';'}
+  ${({ theme, color }) => color && 'color: ' + getColor(theme, color) + ';'}
 
-  ${({ bg }) => bg && 'background-color: ' + getColor(bg) + ';'}
+  ${({ theme, bg }) => bg && 'background-color: ' + getColor(theme, bg) + ';'}
 `

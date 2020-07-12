@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-// eslint-disable-next-line no-unused-vars
-import { Portal } from '../portal'
+import React from 'react'
+import { Portal } from 'react-portal'
 // eslint-disable-next-line no-unused-vars
 import { IDisclosure } from '../../mixins/disclosure'
 import { getCoords } from './align'
@@ -26,17 +25,11 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
   if (props.disclosure === undefined || props.disclosure === null) {
     return null
   }
-  let containerNode = props.containerRef.current
-  useEffect(() => {
+  const onElement = (el: HTMLDivElement): void => {
     if (props.containerRef === undefined || props.containerRef === null) {
       return
     }
-    containerNode = props.containerRef.current
-  }, [props.containerRef])
-  if (containerNode === undefined || containerNode === null) {
-    return null
-  }
-  const onElement = (el: HTMLDivElement): void => {
+    const containerNode = props.containerRef.current
     if (containerNode === undefined || containerNode === null) {
       return
     }
@@ -50,14 +43,11 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
     el.style.left = `${coords.left}px`
     el.style.top = `${coords.top}px`
   }
+  console.info(`onElement - ${onElement}`)
   if (!props.disclosure.isOpen) {
     return null
   }
-  return (
-    <Portal disclosure={props.disclosure} onElement={onElement}>
-      {props.children}
-    </Portal>
-  )
+  return <Portal>{props.children}</Portal>
 }
 
 export default Overlay

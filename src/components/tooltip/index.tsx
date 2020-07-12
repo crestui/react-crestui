@@ -53,6 +53,8 @@ const OverlayNode = (props: TooltipProps & OverlayProps) => {
  */
 export const Tooltip = (props: TooltipProps & OverlayProps) => {
   const { buttonText, containerRef, disclosure, ...otherProps } = props
+  const buttonRef = useRef(null)
+  const localdisclosure = useDisclosure(false)
   validateArgs(props)
   if (
     containerRef === undefined &&
@@ -60,8 +62,6 @@ export const Tooltip = (props: TooltipProps & OverlayProps) => {
     buttonText !== undefined &&
     buttonText !== null
   ) {
-    const buttonRef = useRef(null)
-    const localdisclosure = useDisclosure(false)
     return (
       <div>
         <Button
