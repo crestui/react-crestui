@@ -29,13 +29,6 @@ export interface PortalProps {
   children: React.ReactNode
 
   /**
-   * onElement represents a function to act on the newly created element
-   *
-   * It takes in the newly created HTMLDivElement of the portal so the coords can be computed
-   */
-  onElement: (el: HTMLDivElement) => void
-
-  /**
    * zIndex represents the zIndex to be given for this portal.
    *
    * If not given, it defaults to 'defaultZIndex' variable published from react-crestui ( i.e. 10 ).

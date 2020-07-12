@@ -7,20 +7,18 @@ import useOnClickOutside from 'use-onclickoutside'
 /**
  *
  */
-export const Portal = (props: PortalProps) => {
+export const PortalFuncComponent = (props: PortalProps) => {
   const el =
     typeof document !== `undefined` ? document.createElement('div') : null
   const portalRef = useRef<HTMLElement>(el)
   useOnClickOutside(portalRef, () => {
     props.disclosure.setIsOpen(false)
   })
-  const onElement = props.onElement
   useEffect(() => {
     if (portalRoot === null || el === null) {
       return
     }
     portalRoot.appendChild(el)
-    onElement(el)
     console.info(`Adding new element`)
     return () => {
       if (portalRoot === null || el === null) {
@@ -28,7 +26,7 @@ export const Portal = (props: PortalProps) => {
       }
       portalRoot.removeChild(el)
     }
-  }, [el, onElement])
+  }, [el])
   const closeOnMouseLeave = props.closeOnMouseLeave
     ? props.closeOnMouseLeave
     : false
@@ -50,4 +48,4 @@ export const Portal = (props: PortalProps) => {
   }
 }
 
-export default Portal
+export default PortalFuncComponent

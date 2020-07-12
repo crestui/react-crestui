@@ -1,7 +1,7 @@
-import { Portal } from './functional-component'
+import { PortalFuncComponent } from './functional-component'
 
-describe('Portal', () => {
+describe('PortalFuncComponent', () => {
   it('is truthy', () => {
-    expect(Portal).toBeTruthy()
+    expect(PortalFuncComponent).toBeTruthy()
   })
 })

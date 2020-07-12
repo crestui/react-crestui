@@ -28,14 +28,15 @@ export const TabItem = (props: TabItemProps) => {
   console.info(`${props.title}`)
   if (props.headingOnly) {
     return (
-      <TabHeader onClick={(_: MouseEvent) => onSelectTab(tabInfo, props.id)} selected={selected}>
+      <TabHeader
+        onClick={(_: MouseEvent) => onSelectTab(tabInfo, props.id)}
+        selected={selected}
+      >
         <TabHeaderSpan>{props.name}</TabHeaderSpan>
       </TabHeader>
     )
   } else {
-    return (
-      <TabContent selected={selected}>{props.children}</TabContent>
-    )
+    return <TabContent selected={selected}>{props.children}</TabContent>
   }
   return (
     <div>
