@@ -1,6 +1,5 @@
 import React from 'react'
-// eslint-disable-next-line no-unused-vars
-import { PortalFuncComponent } from '../portal'
+import { Portal } from 'react-portal'
 // eslint-disable-next-line no-unused-vars
 import { IDisclosure } from '../../mixins/disclosure'
 import { getCoords } from './align'
@@ -44,14 +43,11 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
     el.style.left = `${coords.left}px`
     el.style.top = `${coords.top}px`
   }
+  console.info(`onElement - ${onElement}`)
   if (!props.disclosure.isOpen) {
     return null
   }
-  return (
-    <PortalFuncComponent disclosure={props.disclosure} onElement={onElement}>
-      {props.children}
-    </PortalFuncComponent>
-  )
+  return <Portal>{props.children}</Portal>
 }
 
 export default Overlay
