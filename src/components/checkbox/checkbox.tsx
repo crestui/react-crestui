@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { applyHiddenInput } from './mixins'
 import nextId from 'react-id-generator'
-import { Label } from '../label'
 // eslint-disable-next-line no-unused-vars
 import { CheckboxState } from './use-checkbox'
+import { Label } from '../label'
+import { applyHiddenInput } from '../../mixins/display'
 
 const CheckboxContent = styled.div<{ disabled?: boolean }>`
   position: relative;

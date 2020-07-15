@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import nextId from 'react-id-generator'
-import { applyHiddenInput } from './mixins'
+import { RadioGroupContext } from './use-radiogroup'
 import { Label } from '../label'
-import { RadioGroupContext } from './radiogroup'
+import { applyHiddenInput } from '../../mixins/display'
 
 const RadioContent = styled.div<{ disabled?: boolean }>`
   position: relative;
