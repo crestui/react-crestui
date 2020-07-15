@@ -1,6 +1,6 @@
 {
   "name": "react-crestui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "React components written in typescript and based on React 16.8.0 functional components and styled-components",
   "author": "crestui",
   "license": "MIT",
