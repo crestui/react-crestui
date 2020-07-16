@@ -7,9 +7,8 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider } from 'styled-components'
 import { useStaticQuery, graphql } from "gatsby"
-import { Flex } from 'react-crestui'
+import { ThemeProvider, Flex } from 'react-crestui'
 import { DocsTheme } from './docs-theme'
 import Header from "./header"
 import { createGlobalStyle } from 'styled-components';

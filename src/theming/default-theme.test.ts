@@ -1,4 +1,4 @@
-import { DefaultTheme } from '.'
+import { DefaultTheme } from './default-theme'
 
 describe('DefaultTheme', () => {
   it('is truthy', () => {
