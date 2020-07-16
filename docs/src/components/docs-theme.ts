@@ -1,7 +1,4 @@
-import { DefaultTheme } from 'react-crestui'
-
 export const DocsTheme = {
-   ...DefaultTheme,
    colors: {
       primary: '#30359b',
       secondary: '#9B9630',

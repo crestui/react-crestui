@@ -4,7 +4,7 @@ import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
 // eslint-disable-next-line no-unused-vars
 import { SizeProps, applySizeProps, getSize } from '../../mixins/size'
 // eslint-disable-next-line no-unused-vars
-import { ColorProps, applyColorProps } from '../../mixins/color'
+import { ColorProps, applyColorProps, getColor } from '../../mixins/color'
 // eslint-disable-next-line no-unused-vars
 import { BorderProps, applyBorderProps } from '../../mixins/border'
 
@@ -51,4 +51,13 @@ export const Button = styled.button<
 
   ${applyBorderProps}
 
+  &:focus {
+    outline: 3px solid ${({ theme }) => getColor(theme, 'focus') + ';'}
+    outline-offset: 0;
+  }
+
+  &:hover {
+    outline: 1px solid ${({ theme }) => getColor(theme, 'focus') + ';'}
+    outline-offset: 0;
+  }
 `
