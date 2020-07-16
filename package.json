@@ -1,6 +1,6 @@
 {
   "name": "react-crestui",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "React components written in typescript and based on React 16.8.0 functional components and styled-components",
   "author": "crestui",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "predeploy": "cd example && yarn install && yarn run build"
   },
   "peerDependencies": {
+    "merge-options": ">= 2.0.0",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
     "react-icons": ">= 3.10.0",
@@ -31,8 +32,7 @@
     "react-portal": ">= 4.2.1",
     "react-responsive": ">= 8.1.0",
     "styled-components": ">= 5.1.1",
-    "use-onclickoutside": ">= 0.3.1",
-    "merge-options": ">= 2.0.0"
+    "use-onclickoutside": ">= 0.3.1"
   },
   "devDependencies": {
     "@testing-library/dom": "7.21.0",
