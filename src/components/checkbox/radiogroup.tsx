@@ -1,6 +1,5 @@
 import React from 'react'
 import { Flex } from '../flex'
-// eslint-disable-next-line no-unused-vars
 import { RadioGroupContext, RadioGroupState } from './use-radiogroup'
 
 export interface RadioGroupProps {

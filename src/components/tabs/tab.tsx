@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-// eslint-disable-next-line no-unused-vars
 import { TabContext, TabState } from './use-tab'
 import { addPropsToChildren } from '../../utils/add-props-to-children'
 

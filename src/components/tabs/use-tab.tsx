@@ -1,14 +1,15 @@
 import { createContext, useState, useMemo } from 'react'
+import { SetFunc } from '../../mixins/common'
 import nextId from 'react-id-generator'
 
 export interface TabState {
   name: string
 
-  setName: Function
+  setName: SetFunc<string>
 
   value: string
 
-  setValue: Function
+  setValue: SetFunc<string>
 }
 
 export const TabContext = createContext<TabState>({

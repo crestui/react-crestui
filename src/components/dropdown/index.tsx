@@ -7,10 +7,7 @@ import { Text } from '../text'
 import { Button } from '../button'
 import { Flex } from '../flex'
 import { useDisclosure } from '../../mixins/disclosure'
-
-// eslint-disable-next-line no-unused-vars
 import { ComponentSize, getIconSize } from '../../mixins/size'
-// eslint-disable-next-line no-unused-vars
 import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
 import { MQContext } from '../../contexts/mq'
 

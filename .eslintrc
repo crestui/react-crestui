@@ -2,12 +2,14 @@
   "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier/@typescript-eslint",
     "prettier/standard",
     "prettier/react",
-    "plugin:react-hooks/recommended"
+    "plugin:prettier/recommended"
   ],
   "env": {
     "node": true

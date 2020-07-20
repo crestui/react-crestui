@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import nextId from 'react-id-generator'
-// eslint-disable-next-line no-unused-vars
 import { CheckboxState } from './use-checkbox'
 import { Label } from '../label'
 import { applyHiddenInput } from '../../mixins/display'

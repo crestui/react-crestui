@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import { Box } from '../box'
 import { Arrow } from '../arrow'
 import { Button } from '../button'
-// eslint-disable-next-line no-unused-vars
 import { Overlay, OverlayProps } from '../overlay'
 import { useDisclosure } from '../../mixins/disclosure'
 

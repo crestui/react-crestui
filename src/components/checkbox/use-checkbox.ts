@@ -1,11 +1,12 @@
 import { createContext, useState, useMemo, useCallback } from 'react'
+import { SetFunc, EmptyFunc } from '../../mixins/common'
 
 export interface CheckboxState {
   checked: boolean
 
-  setChecked: Function
+  setChecked: SetFunc<boolean>
 
-  toggleChecked: Function
+  toggleChecked: EmptyFunc
 }
 
 export const CheckboxContext = createContext<CheckboxState>({

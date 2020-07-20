@@ -1,11 +1,12 @@
 import { useState, useMemo, useCallback } from 'react'
+import { EmptyFunc, SetFunc } from '../common'
 
 export interface IDisclosure {
   isOpen: boolean
 
-  setIsOpen: Function
+  setIsOpen: SetFunc<boolean>
 
-  toggleOpen: Function
+  toggleOpen: EmptyFunc
 }
 
 export function useDisclosure(open: boolean): IDisclosure {
