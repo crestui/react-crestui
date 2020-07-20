@@ -1,7 +1,4 @@
-import { DefaultTheme } from 'react-crestui'
-
 export const AppTheme = {
-   ...DefaultTheme,
    colors: {
       primary: '#3A0CA3',
       secondary: '#E28413',

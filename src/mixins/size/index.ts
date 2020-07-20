@@ -15,7 +15,7 @@ export type ComponentSize =
 export const getSize = (theme: any, size: number | string): string => {
   if (isNumber(size)) {
     const y = +size
-    return theme.spaceInRem * y + 'rem'
+    return theme.space.value * y + theme.space.unit
   } else {
     return size.toString()
   }
