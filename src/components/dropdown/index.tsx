@@ -35,7 +35,9 @@ export const Dropdown = (props: DropdownProps) => {
   const disclosure = useDisclosure(false)
   const theme = useContext(ThemeContext)
   const mq = useContext(MQContext)
-  const onAlignElements = props.onAlignElements ? props.onAlignElements : onAlignElementsBottom('left')
+  const onAlignElements = props.onAlignElements
+    ? props.onAlignElements
+    : onAlignElementsBottom('left')
   const portalRef = useRef<HTMLDivElement>(null)
   useOnClickOutside(portalRef, () => {
     disclosure.setIsOpen(false)
@@ -69,7 +71,9 @@ export const Dropdown = (props: DropdownProps) => {
   let hover = props.event ? props.event === 'hover' : false
   let focus = props.event ? props.event === 'focus' : false
   if (!hover && !focus) {
-    throw new Error(`Dropdown event should be one of 'hover' / 'focus'. Current value: ${props.event}`)
+    throw new Error(
+      `Dropdown event should be one of 'hover' / 'focus'. Current value: ${props.event}`
+    )
   }
   if (!mq.isDesktopOrLaptop && hover) {
     hover = false

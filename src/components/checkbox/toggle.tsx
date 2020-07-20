@@ -33,11 +33,13 @@ const ToggleInput = styled.input.attrs({ type: 'radio' })`
 
 
   &:checked ~ ${ToggleContent}::before {
-    ${(props) => 'background-color: ' + props.theme.colors.primary + ' !important;'}
+    ${(props) =>
+      'background-color: ' + props.theme.colors.primary + ' !important;'}
   }
 
   &:focus ~ ${ToggleContent}::before {
-    ${(props) => 'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
+    ${(props) =>
+      'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
   }
 
   &:hover ~ ${ToggleContent}::before {

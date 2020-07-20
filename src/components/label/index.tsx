@@ -4,7 +4,9 @@ import { ColorProps, applyColorProps } from '../../mixins/color'
 import { BorderProps, applyBorderProps } from '../../mixins/border'
 import { PositionProps, applyPositionProps } from '../../mixins/position'
 
-export const Label = styled.label<SizeProps & ColorProps & BorderProps & PositionProps>`
+export const Label = styled.label<
+  SizeProps & ColorProps & BorderProps & PositionProps
+>`
   ${applySizeProps}
 
   ${applyColorProps}

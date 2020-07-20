@@ -105,19 +105,23 @@ export interface BoxAlignProps {
 }
 
 export const applyBoxAlignProps = css<BoxAlignProps>`
-  ${({ alignContent }) => alignContent && 'align-content: ' + alignContent + ';'}
+  ${({ alignContent }) =>
+    alignContent && 'align-content: ' + alignContent + ';'}
 
   ${({ alignItems }) => alignItems && 'align-items: ' + alignItems + ';'}
 
   ${({ alignSelf }) => alignSelf && 'align-self: ' + alignSelf + ';'}
 
-  ${({ justifyContent }) => justifyContent && 'justify-content: ' + justifyContent + ';'}
+  ${({ justifyContent }) =>
+    justifyContent && 'justify-content: ' + justifyContent + ';'}
 
-  ${({ justifyItems }) => justifyItems && 'justify-items: ' + justifyItems + ';'}
+  ${({ justifyItems }) =>
+    justifyItems && 'justify-items: ' + justifyItems + ';'}
 
   ${({ justifySelf }) => justifySelf && 'justify-self: ' + justifySelf + ';'}
 
-  ${({ placeContent }) => placeContent && 'place-content: ' + placeContent + ';'}
+  ${({ placeContent }) =>
+    placeContent && 'place-content: ' + placeContent + ';'}
 
   ${({ placeItems }) => placeItems && 'place-items: ' + placeItems + ';'}
 

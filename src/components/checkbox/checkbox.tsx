@@ -33,11 +33,13 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 
 
   &:checked ~ ${CheckboxContent}::before {
-    ${(props) => 'background-color: ' + props.theme.colors.primary + ' !important;'}
+    ${(props) =>
+      'background-color: ' + props.theme.colors.primary + ' !important;'}
   }
 
   &:focus ~ ${CheckboxContent}::before {
-    ${(props) => 'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
+    ${(props) =>
+      'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
   }
 
   &:hover ~ ${CheckboxContent}::before {

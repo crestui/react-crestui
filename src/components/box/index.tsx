@@ -15,7 +15,14 @@ export interface BoxProps {
  *
  * For more info,refer to :  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
  */
-export const Box = styled.div<BoxProps & BoxAlignProps & SizeProps & ColorProps & BorderProps & PositionProps>`
+export const Box = styled.div<
+  BoxProps &
+    BoxAlignProps &
+    SizeProps &
+    ColorProps &
+    BorderProps &
+    PositionProps
+>`
   box-sizing: border-box;
   ${({ inline }) => inline && 'display: inline-block;'}
   margin: 0;

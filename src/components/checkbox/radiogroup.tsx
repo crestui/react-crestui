@@ -9,7 +9,10 @@ export interface RadioGroupProps {
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  const direction = props.direction !== undefined && props.direction !== null ? props.direction : 'row'
+  const direction =
+    props.direction !== undefined && props.direction !== null
+      ? props.direction
+      : 'row'
   return (
     <RadioGroupContext.Provider value={props.rgState}>
       <Flex

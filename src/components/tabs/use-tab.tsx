@@ -22,7 +22,8 @@ export const TabContext = createContext<TabState>({
 })
 
 export function useTab(pValue?: string, pName?: string): TabState {
-  const actualName = pName !== undefined && pName !== null ? pName : nextId('tab-name-')
+  const actualName =
+    pName !== undefined && pName !== null ? pName : nextId('tab-name-')
   const actualValue = pValue !== undefined && pValue !== null ? pValue : ''
   const [name, setName] = useState(actualName)
   const [value, setValue] = useState(actualValue)

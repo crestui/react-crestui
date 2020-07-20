@@ -18,7 +18,8 @@ export const CheckboxContext = createContext<CheckboxState>({
 })
 
 export function useCheckbox(pChecked?: boolean): CheckboxState {
-  const actualChecked = pChecked !== undefined && pChecked !== null ? pChecked : false
+  const actualChecked =
+    pChecked !== undefined && pChecked !== null ? pChecked : false
   const [checked, setChecked] = useState(actualChecked)
   const toggleChecked = useCallback(() => {
     setChecked(!checked)

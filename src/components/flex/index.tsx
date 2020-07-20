@@ -17,7 +17,13 @@ export interface LocalFlexProps {
  * Courtesy:  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
  */
 export const Flex = styled.div<
-  LocalFlexProps & FlexProps & BoxAlignProps & SizeProps & ColorProps & BorderProps & PositionProps
+  LocalFlexProps &
+    FlexProps &
+    BoxAlignProps &
+    SizeProps &
+    ColorProps &
+    BorderProps &
+    PositionProps
 >`
 
   display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};

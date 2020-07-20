@@ -5,7 +5,11 @@ export function addPropsToChildren(children, fn) {
     if (child === undefined || child === null) {
       return null
     }
-    if (typeof child === 'number' || typeof child === 'string' || typeof child === 'boolean') {
+    if (
+      typeof child === 'number' ||
+      typeof child === 'string' ||
+      typeof child === 'boolean'
+    ) {
       return null
     }
     return React.cloneElement(child, { ...child.props, ...fn(index) })

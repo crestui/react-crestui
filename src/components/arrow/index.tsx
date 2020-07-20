@@ -9,7 +9,10 @@ export const ArrowToBottom = styled.div<{ thickness: string }>`
   margin-left: -${(props) => props.thickness};
   border-width: ${(props) => props.thickness};
   border-style: solid;
-  ${(props) => (props.theme.colors.primary ? 'border-top-color : ' + props.theme.colors.primary + ';' : '')}
+  ${(props) =>
+    props.theme.colors.primary
+      ? 'border-top-color : ' + props.theme.colors.primary + ';'
+      : ''}
   border-right-color: transparent;
   border-bottom-color: transparent;
   border-left-color: transparent;
@@ -26,7 +29,10 @@ export const ArrowToRight = styled.div<{ thickness: string; top: string }>`
   border-top-color: transparent;
   border-right-color: transparent;
   border-bottom-color: transparent;
-  ${(props) => (props.theme.colors.primary ? 'border-left-color : ' + props.theme.colors.primary + ';' : '')}
+  ${(props) =>
+    props.theme.colors.primary
+      ? 'border-left-color : ' + props.theme.colors.primary + ';'
+      : ''}
 `
 
 export const ArrowToTop = styled.div<{ thickness: string }>`
@@ -39,7 +45,10 @@ export const ArrowToTop = styled.div<{ thickness: string }>`
   border-style: solid;
   border-top-color: transparent;
   border-right-color: transparent;
-  ${(props) => (props.theme.colors.primary ? 'border-bottom-color : ' + props.theme.colors.primary + ';' : '')}
+  ${(props) =>
+    props.theme.colors.primary
+      ? 'border-bottom-color : ' + props.theme.colors.primary + ';'
+      : ''}
   border-left-color: transparent;
 `
 
@@ -52,7 +61,10 @@ export const ArrowToLeft = styled.div<{ thickness: string }>`
   border-width: ${(props) => props.thickness};
   border-style: solid;
   border-top-color: transparent;
-  ${(props) => (props.theme.colors.primary ? 'border-right-color : ' + props.theme.colors.primary + ';' : '')}
+  ${(props) =>
+    props.theme.colors.primary
+      ? 'border-right-color : ' + props.theme.colors.primary + ';'
+      : ''}
   border-bottom-color: transparent;
   border-left-color: transparent;
 `

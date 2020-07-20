@@ -10,6 +10,12 @@ type ThemeProviderProps = {
 }
 
 export const ThemeProvider = (props: ThemeProviderProps) => {
-  const finalTheme = props.theme ? mergeOptions(DefaultTheme, props.theme) : DefaultTheme
-  return <StyledThemeProvider theme={finalTheme}>{props.children}</StyledThemeProvider>
+  const finalTheme = props.theme
+    ? mergeOptions(DefaultTheme, props.theme)
+    : DefaultTheme
+  return (
+    <StyledThemeProvider theme={finalTheme}>
+      {props.children}
+    </StyledThemeProvider>
+  )
 }

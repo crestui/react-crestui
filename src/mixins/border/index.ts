@@ -32,7 +32,8 @@ export interface BorderProps {
 }
 
 export const applyBorderProps = css<BorderProps>`
-  ${({ theme, radius }) => radius && 'border-radius: ' + getSize(theme, radius) + ' !important;'}
+  ${({ theme, radius }) =>
+    radius && 'border-radius: ' + getSize(theme, radius) + ' !important;'}
 
   ${({ bs }) => bs && 'border-style: ' + bs + ';'}
 
