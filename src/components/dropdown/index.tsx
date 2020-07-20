@@ -1,5 +1,5 @@
 import React, { useRef, useContext, useEffect, useCallback } from 'react'
-import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri'
+import { UpArrowAlt, DownArrowAlt } from '@styled-icons/boxicons-regular';
 import styled, { ThemeContext } from 'styled-components'
 import { Portal } from 'react-portal'
 import useOnClickOutside from 'use-onclickoutside'
@@ -109,9 +109,9 @@ export const Dropdown = (props: DropdownProps) => {
         </Text>
         <div>
           {!disclosure.isOpen ? (
-            <RiArrowDownSLine color={theme.colors.primary} size={iconSize} />
+            <DownArrowAlt color={theme.colors.primary} size={iconSize} />
           ) : (
-            <RiArrowUpSLine color={theme.colors.primary} size={iconSize} />
+            <UpArrowAlt color={theme.colors.primary} size={iconSize} />
           )}
         </div>
       </Flex>
