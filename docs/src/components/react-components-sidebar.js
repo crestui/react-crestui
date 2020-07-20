@@ -47,6 +47,11 @@ const ComponentsSidebar = ({ children }) => {
           </StyledGatsbyLink>
         </Box>
         <Box py={2}>
+          <StyledGatsbyLink to="/react-crestui/components/select">
+            <Text>Select</Text>
+          </StyledGatsbyLink>
+        </Box>
+        <Box py={2}>
           <StyledGatsbyLink to="/react-crestui/components/sidebar">
             <Text>Sidebar</Text>
           </StyledGatsbyLink>
