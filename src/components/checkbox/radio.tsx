@@ -33,13 +33,11 @@ const RadioInput = styled.input.attrs({ type: 'radio' })`
 
 
   &:checked ~ ${RadioContent}::before {
-    ${(props) =>
-      'background-color: ' + props.theme.colors.primary + ' !important;'}
+    ${(props) => 'background-color: ' + props.theme.colors.primary + ' !important;'}
   }
 
   &:focus ~ ${RadioContent}::before {
-    ${(props) =>
-      'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
+    ${(props) => 'box-shadow: 0 0 0 2px rgba(' + props.theme.colors.primary + ', 0.25);'};
   }
 
   &:hover ~ ${RadioContent}::before {

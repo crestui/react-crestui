@@ -49,14 +49,6 @@ export function useMQ(): IMediaQuery {
       isPortrait,
       isRetina
     }),
-    [
-      isDesktopOrLaptop,
-      isSmallScreen,
-      isBigScreen,
-      isTabletOrMobile,
-      isTabletOrMobileDevice,
-      isPortrait,
-      isRetina
-    ]
+    [isDesktopOrLaptop, isSmallScreen, isBigScreen, isTabletOrMobile, isTabletOrMobileDevice, isPortrait, isRetina]
   )
 }

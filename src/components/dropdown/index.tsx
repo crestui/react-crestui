@@ -1,12 +1,12 @@
 import React, { useRef, useContext, useEffect, useCallback } from 'react'
-import { UpArrowAlt, DownArrowAlt } from '@styled-icons/boxicons-regular';
+import { UpArrowAlt, DownArrowAlt } from '@styled-icons/boxicons-regular'
 import styled, { ThemeContext } from 'styled-components'
 import { Portal } from 'react-portal'
 import useOnClickOutside from 'use-onclickoutside'
 import { Text } from '../text'
 import { Button } from '../button'
 import { Flex } from '../flex'
-import { useDisclosure } from '../../mixins/disclosure'
+import { useDisclosure } from '../../contexts/disclosure'
 import { ComponentSize, getIconSize } from '../../mixins/size'
 import { onAlignElementsFunc, onAlignElementsBottom } from '../overlay'
 import { MQContext } from '../../contexts/mq'
@@ -35,9 +35,7 @@ export const Dropdown = (props: DropdownProps) => {
   const disclosure = useDisclosure(false)
   const theme = useContext(ThemeContext)
   const mq = useContext(MQContext)
-  const onAlignElements = props.onAlignElements
-    ? props.onAlignElements
-    : onAlignElementsBottom('left')
+  const onAlignElements = props.onAlignElements ? props.onAlignElements : onAlignElementsBottom('left')
   const portalRef = useRef<HTMLDivElement>(null)
   useOnClickOutside(portalRef, () => {
     disclosure.setIsOpen(false)
@@ -71,9 +69,7 @@ export const Dropdown = (props: DropdownProps) => {
   let hover = props.event ? props.event === 'hover' : false
   let focus = props.event ? props.event === 'focus' : false
   if (!hover && !focus) {
-    throw new Error(
-      `Dropdown event should be one of 'hover' / 'focus'. Current value: ${props.event}`
-    )
+    throw new Error(`Dropdown event should be one of 'hover' / 'focus'. Current value: ${props.event}`)
   }
   if (!mq.isDesktopOrLaptop && hover) {
     hover = false

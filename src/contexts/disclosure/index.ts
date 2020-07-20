@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react'
-import { EmptyFunc, SetFunc } from '../common'
+import { EmptyFunc, SetFunc } from '../../mixins/common'
 
 export interface IDisclosure {
   isOpen: boolean

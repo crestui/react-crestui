@@ -19,12 +19,8 @@ export const RadioGroupContext = createContext<RadioGroupState>({
   setValue: () => {}
 })
 
-export function useRadioGroup(
-  pValue?: string,
-  pName?: string
-): RadioGroupState {
-  const actualName =
-    pName !== undefined && pName !== null ? pName : nextId('rg-name-')
+export function useRadioGroup(pValue?: string, pName?: string): RadioGroupState {
+  const actualName = pName !== undefined && pName !== null ? pName : nextId('rg-name-')
   const actualValue = pValue !== undefined && pValue !== null ? pValue : ''
   const [name, setName] = useState(actualName)
   const [value, setValue] = useState(actualValue)

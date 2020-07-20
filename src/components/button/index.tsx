@@ -14,9 +14,7 @@ export interface ButtonProps {
  * Button represents a component to display a "Button"
  */
 // eslint-disable-next-line no-empty-pattern
-export const Button = styled.button<
-  ButtonProps & BoxAlignProps & SizeProps & ColorProps & BorderProps
->`
+export const Button = styled.button<ButtonProps & BoxAlignProps & SizeProps & ColorProps & BorderProps>`
   display: inline-block;
   box-sizing: border-box;
   align-items: flex-start;

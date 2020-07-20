@@ -72,8 +72,7 @@ export const applyFlexProps = css<FlexProps>`
 
   ${({ flexBasis }) => flexBasis && 'flex-basis: ' + flexBasis + ';'}
 
-  ${({ flexDirection }) =>
-    flexDirection && 'flex-direction: ' + flexDirection + ';'}
+  ${({ flexDirection }) => flexDirection && 'flex-direction: ' + flexDirection + ';'}
 
   ${({ flexFlow }) => flexFlow && 'flex-flow: ' + flexFlow + ';'}
 

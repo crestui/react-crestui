@@ -1,6 +1,6 @@
 import React from 'react'
 import { Portal } from 'react-portal'
-import { IDisclosure } from '../../mixins/disclosure'
+import { IDisclosure } from '../../contexts'
 import { getCoords } from './align'
 
 interface LocalOverlayProps {
@@ -32,12 +32,7 @@ export const Overlay = (props: OverlayProps & LocalOverlayProps) => {
     if (containerNode === undefined || containerNode === null) {
       return
     }
-    const coords = getCoords(
-      containerNode,
-      props.placement,
-      props.alignment,
-      el
-    )
+    const coords = getCoords(containerNode, props.placement, props.alignment, el)
     el.style.position = 'absolute'
     el.style.left = `${coords.left}px`
     el.style.top = `${coords.top}px`

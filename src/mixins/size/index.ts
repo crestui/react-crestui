@@ -2,15 +2,7 @@ import { css } from 'styled-components'
 
 const isNumber = (n: string | number) => typeof n === 'number' && !isNaN(n)
 
-export type ComponentSize =
-  | 'xx-small'
-  | 'x-small'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'x-large'
-  | 'xx-large'
-  | 'xxx-large'
+export type ComponentSize = 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'xxx-large'
 
 export const getSize = (theme: any, size: number | string): string => {
   if (isNumber(size)) {
@@ -21,10 +13,7 @@ export const getSize = (theme: any, size: number | string): string => {
   }
 }
 
-export const getIconSize = (
-  theme: any,
-  componentSize: ComponentSize
-): string => {
+export const getIconSize = (theme: any, componentSize: ComponentSize): string => {
   switch (componentSize) {
     case 'xx-small':
       return getSize(theme, theme.iconSizes[0])
@@ -51,9 +40,7 @@ export const getIconSize = (
       return getSize(theme, theme.iconSizes[7])
       break
     default:
-      throw new Error(
-        `Invalid size value - ${componentSize} given as parameter`
-      )
+      throw new Error(`Invalid size value - ${componentSize} given as parameter`)
   }
 }
 
@@ -94,22 +81,10 @@ export const applySizeProps = css<SizeProps>`
   ${({ theme, p }) => p && 'padding: ' + getSize(theme, p) + ';'}
 
   ${({ theme, px }) =>
-    px &&
-    'padding-left: ' +
-      getSize(theme, px) +
-      ';' +
-      ' padding-right: ' +
-      getSize(theme, px) +
-      '; '}
+    px && 'padding-left: ' + getSize(theme, px) + ';' + ' padding-right: ' + getSize(theme, px) + '; '}
 
   ${({ theme, py }) =>
-    py &&
-    'padding-top: ' +
-      getSize(theme, py) +
-      ';' +
-      ' padding-bottom: ' +
-      getSize(theme, py) +
-      '; '}
+    py && 'padding-top: ' + getSize(theme, py) + ';' + ' padding-bottom: ' + getSize(theme, py) + '; '}
 
   ${({ theme, pt }) => pt && 'padding-top: ' + getSize(theme, pt) + ';'}
 
@@ -121,23 +96,9 @@ export const applySizeProps = css<SizeProps>`
 
   ${({ theme, m }) => m && 'margin: ' + getSize(theme, m) + ';'}
 
-  ${({ theme, mx }) =>
-    mx &&
-    'margin-left: ' +
-      getSize(theme, mx) +
-      ';' +
-      ' margin-right: ' +
-      getSize(theme, mx) +
-      ';'}
+  ${({ theme, mx }) => mx && 'margin-left: ' + getSize(theme, mx) + ';' + ' margin-right: ' + getSize(theme, mx) + ';'}
 
-  ${({ theme, my }) =>
-    my &&
-    'margin-top: ' +
-      getSize(theme, my) +
-      ';' +
-      ' margin-bottom: ' +
-      getSize(theme, my) +
-      ';'}
+  ${({ theme, my }) => my && 'margin-top: ' + getSize(theme, my) + ';' + ' margin-bottom: ' + getSize(theme, my) + ';'}
 
   ${({ theme, mt }) => mt && 'margin-top: ' + getSize(theme, mt) + ';'}
 

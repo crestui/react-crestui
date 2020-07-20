@@ -13,8 +13,7 @@ const TabHeaders = styled.div`
   flex-direction: row;
   overflow-x: scroll !important;
   scrollbar-width: thin;
-  scroll-color: ${(props) => props.theme.colors.primary}
-    ${(props) => props.theme.colors.primary};
+  scroll-color: ${(props) => props.theme.colors.primary} ${(props) => props.theme.colors.primary};
 `
 export const Tabs = (props: TabProps) => {
   const tabHeaders = addPropsToChildren(props.children, (index: number) => {
