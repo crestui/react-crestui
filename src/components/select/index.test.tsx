@@ -1,7 +1,7 @@
-import { Text } from '.'
+import { Select } from '.'
 
-describe('Text', () => {
+describe('Select', () => {
   it('is truthy', () => {
-    expect(Text).toBeTruthy()
+    expect(Select).toBeTruthy()
   })
 })
