@@ -14,8 +14,10 @@ export interface TabState {
 
 export const TabContext = createContext<TabState>({
   name: '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setName: () => {},
   value: '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setValue: () => {}
 })
 

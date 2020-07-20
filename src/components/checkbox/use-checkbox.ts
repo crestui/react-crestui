@@ -11,7 +11,9 @@ export interface CheckboxState {
 
 export const CheckboxContext = createContext<CheckboxState>({
   checked: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setChecked: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleChecked: () => {}
 })
 

@@ -14,8 +14,10 @@ export interface RadioGroupState {
 
 export const RadioGroupContext = createContext<RadioGroupState>({
   name: '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setName: () => {},
   value: '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setValue: () => {}
 })
 
