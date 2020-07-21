@@ -1,10 +1,10 @@
 export const DefaultTheme = {
   colors: {
-    text: '#000000',
     bg: '#ffffff',
+    text: '#000000',
     primary: '#0e0e52',
     textprimary: '#ffffff',
-    focus: '#2121bf',
+    focus: '#300E52',
     textfocus: '#ffffff',
     secondary: '#52520E',
     textsecondary: '#ffffff'
