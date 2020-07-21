@@ -23,9 +23,7 @@ const ListRoot = styled.ul`
   padding: 0;
 `
 
-const OptionElement = styled.li`
-
-`
+const OptionElement = styled.li``
 
 type OptionProps = {
   item: SelectItem
@@ -33,19 +31,16 @@ type OptionProps = {
 }
 
 const Option = (props: OptionProps) => {
-  return (
-    <div>
-      {props.item.value}
-    </div>
-  )
+  return <div>{props.item.value}</div>
 }
-
 
 export type SelectProps = {
   selectState: SelectState
 }
 
-export const Select = (props: SelectProps & SizeProps & ColorProps & BorderProps) => {
+export const Select = (
+  props: SelectProps & SizeProps & ColorProps & BorderProps
+) => {
   console.info(`${props}`)
   return (
     <SelectContainer>

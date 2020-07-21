@@ -28,7 +28,12 @@
     "typescript": "link:../node_modules/typescript"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "prettier": "2.0.5",
+    "eslint": "7.5.0",
+    "eslint-plugin-react-hooks": "4.0.8",
+    "@typescript-eslint/eslint-plugin": "3.7.0",
+    "@typescript-eslint/parser": "3.7.0"
+
   },
   "keywords": [
     "gatsby"
@@ -38,9 +43,10 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "fix": "eslint --fix src",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "_moduleAliases": {
