@@ -2,12 +2,12 @@ export const DefaultTheme = {
   colors: {
     bg: '#ffffff',
     text: '#000000',
-    primary: '#0e0e52',
+    primary: '#105EEF',
     textprimary: '#ffffff',
-    focus: '#300E52',
+    focus: '#2B83D4',
     textfocus: '#ffffff',
-    secondary: '#52520E',
-    textsecondary: '#ffffff'
+    secondary: '#ECCB13',
+    textsecondary: '#000000'
   },
   space: {
     unit: 'rem',
