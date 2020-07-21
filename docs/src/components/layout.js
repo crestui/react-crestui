@@ -8,7 +8,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import { ThemeProvider, Flex } from 'react-crestui'
+import { ThemeProvider, Flex, getColor } from 'react-crestui'
 import { DocsTheme } from './docs-theme'
 import Header from './header'
 import { createGlobalStyle } from 'styled-components'
@@ -17,6 +17,10 @@ import './layout.css'
 const GlobalStyles = createGlobalStyle`
   body {
     font: 400 18px Rubik, sans-serif;
+    ${({ theme }) => 'color: ' + getColor(theme, 'text') + ';'}
+
+    ${({ theme }) => 'background-color: ' + getColor(theme, 'bg') + ';'}
+
   }
 `
 

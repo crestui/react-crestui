@@ -19,7 +19,7 @@ export interface BorderProps {
   bc?: string
 
   /**
-   * Radius indicates borderRadius and the units are in 'rem'
+   * radius indicates borderRadius
    */
   radius?: string | number
 
