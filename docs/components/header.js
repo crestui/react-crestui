@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Flex, Box } from 'react-crestui'
-import StyledGatsbyLink from './link'
+import { Flex, Box, NavLink } from 'react-crestui'
+import Link from 'next/link'
 
 const Header = ({ siteTitle }) => (
   <header>
     <Flex flexDirection="row" justifyContent="space-between" py={4} px={1}>
       <Box pl={'10%'}>
-        <StyledGatsbyLink to="/">{siteTitle}</StyledGatsbyLink>
+        <Link href="/">
+          <NavLink>{siteTitle}</NavLink>
+        </Link>
       </Box>
+      <Flex />
       <Box pr={'10%'}>
-        <StyledGatsbyLink to="/react-crestui">react-crestui</StyledGatsbyLink>
+        <Link href="/react-crestui">
+          <NavLink>react-crestui</NavLink>
+        </Link>
       </Box>
     </Flex>
   </header>

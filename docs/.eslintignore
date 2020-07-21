@@ -1,0 +1,7 @@
+build/
+dist/
+_bundles/
+!build/index.js
+node_modules/
+.snapshots/
+*.min.js

@@ -7,12 +7,10 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider, Flex, getColor } from 'react-crestui'
 import { DocsTheme } from './docs-theme'
 import Header from './header'
-import { createGlobalStyle } from 'styled-components'
-import './layout.css'
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -25,20 +23,10 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <ThemeProvider theme={DocsTheme}>
       <GlobalStyles />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle='Interesting title' />
       <Flex flexDirection="column" p={5}>
         <main p={2}>{children}</main>
         <footer>© {new Date().getFullYear()}</footer>
