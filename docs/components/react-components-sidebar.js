@@ -7,6 +7,11 @@ const ComponentsSidebar = ({ children }) => {
     <Flex flexDirection='row' h={'90vh'}>
       <Flex flexDirection='column' w={'20%'}>
         <Box py={2}>
+          <Link href='/react-crestui/components/autocomplete'>
+            <Text>Autocomplete</Text>
+          </Link>
+        </Box>
+        <Box py={2}>
           <Link href='/react-crestui/components/button'>
             <Text>Button</Text>
           </Link>
