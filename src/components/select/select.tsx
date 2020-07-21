@@ -41,11 +41,11 @@ export type SelectProps = {
 export const Select = (
   props: SelectProps & SizeProps & ColorProps & BorderProps
 ) => {
-  console.info(`${props}`)
+  const options = props.selectState.items
   return (
     <SelectContainer>
       <ListRoot>
-        {props.selectState.items.map((item: SelectItem, idx: number) => {
+        {options.map((item: SelectItem, idx: number) => {
           return (
             <OptionElement key={idx}>
               <Option

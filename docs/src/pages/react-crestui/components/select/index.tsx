@@ -4,18 +4,19 @@ import LiveCodeComponent from '@components/live-code'
 import { MQProvider, Select, useSelect, SelectItem } from 'react-crestui'
 
 const ReactCrestComponentSelect = () => {
-  const items = new Array<SelectItem>({
-      label: 'Apple',
-      value: 'apple'
-    },
-    {
-      label: 'Orange',
-      value: 'orange'
-    },
-    {
-      label: 'Banana',
-      value: 'banana'
-    })
+  const items: Array<SelectItem> = []
+  items.push({
+    label: 'Apple',
+    value: 'apple'
+  })
+  items.push({
+    label: 'Orange',
+    value: 'orange'
+  })
+  items.push({
+    label: 'Banana',
+    value: 'banana'
+  })
   const selectState = useSelect(items, 'apple')
   const code = `
   <MQProvider>
