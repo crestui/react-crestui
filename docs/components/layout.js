@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={DocsTheme}>
       <GlobalStyles />
       <Header siteTitle='Interesting title' />
-      <Flex flexDirection="column" p={5}>
+      <Flex flexDirection='column' p={5}>
         <main p={2}>{children}</main>
         <footer>© {new Date().getFullYear()}</footer>
       </Flex>

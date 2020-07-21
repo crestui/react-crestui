@@ -11,7 +11,7 @@ const ReactCrestComponentButton = () => {
   `
   const scope = { Button }
   return (
-    <ReactComponentsLayout title="Button - Components - React CrestUI">
+    <ReactComponentsLayout title='Button - Components - React CrestUI'>
       <h2>Button</h2>
       <LiveCodeComponent code={code} scope={scope} />
     </ReactComponentsLayout>

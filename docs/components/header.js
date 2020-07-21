@@ -5,15 +5,15 @@ import Link from 'next/link'
 
 const Header = ({ siteTitle }) => (
   <header>
-    <Flex flexDirection="row" justifyContent="space-between" py={4} px={1}>
+    <Flex flexDirection='row' justifyContent='space-between' py={4} px={1}>
       <Box pl={'10%'}>
-        <Link href="/">
+        <Link href='/'>
           <NavLink>{siteTitle}</NavLink>
         </Link>
       </Box>
       <Flex />
       <Box pr={'10%'}>
-        <Link href="/react-crestui">
+        <Link href='/react-crestui'>
           <NavLink>react-crestui</NavLink>
         </Link>
       </Box>

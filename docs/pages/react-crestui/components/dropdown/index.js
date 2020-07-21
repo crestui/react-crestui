@@ -18,7 +18,7 @@ const ReactCrestComponentDropdown = () => {
   `
   const scope = { Dropdown, Box, MQProvider, onAlignElementsBottom }
   return (
-    <ReactComponentsLayout title="Dropdown - Components - React CrestUI">
+    <ReactComponentsLayout title='Dropdown - Components - React CrestUI'>
       <h2>Dropdown - Components - React CrestUI</h2>
       <LiveCodeComponent code={code} scope={scope} />
     </ReactComponentsLayout>

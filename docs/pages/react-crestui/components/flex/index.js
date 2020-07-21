@@ -44,7 +44,7 @@ const ReactCrestComponentFlex = () => {
   `
   const scope = { Flex }
   return (
-    <ReactComponentsLayout title="Flex - Components - React CrestUI">
+    <ReactComponentsLayout title='Flex - Components - React CrestUI'>
       <h2>Flex</h2>
       <LiveCodeComponent code={code} scope={scope} />
     </ReactComponentsLayout>
