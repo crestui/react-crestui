@@ -1,9 +1,9 @@
-import React from "react"
-import ReactComponentsLayout from "@components/react-component-layout"
-import LiveCodeComponent from "@components/live-code"
-import { MQProvider, Select, onAlignElementsBottom } from "react-crestui"
+import React from 'react'
+import ReactComponentsLayout from '@components/react-component-layout'
+import LiveCodeComponent from '@components/live-code'
+import { MQProvider, Select, onAlignElementsBottom } from 'react-crestui'
 
-const ReactCrestComponentSelect = () =>  {
+const ReactCrestComponentSelect = () => {
   const code = `
   <MQProvider>
     <Select>

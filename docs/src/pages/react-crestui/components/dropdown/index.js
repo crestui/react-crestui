@@ -1,9 +1,9 @@
-import React from "react"
-import ReactComponentsLayout from "@components/react-component-layout"
-import LiveCodeComponent from "@components/live-code"
+import React from 'react'
+import ReactComponentsLayout from '@components/react-component-layout'
+import LiveCodeComponent from '@components/live-code'
 import { MQProvider, Dropdown, Box, onAlignElementsBottom } from 'react-crestui'
 
-const ReactCrestComponentDropdown = () =>  {
+const ReactCrestComponentDropdown = () => {
   const code = `
   <MQProvider>
     <Dropdown event='focus' label='Products' size={'medium'}
@@ -18,10 +18,10 @@ const ReactCrestComponentDropdown = () =>  {
   `
   const scope = { Dropdown, Box, MQProvider, onAlignElementsBottom }
   return (
-      <ReactComponentsLayout title="Dropdown - Components - React CrestUI">
-        <h2>Dropdown - Components - React CrestUI</h2>
-        <LiveCodeComponent code={code} scope={scope} />
-      </ReactComponentsLayout>
+    <ReactComponentsLayout title="Dropdown - Components - React CrestUI">
+      <h2>Dropdown - Components - React CrestUI</h2>
+      <LiveCodeComponent code={code} scope={scope} />
+    </ReactComponentsLayout>
   )
 }
 

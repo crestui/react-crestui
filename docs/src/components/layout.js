@@ -5,14 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
 import { ThemeProvider, Flex } from 'react-crestui'
 import { DocsTheme } from './docs-theme'
-import Header from "./header"
-import { createGlobalStyle } from 'styled-components';
-import "./layout.css"
+import Header from './header'
+import { createGlobalStyle } from 'styled-components'
+import './layout.css'
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -35,18 +35,16 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={DocsTheme}>
       <GlobalStyles />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <Flex flexDirection='column' p={5}>
+      <Flex flexDirection="column" p={5}>
         <main p={2}>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}
-        </footer>
+        <footer>© {new Date().getFullYear()}</footer>
       </Flex>
     </ThemeProvider>
   )
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default Layout

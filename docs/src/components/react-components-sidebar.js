@@ -1,11 +1,11 @@
-import React from "react"
+import React from 'react'
 import { Flex, Box, Text } from 'react-crestui'
 import StyledGatsbyLink from './link'
 
 const ComponentsSidebar = ({ children }) => {
   return (
-    <Flex flexDirection='row' h={'90vh'}>
-      <Flex flexDirection='column' w={'20%'}>
+    <Flex flexDirection="row" h={'90vh'}>
+      <Flex flexDirection="column" w={'20%'}>
         <Box py={2}>
           <StyledGatsbyLink to="/react-crestui/components/button">
             <Text>Button</Text>
@@ -67,9 +67,7 @@ const ComponentsSidebar = ({ children }) => {
           </StyledGatsbyLink>
         </Box>
       </Flex>
-      <Box>
-        { children }
-      </Box>
+      <Box>{children}</Box>
     </Flex>
   )
 }

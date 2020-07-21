@@ -1,9 +1,9 @@
-import React from "react"
-import ReactComponentsLayout from "@components/react-component-layout"
-import LiveCodeComponent from "@components/live-code"
+import React from 'react'
+import ReactComponentsLayout from '@components/react-component-layout'
+import LiveCodeComponent from '@components/live-code'
 import { Flex } from 'react-crestui'
 
-const ReactCrestComponentFlex = () =>  {
+const ReactCrestComponentFlex = () => {
   const code = `
   <>
       <Flex justifyContent='center' alignItems={'center'} alignContent={'center'} style={{
