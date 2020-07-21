@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "typescript": "link:../node_modules/typescript",
-    "eslint": "link:../node_modules/eslint",
+    "eslint": "7.5.0",
     "eslint-config-prettier": "link:../node_modules/eslint-config-prettier",
     "eslint-config-react": "link:../node_modules/eslint-config-react",
     "eslint-config-react-hooks": "link:../node_modules/eslint-config-react-hooks",
