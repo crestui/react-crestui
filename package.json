@@ -33,11 +33,11 @@
     "react-portal": ">= 4.2.1",
     "react-responsive": ">= 8.1.0",
     "styled-components": ">= 5.1.1",
-    "styled-icons": ">= 10.10.0",
+    "styled-icons": ">= 10.11.0",
     "use-onclickoutside": ">= 0.3.1"
   },
   "devDependencies": {
-    "@testing-library/dom": "7.21.3",
+    "@testing-library/dom": "7.21.4",
     "@testing-library/jest-dom": "5.11.1",
     "@testing-library/react": "10.4.7",
     "@testing-library/user-event": "12.0.11",
@@ -75,7 +75,7 @@
     "react-responsive": "8.1.0",
     "react-scripts": "3.4.1",
     "styled-components": "5.1.1",
-    "styled-icons": "10.10.0",
+    "styled-icons": "10.11.0",
     "typescript": "3.9.7",
     "use-onclickoutside": "0.3.1"
   },
