@@ -1,17 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { SelectState, SelectItem } from './use-select'
-import { SizeProps, applySizeProps } from '../../mixins/size'
-import { ColorProps, applyColorProps } from '../../mixins/color'
-import { BorderProps, applyBorderProps } from '../../mixins/border'
+import { SizeProps } from '../../mixins/size'
+import { ColorProps, getColor } from '../../mixins/color'
+import { BorderProps } from '../../mixins/border'
 
-const SelectContainer = styled.div`
+const SelectContainer = styled.nav`
   position: relative;
   user-select: none;
-
-  ${applySizeProps}
-  ${applyColorProps}
-  ${applyBorderProps}
 `
 
 const ListRoot = styled.ul`
@@ -23,15 +19,28 @@ const ListRoot = styled.ul`
   padding: 0;
 `
 
-const OptionElement = styled.li``
+const OptionElement = styled.li<{ selected: boolean }>`
+  box-sizing: border-box;
+  display: block;
+  padding: 1rem;
+  ${({ theme, selected }) =>
+    selected && 'background-color: ' + getColor(theme, 'primary') + ';'}
+  ${({ theme, selected }) =>
+    selected && 'color: ' + getColor(theme, 'textprimary') + ';'}
+
+  &:hover {
+    ${({ theme }) => 'background-color: ' + getColor(theme, 'focus') + ';'}
+    ${({ theme }) => 'color: ' + getColor(theme, 'textfocus') + ';'}
+  }
+`
 
 type OptionProps = {
   item: SelectItem
-  selectedValue: string
+  selected: boolean
 }
 
 const Option = (props: OptionProps) => {
-  return <div>{props.item.value}</div>
+  return <div>{props.item.label}</div>
 }
 
 export type SelectProps = {
@@ -47,10 +56,16 @@ export const Select = (
       <ListRoot>
         {options.map((item: SelectItem, idx: number) => {
           return (
-            <OptionElement key={idx}>
+            <OptionElement
+              key={idx}
+              selected={item.value === props.selectState.selectedValue}
+              onClick={() => {
+                props.selectState.setSelectedValue(item.value)
+              }}
+            >
               <Option
                 item={item}
-                selectedValue={props.selectState.selectedValue}
+                selected={item.value === props.selectState.selectedValue}
               />
             </OptionElement>
           )

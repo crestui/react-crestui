@@ -1,9 +1,13 @@
 export const DefaultTheme = {
   colors: {
+    text: '#000000',
+    bg: '#ffffff',
     primary: '#0e0e52',
-    secondary: '#E28413',
-    focus: '#E28413',
-    tooltip: '#708090'
+    textprimary: '#ffffff',
+    focus: '#2121bf',
+    textfocus: '#ffffff',
+    secondary: '#52520E',
+    textsecondary: '#ffffff'
   },
   space: {
     unit: 'rem',
