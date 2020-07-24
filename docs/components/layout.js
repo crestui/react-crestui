@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { createGlobalStyle } from 'styled-components'
@@ -27,8 +20,8 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={DocsTheme}>
       <GlobalStyles />
       <Header siteTitle='Interesting title' />
-      <Flex flexDirection='column' p={5}>
-        <main p={2}>{children}</main>
+      <Flex flexDirection='column'>
+        <main p={1}>{children}</main>
         <footer>© {new Date().getFullYear()}</footer>
       </Flex>
     </ThemeProvider>

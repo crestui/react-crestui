@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const ComponentsSidebar = ({ children }) => {
   return (
-    <Flex flexDirection='row' h={'90vh'}>
+    <Flex flexDirection='row' h={'100vh'}>
       <Flex flexDirection='column' w={'20%'}>
         <Box py={2}>
           <Link href='/react-crestui/components/autocomplete'>
@@ -72,7 +72,7 @@ const ComponentsSidebar = ({ children }) => {
           </Link>
         </Box>
       </Flex>
-      <Box>{children}</Box>
+      <Box w='80%'>{children}</Box>
     </Flex>
   )
 }

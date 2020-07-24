@@ -1,4 +1,4 @@
-export * from './autocomplete/autocomplete'
+export * from './autocomplete'
 export * from './arrow'
 export * from './box'
 export * from './button'

@@ -1,36 +1,30 @@
 import React from 'react'
 import ReactComponentsLayout from '@components/react-component-layout'
 import LiveCodeComponent from '@components/live-code'
-import { MQProvider, Select, useSelect, SelectItem } from 'react-crestui'
+import { Autocomplete, useAutocomplete, Flex, Box } from 'react-crestui'
 
-const ReactCrestComponentSelect = () => {
-  const items: Array<SelectItem> = []
-  items.push({
-    label: 'Apple',
-    value: 'apple'
-  })
-  items.push({
-    label: 'Orange',
-    value: 'orange'
-  })
-  items.push({
-    label: 'Banana',
-    value: 'banana'
-  })
-  const selectState = useSelect(items, 'apple')
+const ReactCrestComponentAutocomplete = () => {
+  const autocompleteState = useAutocomplete()
   const code = `
-  <MQProvider>
-    <Select selectState={selectState}>
-    </Select>
-  </MQProvider>
+    <Autocomplete state={autocompleteState}
+    placeholder='Enter information'>
+    </Autocomplete>
   `
-  const scope = { Select, MQProvider, selectState }
+  const scope = { Autocomplete, autocompleteState }
   return (
-    <ReactComponentsLayout title="Autocomplete - Components - React CrestUI">
-      <h2>Autocomplete - Components - React CrestUI</h2>
-      <LiveCodeComponent code={code} scope={scope} />
+    <ReactComponentsLayout title='Autocomplete - Components - React CrestUI'>
+      <Flex flexDirection='column'>
+        <Box w='100%'>
+          <h2>Autocomplete - Components - React CrestUI</h2>
+          <LiveCodeComponent code={code} scope={scope} />
+          <Autocomplete
+            state={autocompleteState}
+            placeholder='Enter information'>
+          </Autocomplete>
+        </Box>
+      </Flex>
     </ReactComponentsLayout>
   )
 }
 
-export default ReactCrestComponentSelect
+export default ReactCrestComponentAutocomplete
