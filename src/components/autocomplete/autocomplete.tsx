@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useMemo } from 'react'
 import styled from 'styled-components'
 import { RawDropdown } from '../dropdown'
 import { AutocompleteState } from './use-autocomplete'
@@ -32,6 +32,7 @@ const AutocompleteInput = styled.input.attrs(() => ({
 
 const AutocompleteSuggestions = styled.div`
   width: 100%;
+  z-index: 10;
   overflow: scroll;
   min-height: 20vh;
   max-height: 40vh;
@@ -55,13 +56,33 @@ export interface AutocompleteProps {
   state: AutocompleteState
 
   placeholder: string
-
-  children: React.ReactNode
 }
 
-const onChange = (state: AutocompleteState, value: string) => {
-  state.setValue(value)
-  return false
+const onChange = (value: string) => {
+  console.info(value)
+  return true
+}
+
+const getPortalContent = (values: Array<string>, currentValue: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const filteredValues = values.filter((value, _) => {
+    if (currentValue.length === 0) {
+      return true
+    } else {
+      return value.toLowerCase().indexOf(currentValue.toLowerCase()) !== -1
+    }
+  })
+  return (
+    <AutocompleteSuggestions>
+      {filteredValues.map((value, index) => {
+        return (
+          <AutocompleteSuggestionItem key={index}>
+            {value}
+          </AutocompleteSuggestionItem>
+        )
+      })}
+    </AutocompleteSuggestions>
+  )
 }
 
 /**
@@ -70,22 +91,24 @@ const onChange = (state: AutocompleteState, value: string) => {
  *
  */
 export const Autocomplete = (props: AutocompleteProps) => {
-  console.info(`${JSON.stringify(props)}`)
   const disclosure = useDisclosure(false)
-  const portalContent = (
-    <AutocompleteSuggestions>
-      <AutocompleteSuggestionItem>USA</AutocompleteSuggestionItem>
-      <AutocompleteSuggestionItem>India</AutocompleteSuggestionItem>
-      <AutocompleteSuggestionItem>Argentina</AutocompleteSuggestionItem>
-    </AutocompleteSuggestions>
-  )
+  const [value, setValue] = useState('')
+  const values = props.state.values
+  const portalContent = useMemo(() => {
+    return getPortalContent(values, value)
+  }, [values, value])
   return (
     <RawDropdown disclosure={disclosure} portalContent={portalContent}>
       <AutocompleteContainer>
         <AutocompleteInput
           onClick={() => disclosure.toggleOpen()}
           placeholder={props.placeholder}
-          onChange={(e) => onChange(props.state, e.target.value)}
+          value={value}
+          onChange={(e) => {
+            e.preventDefault()
+            setValue(e.target.value)
+            onChange(e.target.value)
+          }}
         />
       </AutocompleteContainer>
     </RawDropdown>

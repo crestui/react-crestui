@@ -2,24 +2,24 @@ import { createContext, useState, useMemo } from 'react'
 import { SetFunc } from '../../mixins/common'
 
 export interface AutocompleteState {
-  value: string
+  values: Array<string>
 
-  setValue: SetFunc<string>
+  setValues: SetFunc<Array<string>>
 }
 
 export const AutocompleteState = createContext<AutocompleteState>({
-  value: '',
+  values: [],
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setValue: () => {}
+  setValues: () => {}
 })
 
-export function useAutocomplete(): AutocompleteState {
-  const [value, setValue] = useState('')
+export function useAutocomplete(inputValues: Array<string>): AutocompleteState {
+  const [values, setValues] = useState<Array<string>>(inputValues)
   return useMemo(
     () => ({
-      value,
-      setValue
+      values,
+      setValues
     }),
-    [value, setValue]
+    [values, setValues]
   )
 }
