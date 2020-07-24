@@ -1,40 +1,67 @@
 import styled from 'styled-components'
+import React from 'react'
+import { AutocompleteState } from './use-autocomplete'
 
-import { BoxAlignProps, applyBoxAlignProps } from '../../mixins/box'
-import { SizeProps, applySizeProps } from '../../mixins/size'
-import { ColorProps, applyColorProps } from '../../mixins/color'
-import { BorderProps, applyBorderProps } from '../../mixins/border'
-import { PositionProps, applyPositionProps } from '../../mixins/position'
+const AutocompleteContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  tabindex: 0;
+`
+
+const AutocompleteInput = styled.input`
+  position: absolute;
+  background: transparent;
+  border: 0;
+  font-size: 5rem;
+  color: white;
+`
+
+const AutocompleteSuggestions = styled.div`
+  position: absolute;
+  border-top: 2px solid #9999;
+`
+
+const AutocompleteSuggestionItem = styled.div`
+  padding: 2rem;
+  font-size: 20px;
+  color: white;
+  border-top: 1px solid #666;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #999;
+  }
+`
 
 export interface AutocompleteProps {
-  inline?: boolean
+  state: AutocompleteState
+
+  placeholder: string
+}
+
+const onChange = (state: AutocompleteState, value: string) => {
+  state.setValue(value)
+  return false
 }
 
 /**
- * A styled div with "box-sizing" set to "border-box".
+ * Autocomplete component
  *
- * For more info,refer to :  https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+ *
  */
-export const Autocomplete = styled.div<
-AutocompleteProps &
-    BoxAlignProps &
-    SizeProps &
-    ColorProps &
-    BorderProps &
-    PositionProps
->`
-  box-sizing: border-box;
-  ${({ inline }) => inline && 'display: inline-block;'}
-  margin: 0;
-  min-width: 0;
-
-  ${applyBoxAlignProps}
-
-  ${applySizeProps}
-
-  ${applyColorProps}
-
-  ${applyBorderProps}
-
-  ${applyPositionProps}
-`
+export const Autocomplete = (props: AutocompleteProps) => {
+  console.info(`${JSON.stringify(props)}`)
+  return (
+    <AutocompleteContainer>
+      <AutocompleteInput
+        placeholder={props.placeholder}
+        onChange={(e) => onChange(props.state, e.target.value)}
+      ></AutocompleteInput>
+      <AutocompleteSuggestions>
+        <AutocompleteSuggestionItem>USA</AutocompleteSuggestionItem>
+        <AutocompleteSuggestionItem>India</AutocompleteSuggestionItem>
+        <AutocompleteSuggestionItem>Argentina</AutocompleteSuggestionItem>
+      </AutocompleteSuggestions>
+    </AutocompleteContainer>
+  )
+}
