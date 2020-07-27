@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactComponentsLayout from '@components/react-component-layout'
-import LiveCodeComponent from '@components/live-code'
+import ReactSnippet from '@components/react-snippet'
 import { Flex } from 'react-crestui'
 
 const ReactCrestComponentFlex = () => {
@@ -46,7 +46,7 @@ const ReactCrestComponentFlex = () => {
   return (
     <ReactComponentsLayout title='Flex - Components - React CrestUI'>
       <h2>Flex</h2>
-      <LiveCodeComponent code={code} scope={scope} />
+      <ReactSnippet code={code} scope={scope} />
     </ReactComponentsLayout>
   )
 }

@@ -5,7 +5,7 @@ import { addPropsToChildren } from '../../utils/add-props-to-children'
 
 export interface TabProps {
   children: React.ReactNode
-  tabState: TabState
+  state: TabState
 }
 
 const TabHeaders = styled.div`
@@ -21,7 +21,7 @@ export const Tabs = (props: TabProps) => {
     return { key: index, headingOnly: true }
   })
   return (
-    <TabContext.Provider value={props.tabState}>
+    <TabContext.Provider value={props.state}>
       <TabHeaders>{tabHeaders}</TabHeaders>
       <div>{props.children}</div>
     </TabContext.Provider>

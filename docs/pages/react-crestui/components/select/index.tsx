@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactComponentsLayout from '@components/react-component-layout'
-import LiveCodeComponent from '@components/live-code'
+import ReactSnippet from '@components/react-snippet'
 import { MQProvider, Select, useSelect, SelectItem } from 'react-crestui'
 
 const ReactCrestComponentSelect = () => {
@@ -26,9 +26,9 @@ const ReactCrestComponentSelect = () => {
   `
   const scope = { Select, MQProvider, selectState }
   return (
-    <ReactComponentsLayout title="Select - Components - React CrestUI">
+    <ReactComponentsLayout title='Select - Components - React CrestUI'>
       <h2>Select - Components - React CrestUI</h2>
-      <LiveCodeComponent code={code} scope={scope} />
+      <ReactSnippet code={code} scope={scope} />
     </ReactComponentsLayout>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactComponentsLayout from '@components/react-component-layout'
-import LiveCodeComponent from '@components/live-code'
-import { Autocomplete, useAutocomplete } from 'react-crestui'
+import ReactSnippet from '@components/react-snippet'
+import { Autocomplete, useAutocomplete, Box } from 'react-crestui'
 import { states } from '@components/states-hash'
 
 const ReactCrestComponentAutocomplete = () => {
@@ -18,7 +18,9 @@ const ReactCrestComponentAutocomplete = () => {
   return (
     <ReactComponentsLayout title='Autocomplete - Components - React CrestUI'>
       <h2>Autocomplete - Components - React CrestUI</h2>
-      <LiveCodeComponent code={code} scope={scope} />
+      <Box p={2}>
+        <ReactSnippet code={code} scope={scope} />
+      </Box>
     </ReactComponentsLayout>
   )
 }

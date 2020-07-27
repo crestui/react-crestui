@@ -11,4 +11,8 @@ const LiveCodeComponent = ({ code, scope }) => {
   )
 }
 
-export default LiveCodeComponent
+export const ReactSnippet = ({ code, scope }) => {
+  return <LiveCodeComponent code={code} scope={scope} />
+}
+
+export default ReactSnippet
