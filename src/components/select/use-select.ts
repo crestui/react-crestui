@@ -26,7 +26,7 @@ export const SelectContext = createContext<SelectState>({
   setItems: () => {},
   selectedValue: '',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setSelectedValue: () => {}
+  setSelectedValue: () => {},
 })
 
 export function useSelect(
@@ -40,7 +40,7 @@ export function useSelect(
       items,
       setItems,
       selectedValue,
-      setSelectedValue
+      setSelectedValue,
     }),
     [items, selectedValue]
   )

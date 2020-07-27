@@ -18,7 +18,7 @@ export const RadioGroupContext = createContext<RadioGroupState>({
   setName: () => {},
   value: '',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setValue: () => {}
+  setValue: () => {},
 })
 
 export function useRadioGroup(
@@ -35,7 +35,7 @@ export function useRadioGroup(
       name,
       setName,
       value,
-      setValue
+      setValue,
     }),
     [name, setName, value, setValue]
   )

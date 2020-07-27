@@ -18,7 +18,7 @@ export const TabContext = createContext<TabState>({
   setName: () => {},
   value: '',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setValue: () => {}
+  setValue: () => {},
 })
 
 export function useTab(pValue?: string, pName?: string): TabState {
@@ -32,7 +32,7 @@ export function useTab(pValue?: string, pName?: string): TabState {
       name,
       setName,
       value,
-      setValue
+      setValue,
     }),
     [name, setName, value, setValue]
   )

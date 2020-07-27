@@ -14,7 +14,7 @@ export const CheckboxContext = createContext<CheckboxState>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setChecked: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  toggleChecked: () => {}
+  toggleChecked: () => {},
 })
 
 export function useCheckbox(pChecked?: boolean): CheckboxState {
@@ -28,7 +28,7 @@ export function useCheckbox(pChecked?: boolean): CheckboxState {
     () => ({
       checked,
       setChecked,
-      toggleChecked
+      toggleChecked,
     }),
     [checked, setChecked, toggleChecked]
   )

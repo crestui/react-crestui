@@ -10,7 +10,7 @@ export interface AutocompleteState {
 export const AutocompleteState = createContext<AutocompleteState>({
   values: [],
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setValues: () => {}
+  setValues: () => {},
 })
 
 export function useAutocomplete(inputValues: Array<string>): AutocompleteState {
@@ -18,7 +18,7 @@ export function useAutocomplete(inputValues: Array<string>): AutocompleteState {
   return useMemo(
     () => ({
       values,
-      setValues
+      setValues,
     }),
     [values, setValues]
   )

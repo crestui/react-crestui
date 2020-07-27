@@ -18,7 +18,7 @@ export function useDisclosure(open: boolean): IDisclosure {
     () => ({
       isOpen,
       setIsOpen,
-      toggleOpen
+      toggleOpen,
     }),
     [isOpen, setIsOpen, toggleOpen]
   )

@@ -26,7 +26,7 @@ export interface DropdownProps {
 }
 
 const DropdownButton = styled(Button).attrs({
-  type: 'button'
+  type: 'button',
 })``
 
 export const Dropdown = (props: DropdownProps) => {
@@ -61,8 +61,7 @@ export const Dropdown = (props: DropdownProps) => {
     <RawDropdown
       onAlignElements={props.onAlignElements}
       disclosure={disclosure}
-      portalContent={props.children}
-    >
+      portalContent={props.children}>
       <DropdownButton ref={menuRef} link>
         <Flex
           flexDirection='row'
@@ -70,8 +69,7 @@ export const Dropdown = (props: DropdownProps) => {
           justifyContent='center'
           alignContent='center'
           onMouseEnter={onMouseEnter}
-          onClick={onClick}
-        >
+          onClick={onClick}>
           <Text pr={2} fs={textSize}>
             {props.label}
           </Text>

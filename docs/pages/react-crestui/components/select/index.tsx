@@ -7,15 +7,15 @@ const ReactCrestComponentSelect = () => {
   const items: Array<SelectItem> = []
   items.push({
     label: 'Apple',
-    value: 'apple'
+    value: 'apple',
   })
   items.push({
     label: 'Orange',
-    value: 'orange'
+    value: 'orange',
   })
   items.push({
     label: 'Banana',
-    value: 'banana'
+    value: 'banana',
   })
   const selectState = useSelect(items, 'apple')
   const code = `

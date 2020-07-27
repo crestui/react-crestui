@@ -71,8 +71,7 @@ export const Tooltip = (props: TooltipProps & OverlayProps) => {
             localdisclosure.toggleOpen()
           }}
           px={7}
-          py={2}
-        >
+          py={2}>
           {props.buttonText}
         </Button>
         <OverlayNode

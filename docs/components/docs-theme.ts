@@ -1,5 +1,5 @@
 export const DocsTheme = {
   button: {
-    borderRadius: 3
-  }
+    borderRadius: 3,
+  },
 }

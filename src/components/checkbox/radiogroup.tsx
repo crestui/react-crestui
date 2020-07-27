@@ -18,9 +18,8 @@ export const RadioGroup = (props: RadioGroupProps) => {
       <Flex
         flexDirection={direction}
         style={{
-          verticalAlign: 'middle'
-        }}
-      >
+          verticalAlign: 'middle',
+        }}>
         {props.children}
       </Flex>
     </RadioGroupContext.Provider>

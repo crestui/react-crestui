@@ -13,7 +13,7 @@ const AutocompleteContainer = styled.div`
 `
 
 const AutocompleteInput = styled.input.attrs(() => ({
-  type: 'text'
+  type: 'text',
 }))`
   border: none;
   outline: none;

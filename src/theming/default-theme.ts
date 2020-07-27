@@ -7,14 +7,14 @@ export const DefaultTheme = {
     focus: '#3A41FF',
     textfocus: '#ffffff',
     secondary: '#C5BE3A',
-    textsecondary: '#000000'
+    textsecondary: '#000000',
   },
   space: {
     unit: 'rem',
-    value: 0.25
+    value: 0.25,
   },
   iconSizes: [1, 2, 4, 8, 12, 16, 24, 28],
   button: {
-    borderRadius: 0.5
-  }
+    borderRadius: 0.5,
+  },
 }

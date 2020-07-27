@@ -61,8 +61,7 @@ export const Select = (
               selected={item.value === props.selectState.selectedValue}
               onClick={() => {
                 props.selectState.setSelectedValue(item.value)
-              }}
-            >
+              }}>
               <Option
                 item={item}
                 selected={item.value === props.selectState.selectedValue}
