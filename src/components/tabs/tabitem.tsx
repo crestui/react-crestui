@@ -7,25 +7,21 @@ import { displayNone } from '../../utils/display-none'
 const TabHeader = styled.div<{ selected: boolean }>`
   background-color: transparent;
   flex: 1 auto;
-  border-width: 2px;
-  border-style: ${(props) =>
-    props.selected ? 'solid solid none solid' : 'none none solid none'};
-  border-top-color: ${(props) => props.theme.colors.shadow};
-  border-right-color: ${(props) => props.theme.colors.shadow};
-  border-bottom-color: ${(props) => props.theme.colors.shadow};
-  border-left-color: ${(props) => props.theme.colors.shadow};
+  border-width: ${(props) => (props.selected ? '2px' : '1px')};
+  border-style: none none solid none;
+  border-bottom-color: ${(props) =>
+    props.selected ? props.theme.colors.primary : props.theme.colors.shadow};
   cursor: pointer;
   min-height: 5vh;
   height: 5vh;
   line-height: 5vh;
   text-align: center;
   min-width: 15%;
-  padding: 0rem 0.5rem;
+  padding: 0.5rem 0.5rem;
 
   &:hover {
-    border-style: ${(props) =>
-      props.selected ? 'solid solid solid solid' : 'none none solid none'};
-    border-bottom-color: ${(props) => props.theme.colors.focus} !important;
+    border-bottom-color: ${(props) =>
+      props.selected ? props.theme.colors.primary : props.theme.colors.focus};
   }
 `
 
