@@ -7,8 +7,13 @@ import { displayNone } from '../../utils/display-none'
 const TabHeader = styled.div<{ selected: boolean }>`
   background-color: transparent;
   flex: 1 auto;
-  border-bottom: ${(props) => (props.selected ? '2px solid' : 'none')};
-  border-color: ${(props) => props.theme.colors.primary};
+  border-width: 2px;
+  border-style: ${(props) =>
+    props.selected ? 'solid solid none solid' : 'none none solid none'};
+  border-top-color: ${(props) => props.theme.colors.shadow};
+  border-right-color: ${(props) => props.theme.colors.shadow};
+  border-bottom-color: ${(props) => props.theme.colors.shadow};
+  border-left-color: ${(props) => props.theme.colors.shadow};
   cursor: pointer;
   min-height: 5vh;
   height: 5vh;
@@ -16,6 +21,12 @@ const TabHeader = styled.div<{ selected: boolean }>`
   text-align: center;
   min-width: 15%;
   padding: 0rem 0.5rem;
+
+  &:hover {
+    border-style: ${(props) =>
+      props.selected ? 'solid solid solid solid' : 'none none solid none'};
+    border-bottom-color: ${(props) => props.theme.colors.focus} !important;
+  }
 `
 
 const TabContent = styled.div<{ selected: boolean }>`
@@ -35,6 +46,8 @@ export interface TabItemProps {
 
   value: string
 
+  key: number
+
   headingOnly: boolean
 
   children: React.ReactNode
@@ -43,23 +56,34 @@ export interface TabItemProps {
 export const TabItem = (props: TabItemProps) => {
   const tabContext = useContext(TabContext)
   const [selected, setSelected] = useState(tabContext.value === props.value)
+  console.info(`Key: ${props.key}, Value: ${props.value}`)
   useEffect(() => {
-    setSelected(tabContext.value === props.value)
-  }, [tabContext.value, props.value, setSelected])
+    if (
+      (tabContext.value === undefined ||
+        tabContext.value === null ||
+        tabContext.value.length === 0) &&
+      props.key === 0
+    ) {
+      setSelected(true)
+      tabContext.setValue(props.value)
+    } else {
+      setSelected(tabContext.value === props.value)
+    }
+  }, [tabContext, props.key, props.value, setSelected])
   const thisId = nextId()
-  console.info(`${props.title}`)
+  console.info(`divid: ${thisId}`)
   if (props.headingOnly) {
     return (
-      <TabHeader selected={selected}>
+      <TabHeader
+        selected={selected}
+        onClick={(e) => {
+          e.preventDefault()
+          tabContext.setValue(props.value)
+        }}>
         <TabHeaderSpan>{props.title}</TabHeaderSpan>
       </TabHeader>
     )
   } else {
     return <TabContent selected={selected}>{props.children}</TabContent>
   }
-  return (
-    <div>
-      {thisId} - {selected}
-    </div>
-  )
 }

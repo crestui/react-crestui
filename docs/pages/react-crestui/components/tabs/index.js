@@ -18,6 +18,9 @@ const ReactCrestComponentTabs = () => {
         <TabItem title='Venus' value='venus'>
           Venus is the planet second closest to the sun next to Mercury
         </TabItem>
+        <TabItem title='Earth' value='earth'>
+          Earth is the planet third closest to the sun
+        </TabItem>
       </Tabs>
     </>
   `

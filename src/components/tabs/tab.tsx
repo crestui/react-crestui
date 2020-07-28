@@ -23,6 +23,10 @@ const TabHeaders = styled.div`
 `
 
 export const Tabs = (props: TabProps) => {
+  const withKeys = addPropsToChildren(props.children, (index: number) => {
+    console.info(`add key index: ${index}`)
+    return { key: index }
+  })
   const tabHeaders = addPropsToChildren(props.children, (index: number) => {
     return { key: index, headingOnly: true }
   })
@@ -30,7 +34,7 @@ export const Tabs = (props: TabProps) => {
     <TabContainer>
       <TabContext.Provider value={props.state}>
         <TabHeaders>{tabHeaders}</TabHeaders>
-        <div>{props.children}</div>
+        <div>{withKeys}</div>
       </TabContext.Provider>
     </TabContainer>
   )

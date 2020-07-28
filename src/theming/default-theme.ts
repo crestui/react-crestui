@@ -8,6 +8,7 @@ export const DefaultTheme = {
     textfocus: '#ffffff',
     secondary: '#C5BE3A',
     textsecondary: '#000000',
+    shadow: 'lightgray',
   },
   space: {
     unit: 'rem',
