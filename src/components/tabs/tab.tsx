@@ -16,7 +16,7 @@ const TabContainer = styled(Box)`
 const TabHeaders = styled.div`
   display: flex;
   flex-direction: row;
-  overflow-x: hidden !important;
+  overflow-x: scroll;
   scrollbar-width: thin;
   scroll-color: ${(props) => props.theme.colors.primary}
     ${(props) => props.theme.colors.primary};

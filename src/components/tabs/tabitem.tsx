@@ -7,7 +7,7 @@ import { displayNone } from '../../utils/display-none'
 const TabHeader = styled.div<{ selected: boolean }>`
   background-color: transparent;
   flex: 1 auto;
-  border-width: ${(props) => (props.selected ? '2px' : '1px')};
+  border-width: ${(props) => (props.selected ? '4px' : '4px')};
   border-style: none none solid none;
   border-bottom-color: ${(props) =>
     props.selected ? props.theme.colors.primary : props.theme.colors.shadow};
@@ -16,7 +16,7 @@ const TabHeader = styled.div<{ selected: boolean }>`
   height: 5vh;
   line-height: 5vh;
   text-align: center;
-  min-width: 15%;
+  min-width: 25%;
   padding: 0.5rem 0.5rem;
 
   &:hover {

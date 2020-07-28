@@ -6,11 +6,6 @@ import { Tabs, TabItem, useTab, Box } from 'react-crestui'
 const ReactCrestComponentTabs = () => {
   const tabState = useTab()
   const code = `
-    <>
-      <div>
-        Name: {tabState.name}
-        Value: {tabState.value}
-      </div>
       <Tabs state={tabState}>
         <TabItem title='Mercury' value='mercury'>
           Mercury is the fastest planet around the sun in the solar system
@@ -21,8 +16,16 @@ const ReactCrestComponentTabs = () => {
         <TabItem title='Earth' value='earth'>
           Earth is the planet third closest to the sun
         </TabItem>
+        <TabItem title='Mars' value='mars'>
+          Mar is the planet fourth closest to the sun
+        </TabItem>
+        <TabItem title='Jupiter' value='jupiter'>
+          Jupiter is the planet fifth closest to the sun
+        </TabItem>
+        <TabItem title='Saturn' value='saturn'>
+          Saturn is the planet sixth closest to the sun
+        </TabItem>
       </Tabs>
-    </>
   `
   const scope = { Tabs, TabItem, tabState }
   return (
