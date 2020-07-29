@@ -33,7 +33,7 @@
     "react-portal": ">= 4.2.1",
     "react-responsive": ">= 8.1.0",
     "styled-components": ">= 5.1.1",
-    "styled-icons": ">= 10.11.0",
+    "styled-icons": ">= 10.13.0",
     "use-onclickoutside": ">= 0.3.1"
   },
   "devDependencies": {
