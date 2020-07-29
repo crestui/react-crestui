@@ -2,9 +2,8 @@ import React, { useRef } from 'react'
 import { Box } from '../box'
 import { Arrow } from '../arrow'
 import { Button } from '../button'
-// eslint-disable-next-line no-unused-vars
 import { Overlay, OverlayProps } from '../overlay'
-import { useDisclosure } from '../../mixins/disclosure'
+import { useDisclosure } from '../../contexts/disclosure'
 
 export interface TooltipProps {
   buttonText?: string
@@ -72,8 +71,7 @@ export const Tooltip = (props: TooltipProps & OverlayProps) => {
             localdisclosure.toggleOpen()
           }}
           px={7}
-          py={2}
-        >
+          py={2}>
           {props.buttonText}
         </Button>
         <OverlayNode

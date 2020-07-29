@@ -16,7 +16,7 @@ export function onAlignElementsLeft(alignment: string): onAlignElementsFunc {
       case 'top':
         return {
           left: containerRect.x,
-          top: containerRect.y + window.scrollY
+          top: containerRect.y + window.scrollY,
         }
       case 'bottom':
         return {
@@ -25,7 +25,7 @@ export function onAlignElementsLeft(alignment: string): onAlignElementsFunc {
             containerRect.y +
             window.scrollY +
             containerRect.height -
-            overlayRect.height
+            overlayRect.height,
         }
       default:
         throw new Error(
@@ -43,12 +43,12 @@ export function onAlignElementsTop(alignment: string): onAlignElementsFunc {
       case 'left':
         return {
           left: containerRect.x,
-          top: containerRect.y + window.scrollY - overlayRect.height
+          top: containerRect.y + window.scrollY - overlayRect.height,
         }
       case 'right':
         return {
           left: containerRect.x + containerRect.width - overlayRect.width,
-          top: containerRect.y + window.scrollY - overlayRect.height
+          top: containerRect.y + window.scrollY - overlayRect.height,
         }
       default:
         throw new Error(
@@ -66,7 +66,7 @@ export function onAlignElementsRight(alignment: string): onAlignElementsFunc {
       case 'top':
         return {
           left: containerRect.x + containerRect.width,
-          top: containerRect.y + window.scrollY
+          top: containerRect.y + window.scrollY,
         }
       case 'bottom':
         return {
@@ -75,7 +75,7 @@ export function onAlignElementsRight(alignment: string): onAlignElementsFunc {
             containerRect.y +
             window.scrollY +
             containerRect.height -
-            overlayRect.height
+            overlayRect.height,
         }
       default:
         throw new Error(
@@ -93,12 +93,12 @@ export function onAlignElementsBottom(alignment: string): onAlignElementsFunc {
       case 'left':
         return {
           left: containerRect.x,
-          top: containerRect.y + containerRect.height + window.scrollY + 1
+          top: containerRect.y + containerRect.height + window.scrollY + 1,
         }
       case 'right':
         return {
           left: containerRect.x + containerRect.width - overlayRect.width,
-          top: containerRect.y + containerRect.height + window.scrollY + 1
+          top: containerRect.y + containerRect.height + window.scrollY + 1,
         }
       default:
         throw new Error(

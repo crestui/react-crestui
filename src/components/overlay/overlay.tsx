@@ -1,7 +1,6 @@
 import React from 'react'
 import { Portal } from 'react-portal'
-// eslint-disable-next-line no-unused-vars
-import { IDisclosure } from '../../mixins/disclosure'
+import { IDisclosure } from '../../contexts'
 import { getCoords } from './align'
 
 interface LocalOverlayProps {

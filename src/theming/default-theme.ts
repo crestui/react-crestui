@@ -1,13 +1,21 @@
 export const DefaultTheme = {
   colors: {
-    primary: '#0e0e52',
-    secondary: '#E28413',
-    focus: '#E28413',
-    tooltip: '#708090'
+    bg: '#ffffff',
+    text: '#444444',
+    primary: '#3A41AA',
+    textprimary: '#ffffff',
+    focus: '#3A41FF',
+    textfocus: '#ffffff',
+    secondary: '#C5BE3A',
+    textsecondary: '#000000',
+    shadow: 'lightgray',
   },
-  spaceInRem: 0.25,
+  space: {
+    unit: 'rem',
+    value: 0.25,
+  },
   iconSizes: [1, 2, 4, 8, 12, 16, 24, 28],
   button: {
-    borderRadius: 0.5
-  }
+    borderRadius: 0.5,
+  },
 }

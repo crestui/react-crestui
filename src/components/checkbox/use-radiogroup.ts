@@ -1,21 +1,24 @@
 import { createContext, useState, useMemo } from 'react'
+import { SetFunc } from '../../mixins/common'
 import nextId from 'react-id-generator'
 
 export interface RadioGroupState {
   name: string
 
-  setName: Function
+  setName: SetFunc<string>
 
   value: string
 
-  setValue: Function
+  setValue: SetFunc<string>
 }
 
 export const RadioGroupContext = createContext<RadioGroupState>({
   name: '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setName: () => {},
   value: '',
-  setValue: () => {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setValue: () => {},
 })
 
 export function useRadioGroup(
@@ -32,7 +35,7 @@ export function useRadioGroup(
       name,
       setName,
       value,
-      setValue
+      setValue,
     }),
     [name, setName, value, setValue]
   )

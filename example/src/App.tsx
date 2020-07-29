@@ -1,6 +1,6 @@
 import React from 'react'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import { Flex, Box, Dropdown,
+import { createGlobalStyle } from 'styled-components'
+import { Flex, Box, Dropdown, ThemeProvider,
     onAlignElementsBottom, MQProvider } from 'react-crestui'
 import { AppTheme } from './example-theme'
 

@@ -1,17 +1,20 @@
 import { createContext, useState, useMemo, useCallback } from 'react'
+import { SetFunc, EmptyFunc } from '../../mixins/common'
 
 export interface CheckboxState {
   checked: boolean
 
-  setChecked: Function
+  setChecked: SetFunc<boolean>
 
-  toggleChecked: Function
+  toggleChecked: EmptyFunc
 }
 
 export const CheckboxContext = createContext<CheckboxState>({
   checked: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setChecked: () => {},
-  toggleChecked: () => {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleChecked: () => {},
 })
 
 export function useCheckbox(pChecked?: boolean): CheckboxState {
@@ -25,7 +28,7 @@ export function useCheckbox(pChecked?: boolean): CheckboxState {
     () => ({
       checked,
       setChecked,
-      toggleChecked
+      toggleChecked,
     }),
     [checked, setChecked, toggleChecked]
   )

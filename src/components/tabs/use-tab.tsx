@@ -1,21 +1,24 @@
 import { createContext, useState, useMemo } from 'react'
+import { SetFunc } from '../../mixins/common'
 import nextId from 'react-id-generator'
 
 export interface TabState {
   name: string
 
-  setName: Function
+  setName: SetFunc<string>
 
   value: string
 
-  setValue: Function
+  setValue: SetFunc<string>
 }
 
 export const TabContext = createContext<TabState>({
   name: '',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setName: () => {},
   value: '',
-  setValue: () => {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setValue: () => {},
 })
 
 export function useTab(pValue?: string, pName?: string): TabState {
@@ -29,7 +32,7 @@ export function useTab(pValue?: string, pName?: string): TabState {
       name,
       setName,
       value,
-      setValue
+      setValue,
     }),
     [name, setName, value, setValue]
   )
