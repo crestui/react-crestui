@@ -10,7 +10,7 @@
     "lintfix": "eslint --fix . --ext .js"
   },
   "dependencies": {
-    "next": "9.5.0",
+    "next": "9.5.1",
     "react": "link:../node_modules/react",
     "react-crestui": "link:..",
     "react-dom": "link:../node_modules/react-dom",
