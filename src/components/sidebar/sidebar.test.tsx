@@ -1,4 +1,4 @@
-import { Sidebar } from '.'
+import { Sidebar } from './sidebar'
 
 describe('Sidebar', () => {
   it('is truthy', () => {
